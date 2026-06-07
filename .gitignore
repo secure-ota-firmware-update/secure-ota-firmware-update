@@ -1,0 +1,38 @@
+# Private keys - NEVER commit these
+private_key.pem
+*_private*.pem
+*.key
+
+# Public key is safe to commit
+!public_key.pem
+
+# Environment variable files
+.env
+.env.*
+.env.local
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+dist/
+build/
+*.egg-info/
+
+# Test and coverage artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
