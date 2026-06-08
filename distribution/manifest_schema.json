@@ -1,0 +1,71 @@
+json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OTA Firmware Update Manifest",
+  "description": "Schema for the firmware update manifest file distributed alongside each firmware release. The edge device agent reads this file to determine if an update is available and to verify integrity.",
+  "type": "object",
+  "required": [
+    "version",
+    "filename",
+    "sha256",
+    "released_at",
+    "minimum_version"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this firmware release in X.Y.Z format",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "example": "1.2.0"
+    },
+    "filename": {
+      "type": "string",
+      "description": "Exact filename of the firmware binary as stored in S3",
+      "example": "dummy_firmware_v1.2.0.bin"
+    },
+    "sha256": {
+      "type": "string",
+      "description": "SHA-256 hex digest of the firmware binary. The edge agent recomputes this hash after download and compares it here to detect tampering.",
+      "pattern": "^[a-f0-9]{64}$",
+      "example": "a3f1c9e2b847d6f0e1234567890abcdef1234567890abcdef1234567890abcdef"
+    },
+    "signature_filename": {
+      "type": "string",
+      "description": "Filename of the ECDSA signature file stored alongside the binary in S3",
+      "example": "dummy_firmware_v1.2.0.sig"
+    },
+    "released_at": {
+      "type": "string",
+      "description": "ISO 8601 UTC timestamp of when this firmware was signed and released",
+      "format": "date-time",
+      "example": "2026-06-07T10:30:00Z"
+    },
+    "minimum_version": {
+      "type": "string",
+      "description": "Minimum firmware version a device must be running to accept this update. Devices below this version are blocked from installing to prevent downgrade attacks.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "example": "1.0.0"
+    },
+    "build_number": {
+      "type": "integer",
+      "description": "Monotonically increasing build counter. Used as a secondary anti-rollback check alongside semantic version.",
+      "example": 42
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable release notes for this firmware version",
+      "example": "Fixes GPS reporting interval bug. Improves battery life by 15%."
+    }
+  },
+  "additionalProperties": false,
+  "example": {
+    "version": "1.2.0",
+    "filename": "dummy_firmware_v1.2.0.bin",
+    "sha256": "a3f1c9e2b847d6f0e1234567890abcdef1234567890abcdef1234567890abcdef",
+    "signature_filename": "dummy_firmware_v1.2.0.sig",
+    "released_at": "2026-06-07T10:30:00Z",
+    "minimum_version": "1.0.0",
+    "build_number": 42,
+    "description": "Fixes GPS reporting interval bug. Improves battery life by 15%."
+  }
+}
