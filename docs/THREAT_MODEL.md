@@ -34,6 +34,7 @@ signature and hash before installing any update.
 
 An attacker intercepts the firmware delivery process and replaces the
 legitimate firmware binary with a malicious one.
+Supply chain attacks are among the most significant threats to modern software distribution systems because they target the update process itself. By enforcing signature verification at the device level, trust is established through cryptographic proof rather than through the delivery channel.
 
 ### Attack Scenario
 
@@ -142,3 +143,4 @@ variable injected at runtime, never from a hardcoded path in code.
 | MITM Attack | SHA-256 hash check | Week 1 & 3 |
 | Rollback Attack | Anti-rollback version check | Week 4 |
 | Key Compromise | Private key in GitHub Secrets only | Week 2 |
+The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
