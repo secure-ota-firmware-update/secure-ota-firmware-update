@@ -1,0 +1,14 @@
+edge_agent/version_store.json
+json
+{
+  "current_version": "0.0.0",
+  "minimum_version": "1.0.0",
+  "last_updated": "2026-06-08T00:00:00Z",
+  "install_history": [
+    {
+      "version": "0.0.0",
+      "installed_at": "2026-06-08T00:00:00Z",
+      "status": "initial"
+    }
+  ]
+}
