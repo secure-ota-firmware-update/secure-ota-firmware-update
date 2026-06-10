@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "filename": "dummy_firmware_v1.0.0.bin",
+  "sha256": "5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+  "signature_filename": "dummy_firmware_v1.0.0.sig",
+  "released_at": "2026-06-09T17:48:29Z",
+  "minimum_version": "1.0.0",
+  "description": "Initial secure firmware release with SHA-256 computation"
+}
