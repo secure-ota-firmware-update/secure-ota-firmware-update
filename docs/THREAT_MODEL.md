@@ -7,8 +7,8 @@ of simulated IoT edge devices. The pipeline cryptographically signs every
 firmware binary before distribution. The edge device agent verifies the
 signature and hash before installing any update.
 
+---
 
-The OTA workflow is designed around a zero-trust distribution model, where firmware authenticity is never assumed based on its source alone. Every update must successfully pass cryptographic validation checks before the installation process can begin, ensuring that only verified firmware reaches production devices.
 ## 2. Assets Being Protected
 
 - Firmware binary — must not be tampered with in transit
@@ -16,7 +16,7 @@ The OTA workflow is designed around a zero-trust distribution model, where firmw
 - Device update mechanism — must only install legitimate firmware
 - Version state on device — must not be rolled back to vulnerable versions
 
-Protecting these assets is critical because compromise of any single component can undermine the security of the entire update ecosystem. The signing key protects firmware authenticity, while version tracking and verification mechanisms ensure devices remain secure throughout their operational lifecycle.
+---
 
 ## 3. Trust Boundaries
 
@@ -26,7 +26,7 @@ Protecting these assets is critical because compromise of any single component c
 - UNTRUSTED: The S3 bucket itself (treat as a public distribution channel)
 - UNTRUSTED: Any firmware file before verification is complete
 
-Clearly defining trust boundaries helps identify where security controls must be enforced. All data crossing from an untrusted environment into a trusted one must undergo verification to prevent unauthorized modifications, malicious payload delivery, or misuse of system resources.
+---
 
 ## 4. Threat 1 — Supply Chain Attack
 
@@ -84,7 +84,7 @@ and the device rejects the payload immediately.
   accepted unverified OTA updates over HTTP without any integrity check.
 
 ---
-Hash verification provides integrity assurance by allowing the device to independently validate the downloaded content. Even if attackers gain full visibility into network traffic, they cannot alter firmware without causing the integrity validation process to fail.
+
 ## 6. Threat 3 — Rollback Attack
 
 ### Description
@@ -105,7 +105,7 @@ The device maintains a minimum allowed version in version_store.json.
 Any incoming firmware version lower than this minimum is rejected
 before installation, even if its signature is valid.
 
-Rollback protection ensures that security improvements delivered in newer firmware releases cannot be bypassed by reintroducing older vulnerable versions. This control is particularly important in long-lived IoT deployments where devices may operate unattended for extended periods.
+---
 
 
 - CVE-2019-15126 (Kr00k) — affecting Broadcom WiFi chips. A rollback
@@ -143,7 +143,7 @@ file in the repository). The .gitignore explicitly excludes all .pem and
 .key files. The signing script reads the key only from an environment
 variable injected at runtime, never from a hardcoded path in code.
 
-Protecting the signing key is the most critical security requirement in the entire update pipeline. If the private key remains secure, attackers cannot generate firmware that devices will trust, making key management a foundational defense mechanism
+---
 
 ## 8. Assumptions
 
@@ -153,7 +153,7 @@ Protecting the signing key is the most critical security requirement in the enti
 - The GitHub Actions environment with Secrets access is trusted
 - The device's local storage for version_store.json is not tampered with
 
-These assumptions define the security model under which the threat analysis was conducted. If any assumption becomes invalid in a real-world deployment, additional controls and compensating safeguards would be required to maintain the same security guarantees.
+---
 
 ## 9. Out of Scope
 
@@ -162,7 +162,7 @@ These assumptions define the security model under which the threat analysis was 
 - Side-channel attacks on the edge device
 - Attacks on the device after a successful legitimate firmware install
 
-While these scenarios are excluded from the current implementation, they remain important considerations for enterprise-scale deployments. Future enhancements may address some of these risks through hardware security modules, secure boot mechanisms, or advanced runtime protections.
+---
 
 ## 10. Mitigations Implemented
 
