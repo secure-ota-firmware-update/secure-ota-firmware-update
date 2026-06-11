@@ -49,6 +49,14 @@ The device verifies this signature using the public key baked in at
 manufacture. A replaced binary will not have a valid signature and will
 be rejected before installation.
 
+
+### Real World References
+- SolarWinds SUNBURST (2020) — attackers compromised the build pipeline
+  and inserted malicious code into legitimate software updates distributed
+  to 18,000 organizations including US government agencies.
+- CVE-2021-44228 (Log4Shell) — malicious payloads delivered through
+  legitimate-looking update mechanisms.
+
 ---
 
 ## 5. Threat 2 — Man-in-the-Middle (MITM) Attack
@@ -69,6 +77,11 @@ The device recomputes the SHA-256 hash of the downloaded binary and
 compares it against the hash stored in the signed manifest. Any
 modification — even one byte — produces a completely different hash
 and the device rejects the payload immediately.
+### Real World References
+- CVE-2019-9483 — Wemo smart plugs accepted unsigned firmware updates
+  allowing any attacker on the same network to push malicious firmware.
+- CVE-2018-19968 — Multiple IoT devices from various manufacturers
+  accepted unverified OTA updates over HTTP without any integrity check.
 
 ---
 Hash verification provides integrity assurance by allowing the device to independently validate the downloaded content. Even if attackers gain full visibility into network traffic, they cannot alter firmware without causing the integrity validation process to fail.
@@ -93,6 +106,20 @@ Any incoming firmware version lower than this minimum is rejected
 before installation, even if its signature is valid.
 
 Rollback protection ensures that security improvements delivered in newer firmware releases cannot be bypassed by reintroducing older vulnerable versions. This control is particularly important in long-lived IoT deployments where devices may operate unattended for extended periods.
+
+- CVE-2019-15126 (Kr00k) — affecting Broadcom WiFi chips. A rollback
+  to vulnerable firmware version would re-expose patched devices.
+- Tesla Model S (2016) — researchers demonstrated rollback attacks on
+  automotive ECU firmware allowing re-exploitation of patched bugs.
+### Real World References
+- Uber GitHub breach (2022) — attackers found AWS credentials in a
+  private GitHub repository and accessed 57 million user records.
+- Twitch source code leak (2021) — internal credentials exposed through
+  misconfigured repository access.
+- GitHub Token Exposure — GitHub reports over 1 million secrets
+  accidentally committed to public repos every year.
+
+
 
 ## 7. Threat 4 — Key Compromise
 
@@ -144,3 +171,11 @@ While these scenarios are excluded from the current implementation, they remain 
 | Rollback Attack | Anti-rollback version check | Week 4 |
 | Key Compromise | Private key in GitHub Secrets only | Week 2 |
 The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
+
+## 11. References
+
+- OWASP IoT Top 10: https://owasp.org/www-project-internet-of-things/
+- NIST SP 800-193 Platform Firmware Resilience Guidelines
+- The Update Framework (TUF) specification: https://theupdateframework.io
+- NIST FIPS 186-5 Digital Signature Standard (ECDSA)
+- MCUboot Secure Boot documentation: https://docs.mcuboot.com
