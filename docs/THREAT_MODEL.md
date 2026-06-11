@@ -107,6 +107,7 @@ before installation, even if its signature is valid.
 
 Rollback protection ensures that security improvements delivered in newer firmware releases cannot be bypassed by reintroducing older vulnerable versions. This control is particularly important in long-lived IoT deployments where devices may operate unattended for extended periods.
 
+
 - CVE-2019-15126 (Kr00k) — affecting Broadcom WiFi chips. A rollback
   to vulnerable firmware version would re-expose patched devices.
 - Tesla Model S (2016) — researchers demonstrated rollback attacks on
@@ -118,6 +119,7 @@ Rollback protection ensures that security improvements delivered in newer firmwa
   misconfigured repository access.
 - GitHub Token Exposure — GitHub reports over 1 million secrets
   accidentally committed to public repos every year.
+
 
 
 
@@ -170,6 +172,7 @@ While these scenarios are excluded from the current implementation, they remain 
 | MITM Attack | SHA-256 hash check | Week 1 & 3 |
 | Rollback Attack | Anti-rollback version check | Week 4 |
 | Key Compromise | Private key in GitHub Secrets only | Week 2 |
+
 The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
 
 ## 11. References
@@ -179,3 +182,6 @@ The implemented controls provide layered security across the OTA update process.
 - The Update Framework (TUF) specification: https://theupdateframework.io
 - NIST FIPS 186-5 Digital Signature Standard (ECDSA)
 - MCUboot Secure Boot documentation: https://docs.mcuboot.com
+=======
+The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
+
