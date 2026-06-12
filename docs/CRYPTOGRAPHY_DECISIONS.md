@@ -35,6 +35,7 @@ elliptic curve standard. It is:
 - The standard curve in most IoT firmware verification frameworks
   including MCUboot and RAUC
 
+ECDSA is particularly well-suited for OTA firmware updates because it provides strong authentication with minimal bandwidth and storage overhead. Since firmware signatures are distributed to every device, smaller signature sizes reduce network usage and improve update efficiency across large IoT deployments.
 ---
 
 ## 2. Hash Algorithm — SHA-256
@@ -63,7 +64,7 @@ SHA-256 is part of the SHA-2 family standardized by NIST. It:
 - Is computationally infeasible to reverse or forge
 - Is the standard for firmware integrity in RAUC, SWUpdate, MCUboot
 - Is natively available in Python's hashlib (no external dependency)
-
+SHA-256 is widely adopted across security-critical systems, including TLS certificates, software package verification, blockchain technologies, and secure boot mechanisms. Its extensive industry adoption and long-term cryptographic reliability make it a safe choice for firmware integrity verification.
 ---
 
 ## 3. Why Both Hash Check AND Signature Verification?
@@ -95,6 +96,7 @@ Verification order in our agent:
 3. Verify ECDSA signature of hash using public key [crypto check]
 4. Check version >= minimum_version [rollback check]
 5. Install
+Separating integrity verification from authenticity verification also improves troubleshooting and monitoring. If a hash mismatch occurs, the system can immediately identify transmission or storage corruption, while a signature failure typically indicates an authentication or key-management issue. This distinction simplifies incident response and debugging.
 
 ---
 
@@ -127,6 +129,8 @@ GitHub Secrets are:
 The private key exists in memory only for the exact seconds the
 signing step runs, then the /tmp file is deleted in the cleanup step.
 
+Using GitHub Secrets aligns with the principle of least exposure by ensuring sensitive cryptographic material is never committed to source control. This reduces the attack surface and helps enforce secure key-management practices throughout the development and deployment lifecycle.
+
 ---
 
 ## 5. Production Improvements
@@ -158,3 +162,4 @@ keyless signing using short-lived certificates, a transparency log
 Rather than storing the public key in a regular file, production devices
 use a secure enclave (ARM TrustZone, ATECC608A crypto chip) where the
 public key is fused at manufacture and cannot be overwritten over the air.
+Production-grade OTA systems typically combine multiple security controls rather than relying on a single mechanism. Secure key storage, signed metadata, audit logging, hardware-backed trust anchors, and automated key rotation work together to create a resilient firmware update ecosystem that remains secure even if one layer is compromised.
