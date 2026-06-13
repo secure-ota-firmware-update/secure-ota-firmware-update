@@ -27,6 +27,7 @@ import json
 import hashlib
 import logging
 import shutil
+import requests
 from datetime import datetime
 
 
@@ -121,52 +122,89 @@ def check_for_update(manifest: dict, version_store: dict) -> bool:
 
 def download_firmware(manifest: dict, download_dir: str = "edge_agent/downloads") -> tuple:
     """
-    Download firmware binary and signature file.
+    Download firmware binary and signature file from S3.
 
-    In Week 3 this will fetch from the S3 URL.
-    For now it copies from local distribution/ and firmware/ directories
-    to simulate a download into the edge agent downloads folder.
+    If S3_BASE_URL environment variable is set, downloads via HTTP
+    using the requests library. Otherwise falls back to local file
+    copy for development and testing without AWS access.
 
     Args:
-        manifest: parsed manifest.json containing filename
+        manifest: parsed manifest.json containing filename and version
         download_dir: local directory to save downloaded files
 
     Returns:
         tuple: (firmware_path, signature_path) paths to downloaded files
 
     Raises:
-        FileNotFoundError: if source firmware or signature files do not exist
+        FileNotFoundError: if local fallback files don't exist
+        requests.RequestException: if S3 download fails
     """
     os.makedirs(download_dir, exist_ok=True)
 
     filename = manifest["filename"]
     sig_filename = manifest["signature_filename"]
-
-    # For local testing — copy from firmware/ folder
-    # In Week 3 this becomes: requests.get(s3_url)
-    source_firmware = os.path.join("firmware", filename)
-    source_sig = os.path.join("firmware", sig_filename)
+    version = manifest["version"]
 
     dest_firmware = os.path.join(download_dir, filename)
     dest_sig = os.path.join(download_dir, sig_filename)
 
-    # Check source files exist
-    if not os.path.exists(source_firmware):
-        logger.error(f"Firmware source not found: {source_firmware}")
-        raise FileNotFoundError(f"Firmware not found: {source_firmware}")
+    s3_base_url = os.environ.get("S3_BASE_URL")
 
-    if not os.path.exists(source_sig):
-        logger.error(f"Signature source not found: {source_sig}")
-        raise FileNotFoundError(f"Signature not found: {source_sig}")
+    if s3_base_url:
+        # Download from S3 via HTTPS
+        firmware_url = f"{s3_base_url}/releases/{version}/{filename}"
+        sig_url = f"{s3_base_url}/releases/{version}/{sig_filename}"
 
-    # Copy files to downloads directory (simulating download)
-    shutil.copy2(source_firmware, dest_firmware)
-    shutil.copy2(source_sig, dest_sig)
+        logger.info(f"Downloading firmware from: {firmware_url}")
+        _download_from_url(firmware_url, dest_firmware)
+
+        logger.info(f"Downloading signature from: {sig_url}")
+        _download_from_url(sig_url, dest_sig)
+
+    else:
+        # Fallback — local file copy for development/testing
+        logger.info("S3_BASE_URL not set — using local file fallback")
+
+        source_firmware = os.path.join("firmware", filename)
+        source_sig = os.path.join("firmware", sig_filename)
+
+        if not os.path.exists(source_firmware):
+            logger.error(f"Firmware source not found: {source_firmware}")
+            raise FileNotFoundError(f"Firmware not found: {source_firmware}")
+
+        if not os.path.exists(source_sig):
+            logger.error(f"Signature source not found: {source_sig}")
+            raise FileNotFoundError(f"Signature not found: {source_sig}")
+
+        shutil.copy2(source_firmware, dest_firmware)
+        shutil.copy2(source_sig, dest_sig)
 
     logger.info(f"Firmware downloaded: {dest_firmware}")
     logger.info(f"Signature downloaded: {dest_sig}")
 
     return dest_firmware, dest_sig
+
+def _download_from_url(url: str, dest_path: str) -> None:
+    """
+    Download a file from a URL and save it to disk.
+
+    Uses streaming to handle large firmware files without
+    loading the entire response into memory at once.
+
+    Args:
+        url: source URL to download from
+        dest_path: local path to save the downloaded file
+
+    Raises:
+        requests.RequestException: if the request fails or returns
+                                    a non-200 status code
+    """
+    response = requests.get(url, stream=True, timeout=30)
+    response.raise_for_status()
+
+    with open(dest_path, "wb") as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            f.write(chunk)
 
 
 def verify_hash(firmware_path: str, expected_hash: str) -> bool:
