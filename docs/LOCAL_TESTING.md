@@ -71,3 +71,15 @@ You should see:
 - NEVER commit dummy_firmware_v1.0.0.sig (generated artifact)
 - NEVER hardcode the private key path in any script
 - Always use environment variables for key paths
+
+## Verification Results — Day 6 Integration Test
+
+All 5 steps completed successfully on Day 6.
+
+SHA-256 hash verified — manifest hash matches direct binary hash.
+Edge agent initializes without errors.
+All output files confirmed present:
+- pki/public_key.pem
+- firmware/dummy_firmware_v1.0.0.bin
+- firmware/dummy_firmware_v1.0.0.sig
+- distribution/manifest.json
