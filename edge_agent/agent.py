@@ -310,23 +310,48 @@ def mock_install(manifest: dict, version_store: dict) -> None:
 def main():
     """
     Main entry point for the edge device agent.
+
+    Orchestrates the full firmware update flow:
+    load version store -> fetch manifest -> check for update ->
+    download -> verify hash -> verify signature (Week 3) ->
+    anti-rollback check (Week 4) -> install or reject
+
+    All exceptions are caught here so the agent never crashes
+    with an unhandled traceback — every failure path logs a
+    clean CRITICAL message and exits gracefully, simulating
+    a real embedded device that must never hard-crash.
     """
     logger.info("=" * 50)
     logger.info("Edge Device Agent started")
     logger.info("=" * 50)
 
-    # Load version store
     try:
-        version_store = load_version_store()
+        _run_update_check()
     except FileNotFoundError as e:
-        logger.error(f"Cannot start agent: {e}")
-        return
+        logger.critical(f"Required file missing: {e}")
+        logger.critical("Agent halted — manual intervention required")
+    except Exception as e:
+        logger.critical(f"Unexpected error: {type(e).__name__}: {e}")
+        logger.critical("Agent halted to prevent unsafe state")
+    finally:
+        logger.info("Agent run finished")
+        logger.info("=" * 50)
+
+
+def _run_update_check():
+    """
+    Internal function containing the actual update check logic.
+
+    Separated from main() so that main() can wrap this entire
+    flow in a single try/except block for robust error handling.
+    """
+    # Load version store
+    version_store = load_version_store()
 
     # Load manifest for testing
     manifest_path = "distribution/manifest.json"
     if not os.path.exists(manifest_path):
-        logger.error(f"Manifest not found: {manifest_path}")
-        return
+        raise FileNotFoundError(f"Manifest not found: {manifest_path}")
 
     with open(manifest_path, "r") as f:
         manifest = json.load(f)
@@ -339,18 +364,15 @@ def main():
         return
 
     # Download firmware
-    try:
-        firmware_path, sig_path = download_firmware(manifest)
-    except FileNotFoundError as e:
-        logger.error(f"Download failed: {e}")
-        return
+    firmware_path, sig_path = download_firmware(manifest)
 
     # Verify hash
     if not verify_hash(firmware_path, manifest["sha256"]):
         logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
         return
 
-    logger.info("All checks passed — signature verification coming in Week 3")
+    logger.info("All checks passed so far — signature verification coming in Week 3")
+
 
 
 if __name__ == "__main__":
