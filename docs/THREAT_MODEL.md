@@ -123,6 +123,22 @@ before installation, even if its signature is valid.
 
 
 
+
+- CVE-2019-15126 (Kr00k) — affecting Broadcom WiFi chips. A rollback
+  to vulnerable firmware version would re-expose patched devices.
+- Tesla Model S (2016) — researchers demonstrated rollback attacks on
+  automotive ECU firmware allowing re-exploitation of patched bugs.
+### Real World References
+- Uber GitHub breach (2022) — attackers found AWS credentials in a
+  private GitHub repository and accessed 57 million user records.
+- Twitch source code leak (2021) — internal credentials exposed through
+  misconfigured repository access.
+- GitHub Token Exposure — GitHub reports over 1 million secrets
+  accidentally committed to public repos every year.
+
+
+
+
 ## 7. Threat 4 — Key Compromise
 
 ### Description
