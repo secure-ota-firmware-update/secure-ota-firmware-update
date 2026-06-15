@@ -1,8 +1,13 @@
 # GitHub Secrets Setup Guide
 
+
+This document explains the GitHub Secret required for the
+CI/CD signing and release pipeline.
+=======
 This document explains every GitHub Secret required for the
 CI/CD signing and distribution pipeline, what each one contains,
 and how to add them to the repository.
+
 
 ---
 
@@ -23,13 +28,22 @@ on why secrets are used instead of committing keys to files.
 
 1. Go to the repository on GitHub
 2. Click **Settings**
+
+3. In the left sidebar, click **Secrets and variables** -> **Actions**
+
 3. In the left sidebar, click **Secrets and variables** → **Actions**
+
 4. Click **New repository secret**
 5. Enter the **Name** exactly as specified below
 6. Enter the **Value**
 7. Click **Add secret**
 
 ---
+
+
+## Required Secret
+
+### FIRMWARE_PRIVATE_KEY
 
 ## Required Secrets
 
@@ -48,6 +62,31 @@ Copy the entire output including the `-----BEGIN EC PRIVATE KEY-----`
 and `-----END EC PRIVATE KEY-----` lines.
 
 **Used by:**
+
+The "Write private key from GitHub Secret" step in
+`.github/workflows/sign-and-release.yml`.
+
+**Security note:**
+After adding this secret, keep a secure offline backup of the
+private key in case key rotation is needed later. Never re-upload
+it through any other channel.
+
+---
+
+## About GITHUB_TOKEN
+
+The workflow also uses `secrets.GITHUB_TOKEN` to create GitHub
+Releases. This token:
+
+- Is automatically created by GitHub for every workflow run
+- Requires NO setup — you do not create or add this secret
+- Is automatically scoped to this repository only
+- Expires automatically when the workflow run completes
+
+The only requirement is that the workflow has
+`permissions: contents: write` set at the job level (already
+configured in sign-and-release.yml).
+=======
 The "Write private key from secret" step in
 `.github/workflows/sign-and-release.yml` (added Day 2).
 
@@ -124,6 +163,21 @@ can only read/write to this specific bucket, nothing else in AWS.
 ---
 
 ## Verification Checklist
+
+
+After adding the secret, verify in
+Settings -> Secrets and variables -> Actions:
+
+- [ ] FIRMWARE_PRIVATE_KEY shows as configured
+
+That's it — only one secret needed.
+
+---
+
+## What Happens If the Secret Is Missing
+
+If `FIRMWARE_PRIVATE_KEY` is missing, the "Write private key" step
+will write an empty file, and `sign_firmware.py` will fail with:
 
 After adding all 4 secrets, verify in Settings → Secrets and variables → Actions:
 
