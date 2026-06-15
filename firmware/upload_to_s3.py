@@ -1,31 +1,3 @@
-"""
-upload_to_s3.py
-
-Uploads signed firmware artifacts to AWS S3 for OTA distribution.
-
-This script uploads three files for a given version:
-- firmware binary (.bin)
-- digital signature (.sig)
-- manifest (manifest.json)
-
-All three are uploaded to: s3://<bucket>/releases/<version>/
-
-AWS credentials are NEVER hardcoded. They are read from environment
-variables (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) which are injected
-from GitHub Secrets in the CI/CD pipeline.
-
-Usage:
-    export AWS_ACCESS_KEY_ID=xxxx
-    export AWS_SECRET_ACCESS_KEY=xxxx
-    export S3_BUCKET_NAME=your-bucket-name
-
-    python firmware/upload_to_s3.py \
-        --version 1.0.0 \
-        --firmware firmware/dummy_firmware_v1.0.0.bin \
-        --signature firmware/dummy_firmware_v1.0.0.sig \
-        --manifest distribution/manifest.json
-"""
-
 import argparse
 import os
 import sys
