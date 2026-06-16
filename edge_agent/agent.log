@@ -1,0 +1,16 @@
+2026-06-12 21:33:27,425 [INFO] ==================================================
+2026-06-12 21:33:27,425 [INFO] Edge Device Agent started
+2026-06-12 21:33:27,425 [INFO] ==================================================
+2026-06-12 21:33:27,454 [ERROR] Failed to parse version store: Expecting value: line 1 column 1 (char 0)
+2026-06-12 21:57:48,891 [INFO] ==================================================
+2026-06-12 21:57:48,891 [INFO] Edge Device Agent started
+2026-06-12 21:57:48,891 [INFO] ==================================================
+2026-06-12 21:57:48,941 [INFO] Version store loaded — current version: 0.0.0
+2026-06-12 21:57:48,954 [INFO] Manifest loaded — firmware version: 1.0.0
+2026-06-12 21:57:49,057 [INFO] Firmware downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-06-12 21:57:49,058 [INFO] Signature downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.sig
+2026-06-12 21:57:49,058 [INFO] Verifying SHA-256 hash of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-06-12 21:57:49,059 [INFO] Expected hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-06-12 21:57:49,076 [INFO] Computed hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-06-12 21:57:49,077 [INFO] Hash verification PASSED — firmware integrity confirmed
+2026-06-12 21:57:49,077 [INFO] All checks passed — signature verification coming in Week 3
