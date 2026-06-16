@@ -30,7 +30,7 @@
 # The private key is NEVER hardcoded in this file. It exists only
 # in /tmp for the duration of the signing step and is deleted
 # immediately afterward, even if the workflow fails.
-=======
+
 # Pipeline steps (to be completed across Week 2):
 # Day 1 — Skeleton: trigger, checkout, Python setup    <- TODAY
 # Day 2 — Inject private key from GitHub Secrets, run sign_firmware.py
