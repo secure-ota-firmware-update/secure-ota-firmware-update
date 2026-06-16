@@ -1,11 +1,8 @@
 # Cryptographic operations - ECDSA key generation, signing, verification
 cryptography==42.0.8
 
-# HTTP requests - edge agent firmware download from S3 URL
+# HTTP requests - edge agent firmware download from GitHub Releases
 requests==2.32.3
-
-# AWS S3 - firmware upload in CI/CD pipeline
-boto3==1.43.29
 
 # Testing framework
 pytest==8.2.2
