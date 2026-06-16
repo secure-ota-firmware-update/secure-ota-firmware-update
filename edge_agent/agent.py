@@ -46,6 +46,11 @@ logger = logging.getLogger(__name__)
 VERSION_STORE_PATH = "edge_agent/version_store.json"
 PUBLIC_KEY_PATH = "pki/public_key.pem"
 
+# constants for GitHub  Releases integration
+GITHUB_REPO = "secure-ota-firmware-update/secure-ota-firmware-update"
+GITHUB_API_BASE = "https://api.github.com"
+
+
 
 def load_version_store() -> dict:
     """
@@ -122,22 +127,17 @@ def check_for_update(manifest: dict, version_store: dict) -> bool:
 
 def download_firmware(manifest: dict, download_dir: str = "edge_agent/downloads") -> tuple:
     """
-    Download firmware binary and signature file from S3.
+    Download firmware binary and signature file from GitHub Releases.
 
-    If S3_BASE_URL environment variable is set, downloads via HTTP
-    using the requests library. Otherwise falls back to local file
-    copy for development and testing without AWS access.
+    GitHub Release assets are public for public repositories and
+    require no authentication. URL pattern:
 
-    Args:
-        manifest: parsed manifest.json containing filename and version
-        download_dir: local directory to save downloaded files
+        https://github.com/<owner>/<repo>/releases/download/<tag>/<filename>
 
-    Returns:
-        tuple: (firmware_path, signature_path) paths to downloaded files
+    Each release is tagged as vX.Y.Z matching the manifest version.
 
-    Raises:
-        FileNotFoundError: if local fallback files don't exist
-        requests.RequestException: if S3 download fails
+    If GITHUB_RELEASE_BASE_URL is not set, falls back to local file
+    copy for development and testing without needing a published release.
     """
     os.makedirs(download_dir, exist_ok=True)
 
@@ -148,22 +148,23 @@ def download_firmware(manifest: dict, download_dir: str = "edge_agent/downloads"
     dest_firmware = os.path.join(download_dir, filename)
     dest_sig = os.path.join(download_dir, sig_filename)
 
-    s3_base_url = os.environ.get("S3_BASE_URL")
+    release_base_url = os.environ.get("GITHUB_RELEASE_BASE_URL")
 
-    if s3_base_url:
-        # Download from S3 via HTTPS
-        firmware_url = f"{s3_base_url}/releases/{version}/{filename}"
-        sig_url = f"{s3_base_url}/releases/{version}/{sig_filename}"
+    if release_base_url:
+        # e.g. https://github.com/secure-ota-firmware-update/secure-ota-firmware-update
+        tag = f"v{version}"
+        firmware_url = f"{release_base_url}/releases/download/{tag}/{filename}"
+        sig_url = f"{release_base_url}/releases/download/{tag}/{sig_filename}"
 
-        logger.info(f"Downloading firmware from: {firmware_url}")
+        logger.info(f"Downloading firmware from GitHub Release: {firmware_url}")
         _download_from_url(firmware_url, dest_firmware)
 
-        logger.info(f"Downloading signature from: {sig_url}")
+        logger.info(f"Downloading signature from GitHub Release: {sig_url}")
         _download_from_url(sig_url, dest_sig)
 
     else:
         # Fallback — local file copy for development/testing
-        logger.info("S3_BASE_URL not set — using local file fallback")
+        logger.info("GITHUB_RELEASE_BASE_URL not set — using local file fallback")
 
         source_firmware = os.path.join("firmware", filename)
         source_sig = os.path.join("firmware", sig_filename)
@@ -183,6 +184,7 @@ def download_firmware(manifest: dict, download_dir: str = "edge_agent/downloads"
     logger.info(f"Signature downloaded: {dest_sig}")
 
     return dest_firmware, dest_sig
+
 
 def _download_from_url(url: str, dest_path: str) -> None:
     """
@@ -307,6 +309,56 @@ def mock_install(manifest: dict, version_store: dict) -> None:
     logger.info("=" * 50)
 
 
+def fetch_manifest_from_release() -> dict:
+    """
+    Fetch the latest firmware manifest from GitHub Releases.
+
+    Uses GitHub's public API to find the latest release, then
+    downloads the manifest.json asset from that release.
+    """
+    import json as json_module
+
+    repo = os.environ.get("GITHUB_REPO", GITHUB_REPO)
+    api_url = f"{GITHUB_API_BASE}/repos/{repo}/releases/latest"
+
+    logger.info(f"Fetching latest release from GitHub API: {api_url}")
+
+    response = requests.get(
+        api_url,
+        headers={"Accept": "application/vnd.github+json"},
+        timeout=10
+    )
+
+    if response.status_code == 404:
+        logger.error("No releases found on GitHub — falling back to local manifest")
+        return None
+
+    response.raise_for_status()
+    release = response.json()
+
+    logger.info(f"Found release: {release['tag_name']}")
+
+    # Find manifest.json in release assets
+    manifest_url = None
+    for asset in release.get("assets", []):
+        if asset["name"] == "manifest.json":
+            manifest_url = asset["browser_download_url"]
+            break
+
+    if not manifest_url:
+        logger.error("manifest.json not found in release assets")
+        return None
+
+    logger.info(f"Downloading manifest from: {manifest_url}")
+    manifest_response = requests.get(manifest_url, timeout=10)
+    manifest_response.raise_for_status()
+
+    manifest = manifest_response.json()
+    logger.info(f"Manifest fetched — firmware version: {manifest['version']}")
+
+    return manifest
+
+
 def main():
     """
     Main entry point for the edge device agent.
@@ -342,21 +394,30 @@ def _run_update_check():
     """
     Internal function containing the actual update check logic.
 
-    Separated from main() so that main() can wrap this entire
-    flow in a single try/except block for robust error handling.
+    Tries to fetch manifest from GitHub Releases first.
+    Falls back to local manifest.json if GitHub API unavailable.
     """
     # Load version store
     version_store = load_version_store()
 
-    # Load manifest for testing
-    manifest_path = "distribution/manifest.json"
-    if not os.path.exists(manifest_path):
-        raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+    # Try GitHub Releases first, fall back to local manifest
+    manifest = None
 
-    with open(manifest_path, "r") as f:
-        manifest = json.load(f)
+    github_release_base = os.environ.get("GITHUB_RELEASE_BASE_URL")
+    if github_release_base:
+        logger.info("GITHUB_RELEASE_BASE_URL set — fetching manifest from GitHub Releases")
+        manifest = fetch_manifest_from_release()
 
-    logger.info(f"Manifest loaded — firmware version: {manifest['version']}")
+    if manifest is None:
+        # Fallback to local manifest
+        manifest_path = "distribution/manifest.json"
+        if not os.path.exists(manifest_path):
+            raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+
+        with open(manifest_path, "r") as f:
+            manifest = json.load(f)
+
+        logger.info(f"Using local manifest — firmware version: {manifest['version']}")
 
     # Check for update
     if not check_for_update(manifest, version_store):
@@ -371,7 +432,8 @@ def _run_update_check():
         logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
         return
 
-    logger.info("All checks passed so far — signature verification coming in Week 3")
+    logger.info("Hash verification passed")
+    logger.info("Signature verification coming in Week 3")
 
 
 
