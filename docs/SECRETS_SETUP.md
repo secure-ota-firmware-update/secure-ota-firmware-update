@@ -1,3 +1,8 @@
+ **Update:** As of Week 2, this project uses GitHub Releases instead
+> of AWS S3 for firmware distribution. Only `FIRMWARE_PRIVATE_KEY`
+> is required. The AWS secrets documented below are no longer needed.
+> See `docs/ARCHITECTURE_DECISIONS.md` ADR-001 for full reasoning.
+
 # GitHub Secrets Setup Guide
 
 This document explains the GitHub Secret required for the
