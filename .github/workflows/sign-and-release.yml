@@ -11,6 +11,7 @@
 # 2. Write private key from GitHub Secret to a temp file
 # 3. Run sign_firmware.py to compute SHA-256 hash and ECDSA sign
 # 4. Run generate_manifest.py to build manifest.json
+
 # 5. Verify all release assets are present and valid
 # 6. Create a GitHub Release and attach .bin, .sig, manifest.json
 # 7. Clean up the temporary private key file (always runs)
@@ -20,12 +21,16 @@
 # This satisfies the "secure distribution server" requirement from
 # the project specification without requiring any AWS account.
 # See docs/ARCHITECTURE_DECISIONS.md for the full reasoning.
+
+# 5. Run upload_to_s3.py to upload .bin, .sig, manifest.json
+# 6. Clean up the temporary private key file (always runs)
+
 #
 # SECURITY NOTE:
 # The private key is NEVER hardcoded in this file. It exists only
 # in /tmp for the duration of the signing step and is deleted
 # immediately afterward, even if the workflow fails.
-=======
+
 # Pipeline steps (to be completed across Week 2):
 # Day 1 — Skeleton: trigger, checkout, Python setup    <- TODAY
 # Day 2 — Inject private key from GitHub Secrets, run sign_firmware.py
@@ -36,9 +41,11 @@
 # at runtime from GitHub Secrets (FIRMWARE_PRIVATE_KEY) and written
 # to a temporary file that is deleted after the signing step.
 
+
 # The private key is NEVER hardcoded. It exists only in /tmp for
 # the duration of the signing step and is deleted immediately
 # afterward, even if the workflow fails.
+
 
 name: Sign and Release Firmware
 
@@ -77,6 +84,10 @@ jobs:
           echo "Private key written to /tmp (not logged, not committed)"
 
       - name: Sign firmware binary
+
+        env:
+          FIRMWARE_PRIVATE_KEY_PATH: /tmp/private_key.pem
+
         run: |
           python firmware/sign_firmware.py \
             --firmware firmware/dummy_firmware_v1.0.0.bin \
@@ -92,12 +103,25 @@ jobs:
             --output distribution/manifest.json \
             --description "Automated release ${{ github.ref_name }}"
 
+
       - name: Verify release assets
         run: |
           python firmware/prepare_release_assets.py \
+
+      - name: Upload to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+          python firmware/upload_to_s3.py \
+            --version "$VERSION" \
             --firmware firmware/dummy_firmware_v1.0.0.bin \
             --signature firmware/dummy_firmware_v1.0.0.sig \
             --manifest distribution/manifest.json
+
 
       - name: Create GitHub Release with firmware assets
         uses: softprops/action-gh-release@v2
@@ -109,6 +133,7 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Clean up private key
         if: always()
