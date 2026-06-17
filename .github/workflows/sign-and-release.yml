@@ -1,52 +1,3 @@
-# sign-and-release.yml
-#
-# CI/CD pipeline for the Secure OTA Firmware Update project.
-#
-# This workflow triggers automatically when a release tag matching
-# v*.*.* (e.g. v1.0.0, v1.2.3) is pushed to the repository.
-#
-
-# Pipeline flow:
-# 1. Checkout repo and set up Python
-# 2. Write private key from GitHub Secret to a temp file
-# 3. Run sign_firmware.py to compute SHA-256 hash and ECDSA sign
-# 4. Run generate_manifest.py to build manifest.json
-
-# 5. Verify all release assets are present and valid
-# 6. Create a GitHub Release and attach .bin, .sig, manifest.json
-# 7. Clean up the temporary private key file (always runs)
-#
-# DISTRIBUTION METHOD:
-# Firmware is distributed via GitHub Releases instead of AWS S3.
-# This satisfies the "secure distribution server" requirement from
-# the project specification without requiring any AWS account.
-# See docs/ARCHITECTURE_DECISIONS.md for the full reasoning.
-
-# 5. Run upload_to_s3.py to upload .bin, .sig, manifest.json
-# 6. Clean up the temporary private key file (always runs)
-
-#
-# SECURITY NOTE:
-# The private key is NEVER hardcoded in this file. It exists only
-# in /tmp for the duration of the signing step and is deleted
-# immediately afterward, even if the workflow fails.
-
-# Pipeline steps (to be completed across Week 2):
-# Day 1 — Skeleton: trigger, checkout, Python setup    <- TODAY
-# Day 2 — Inject private key from GitHub Secrets, run sign_firmware.py
-# Day 3 — Run generate_manifest.py and upload_to_s3.py, cleanup private key
-#
-# SECURITY NOTE:
-# The private key is NEVER hardcoded in this file. It is injected
-# at runtime from GitHub Secrets (FIRMWARE_PRIVATE_KEY) and written
-# to a temporary file that is deleted after the signing step.
-
-
-# The private key is NEVER hardcoded. It exists only in /tmp for
-# the duration of the signing step and is deleted immediately
-# afterward, even if the workflow fails.
-
-
 name: Sign and Release Firmware
 
 on:
@@ -59,7 +10,7 @@ permissions:
 
 jobs:
   sign-firmware:
-    name: Sign Firmware and Create Release
+    name: Sign Firmware and Upload to GitHub Releases
     runs-on: ubuntu-latest
 
     steps:
@@ -74,20 +25,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-
       - name: Write private key from GitHub Secret
         env:
           FIRMWARE_PRIVATE_KEY: ${{ secrets.FIRMWARE_PRIVATE_KEY }}
         run: |
           echo "$FIRMWARE_PRIVATE_KEY" > /tmp/private_key.pem
           chmod 600 /tmp/private_key.pem
-          echo "Private key written to /tmp (not logged, not committed)"
+          echo "Private key written to /tmp"
 
       - name: Sign firmware binary
-
-        env:
-          FIRMWARE_PRIVATE_KEY_PATH: /tmp/private_key.pem
-
         run: |
           python firmware/sign_firmware.py \
             --firmware firmware/dummy_firmware_v1.0.0.bin \
@@ -103,27 +49,14 @@ jobs:
             --output distribution/manifest.json \
             --description "Automated release ${{ github.ref_name }}"
 
-
       - name: Verify release assets
         run: |
           python firmware/prepare_release_assets.py \
-
-      - name: Upload to S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
-        run: |
-          VERSION="${{ github.ref_name }}"
-          VERSION="${VERSION#v}"
-          python firmware/upload_to_s3.py \
-            --version "$VERSION" \
             --firmware firmware/dummy_firmware_v1.0.0.bin \
             --signature firmware/dummy_firmware_v1.0.0.sig \
             --manifest distribution/manifest.json
 
-
-      - name: Create GitHub Release with firmware assets
+      - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
@@ -134,28 +67,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Clean up private key
         if: always()
         run: |
           rm -f /tmp/private_key.pem
-          echo "Temporary private key deleted"
-
-      # ─────────────────────────────────────────────
-      # Day 2 steps will be added here:
-      #   - Write private key from GitHub Secret to /tmp
-      #   - Run sign_firmware.py
-      # ─────────────────────────────────────────────
-
-      # ─────────────────────────────────────────────
-      # Day 3 steps will be added here:
-      #   - Run generate_manifest.py
-      #   - Run upload_to_s3.py
-      #   - Clean up /tmp private key (if: always())
-      # ─────────────────────────────────────────────
-
-      - name: Pipeline skeleton check
-        run: |
-          echo "Workflow triggered successfully on tag: ${{ github.ref_name }}"
-          echo "Checkout and Python setup complete"
-          echo "Signing and upload steps coming in Day 2 and Day 3"
+          echo "Private key deleted"
