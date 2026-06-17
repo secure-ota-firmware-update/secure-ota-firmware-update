@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   sign-firmware:
     name: Sign Firmware and Upload to GitHub Releases
