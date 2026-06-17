@@ -83,3 +83,8 @@ All output files confirmed present:
 - firmware/dummy_firmware_v1.0.0.bin
 - firmware/dummy_firmware_v1.0.0.sig
 - distribution/manifest.json
+
+## CI/CD Pipeline Status
+
+Pipeline tested and confirmed green on tag v0.1.0.
+GitHub Release created automatically with all 3 firmware assets attached.
