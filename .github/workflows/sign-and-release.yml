@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   sign-firmware:
     name: Sign Firmware and Upload to GitHub Releases
@@ -29,6 +32,25 @@ jobs:
           echo "$FIRMWARE_PRIVATE_KEY" > /tmp/private_key.pem
           chmod 600 /tmp/private_key.pem
           echo "Private key written to /tmp"
+
+
+      - name: Sign firmware binary
+        run: |
+          python firmware/sign_firmware.py \
+            --firmware firmware/dummy_firmware_v1.0.0.bin \
+            --key /tmp/private_key.pem
+
+      - name: Generate manifest
+        run: |
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+          python firmware/generate_manifest.py \
+            --version "$VERSION" \
+            --firmware firmware/dummy_firmware_v1.0.0.bin \
+            --output distribution/manifest.json \
+            --description "Automated release ${{ github.ref_name }}"
+
+
 
       - name: Sign firmware binary
         run: |
@@ -68,4 +90,8 @@ jobs:
         if: always()
         run: |
           rm -f /tmp/private_key.pem
+
           echo "Private key deleted"
+
+          echo "Private key deleted"
+
