@@ -87,6 +87,7 @@ All output files confirmed present:
 ## CI/CD Pipeline Status
 
 Pipeline tested and confirmed green on tag v0.1.0.
+
 GitHub Release created automatically with all 3 firmware assets attached.
 
 ## End-to-End Test — Week 2 Day 5
@@ -108,3 +109,5 @@ Results:
 
 Full end-to-end flow confirmed working:
 Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
+
+GitHub Release created automatically with all 3 firmware assets attached.
