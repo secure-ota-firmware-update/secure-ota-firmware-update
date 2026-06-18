@@ -87,4 +87,27 @@ All output files confirmed present:
 ## CI/CD Pipeline Status
 
 Pipeline tested and confirmed green on tag v0.1.0.
+
+GitHub Release created automatically with all 3 firmware assets attached.
+
+## End-to-End Test — Week 2 Day 5
+
+Ran edge agent against real GitHub Release v0.1.0:
+
+```bash
+export GITHUB_RELEASE_BASE_URL=https://github.com/secure-ota-firmware-update/secure-ota-firmware-update
+python edge_agent/agent.py
+```
+
+Results:
+- Manifest fetched from GitHub Releases API successfully
+- Firmware binary downloaded from release assets
+- Signature downloaded from release assets
+- SHA-256 hash verification PASSED
+- Version check: 0.0.0 → 1.0.0 (update available)
+- Agent completed without errors
+
+Full end-to-end flow confirmed working:
+Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
+
 GitHub Release created automatically with all 3 firmware assets attached.
