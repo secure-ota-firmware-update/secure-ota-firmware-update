@@ -36,3 +36,11 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+*.sig
+private_key.pem
+*_private*.pem
+*.key
+*.sig
+!*.sig.md
+edge_agent/downloads/*
+!edge_agent/downloads/.gitkeep
