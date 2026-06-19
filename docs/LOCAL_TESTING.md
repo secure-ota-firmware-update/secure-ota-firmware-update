@@ -108,6 +108,12 @@ Results:
 - Agent completed without errors
 
 Full end-to-end flow confirmed working:
+
+Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
+
+
+Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
 Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
 
 GitHub Release created automatically with all 3 firmware assets attached.
+
