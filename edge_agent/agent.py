@@ -26,21 +26,65 @@ import os
 import json
 import hashlib
 import logging
+import logging.handlers
 import shutil
 import requests
 from datetime import datetime
 
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("edge_agent/agent.log")
-    ]
-)
-logger = logging.getLogger(__name__)
+def setup_logging() -> logging.Logger:
+    """
+    Configure structured logging with console output and
+    rotating file handler.
+
+    Log rotation keeps the last 5 log files, each max 1MB.
+    This prevents the log file growing indefinitely on a
+    real IoT device with limited storage.
+
+    Returns:
+        logging.Logger: configured logger instance
+    """
+    log_dir = "edge_agent"
+    log_file = os.path.join(log_dir, "agent.log")
+
+    logger = logging.getLogger("edge_agent")
+    logger.setLevel(logging.DEBUG)
+
+    # Prevent duplicate handlers if setup_logging called multiple times
+    if logger.handlers:
+        return logger
+
+    # Console handler — INFO and above
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_format = logging.Formatter(
+        "%(asctime)s [%(levelname)s] %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+    console_handler.setFormatter(console_format)
+
+    # Rotating file handler — DEBUG and above
+    # Keeps 5 backup files, each max 1MB
+    file_handler = logging.handlers.RotatingFileHandler(
+        log_file,
+        maxBytes=1024 * 1024,  # 1MB
+        backupCount=5,
+        encoding="utf-8"
+    )
+    file_handler.setLevel(logging.DEBUG)
+    file_format = logging.Formatter(
+        "%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
+        datefmt="%Y-%m-%dT%H:%M:%SZ"
+    )
+    file_handler.setFormatter(file_format)
+
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
+
+    return logger
+
+
+logger = setup_logging()
 
 
 VERSION_STORE_PATH = "edge_agent/version_store.json"
@@ -118,7 +162,7 @@ def check_for_update(manifest: dict, version_store: dict) -> bool:
     current_parts = [int(x) for x in current.split(".")]
 
     if incoming_parts > current_parts:
-        logger.info(f"Update available: {current} → {incoming}")
+        logger.info(f"Update available: {current} -> {incoming}")
         return True
     else:
         logger.info(f"Already up to date: current={current}, manifest={incoming}")
@@ -359,83 +403,129 @@ def fetch_manifest_from_release() -> dict:
     return manifest
 
 
+class AgentRunSummary:
+    """
+    Tracks and reports the outcome of a single agent run.
+
+    Provides a clean summary log entry at the end of each run
+    for easy audit trail review by a Security Architect.
+    """
+
+    def __init__(self):
+        self.start_time = datetime.utcnow()
+        self.steps_passed = []
+        self.steps_failed = []
+        self.firmware_version = None
+        self.outcome = "UNKNOWN"
+
+    def record_pass(self, step: str):
+        self.steps_passed.append(step)
+
+    def record_fail(self, step: str):
+        self.steps_failed.append(step)
+
+    def set_version(self, version: str):
+        self.firmware_version = version
+
+    def set_outcome(self, outcome: str):
+        self.outcome = outcome
+
+    def log_summary(self):
+        duration = (datetime.utcnow() - self.start_time).total_seconds()
+
+        logger.info("=" * 55)
+        logger.info("AGENT RUN SUMMARY")
+        logger.info("=" * 55)
+        logger.info(f"Outcome:          {self.outcome}")
+        logger.info(f"Firmware version: {self.firmware_version or 'N/A'}")
+        logger.info(f"Duration:         {duration:.2f} seconds")
+        logger.info(f"Steps passed:     {len(self.steps_passed)}")
+
+        for step in self.steps_passed:
+            logger.info(f"  [PASS] {step}")
+
+        if self.steps_failed:
+            logger.warning(f"Steps failed:     {len(self.steps_failed)}")
+            for step in self.steps_failed:
+                logger.warning(f"  [FAIL] {step}")
+
+        logger.info("=" * 55)
+
+
 def main():
     """
     Main entry point for the edge device agent.
-
-    Orchestrates the full firmware update flow:
-    load version store -> fetch manifest -> check for update ->
-    download -> verify hash -> verify signature (Week 3) ->
-    anti-rollback check (Week 4) -> install or reject
-
-    All exceptions are caught here so the agent never crashes
-    with an unhandled traceback — every failure path logs a
-    clean CRITICAL message and exits gracefully, simulating
-    a real embedded device that must never hard-crash.
     """
-    logger.info("=" * 50)
+    summary = AgentRunSummary()
+
+    logger.info("=" * 55)
     logger.info("Edge Device Agent started")
-    logger.info("=" * 50)
+    logger.info("=" * 55)
 
     try:
-        _run_update_check()
+        _run_update_check(summary)
     except FileNotFoundError as e:
+        summary.record_fail("File system check")
+        summary.set_outcome("HALTED — missing file")
         logger.critical(f"Required file missing: {e}")
-        logger.critical("Agent halted — manual intervention required")
     except Exception as e:
+        summary.record_fail("Unexpected error")
+        summary.set_outcome("HALTED — unexpected error")
         logger.critical(f"Unexpected error: {type(e).__name__}: {e}")
-        logger.critical("Agent halted to prevent unsafe state")
     finally:
-        logger.info("Agent run finished")
-        logger.info("=" * 50)
+        summary.log_summary()
 
 
-def _run_update_check():
+
+def _run_update_check(summary: AgentRunSummary):
     """
-    Internal function containing the actual update check logic.
-
-    Tries to fetch manifest from GitHub Releases first.
-    Falls back to local manifest.json if GitHub API unavailable.
+    Internal update check logic with summary tracking.
     """
     # Load version store
     version_store = load_version_store()
+    summary.record_pass("Version store loaded")
 
-    # Try GitHub Releases first, fall back to local manifest
+    # Load manifest
     manifest = None
-
     github_release_base = os.environ.get("GITHUB_RELEASE_BASE_URL")
+
     if github_release_base:
-        logger.info("GITHUB_RELEASE_BASE_URL set — fetching manifest from GitHub Releases")
         manifest = fetch_manifest_from_release()
+        if manifest:
+            summary.record_pass("Manifest fetched from GitHub Releases")
 
     if manifest is None:
-        # Fallback to local manifest
         manifest_path = "distribution/manifest.json"
         if not os.path.exists(manifest_path):
             raise FileNotFoundError(f"Manifest not found: {manifest_path}")
-
         with open(manifest_path, "r") as f:
             manifest = json.load(f)
+        summary.record_pass("Manifest loaded from local file")
 
-        logger.info(f"Using local manifest — firmware version: {manifest['version']}")
+    summary.set_version(manifest["version"])
 
     # Check for update
     if not check_for_update(manifest, version_store):
+        summary.set_outcome("NO UPDATE NEEDED")
         logger.info("No update needed. Agent exiting.")
         return
 
+    summary.record_pass("Update check — update available")
+
     # Download firmware
     firmware_path, sig_path = download_firmware(manifest)
+    summary.record_pass("Firmware downloaded")
 
     # Verify hash
     if not verify_hash(firmware_path, manifest["sha256"]):
+        summary.record_fail("SHA-256 hash verification")
+        summary.set_outcome("REJECTED — hash mismatch")
         logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
         return
 
-    logger.info("Hash verification passed")
-    logger.info("Signature verification coming in Week 3")
-
-
+    summary.record_pass("SHA-256 hash verification")
+    summary.set_outcome("PENDING — signature verification in Week 3")
+    logger.info("Hash check passed — signature verification coming in Week 3")
 
 if __name__ == "__main__":
     main()
