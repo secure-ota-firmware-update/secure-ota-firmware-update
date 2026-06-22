@@ -190,7 +190,12 @@ variable injected at runtime, never from a hardcoded path in code.
 | Key Compromise | Private key in GitHub Secrets only | Week 2 |
 
 The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
-
+ Status |
+|--------|-----------|----------------|--------|
+| Supply Chain Attack | ECDSA signature verification | edge_agent/agent.py verify_signature() | ✅ COMPLETE (Week 3) |
+| MITM Attack | SHA-256 hash integrity check | edge_agent/agent.py verify_hash() | ✅ COMPLETE (Week 1) |
+| Rollback Attack | Anti-rollback version check | edge_agent/agent.py anti_rollback_check() | 🔄 Week 4 |
+| Key Compromise | Private key in GitHub Secrets only | .github/workflows/sign-and-release.yml | ✅ COMPLETE (Week 2) |
 ## 11. References
 
 - OWASP IoT Top 10: https://owasp.org/www-project-internet-of-things/
@@ -201,3 +206,28 @@ The implemented controls provide layered security across the OTA update process.
 =======
 The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
 
+## 11. Week 3 Verification Coverage
+
+The following attack scenarios were tested and confirmed rejected:
+
+| Attack Scenario | Test | Result |
+|-----------------|------|--------|
+| Valid firmware + valid signature | test_verify_signature_accepts_valid | PASS |
+| Corrupted binary + original signature | test_verify_signature_rejects_corrupted_binary | REJECTED |
+| Valid binary + completely forged signature | test_verify_signature_rejects_fake_signature | REJECTED |
+| Valid binary + signature from wrong key | test_verify_signature_rejects_wrong_key | REJECTED |
+
+See docs/SIGNATURE_VERIFICATION_TEST_RESULTS.md for full details.
+See tests/test_local_pipeline.py for automated test implementation.
+
+The system now enforces TWO independent security checks on every
+firmware update — neither can be bypassed independently:
+
+1. SHA-256 hash check — detects any byte-level modification in transit
+2. ECDSA signature check — proves firmware came from the legitimate signer
+
+An attacker would need to simultaneously:
+- Possess the private key (stored only as GitHub Secret)
+- Know the exact hash that was signed
+to produce a firmware update that passes both checks. This is
+computationally infeasible without the private key.
