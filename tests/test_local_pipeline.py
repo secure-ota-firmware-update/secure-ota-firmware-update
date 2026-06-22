@@ -146,3 +146,40 @@ def test_manifest_sha256_matches_binary(pipeline_artifacts):
 def test_public_key_exists(pipeline_artifacts):
     """Public key exists and will be available for verification."""
     assert os.path.exists(pipeline_artifacts["public_key_path"])
+    
+    
+def test_verify_signature_accepts_valid(pipeline_artifacts):
+    """A correctly signed firmware passes ECDSA signature verification."""
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import verify_signature
+
+    result = verify_signature(
+        pipeline_artifacts["firmware_path"],
+        pipeline_artifacts["sig_path"],
+        pipeline_artifacts["public_key_path"]
+    )
+    assert result is True
+
+
+def test_verify_signature_rejects_corrupted_binary(pipeline_artifacts):
+    """A firmware binary modified after signing fails verification."""
+    import sys, shutil
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import verify_signature
+
+    corrupted_path = pipeline_artifacts["firmware_path"] + ".corrupted"
+    shutil.copy2(pipeline_artifacts["firmware_path"], corrupted_path)
+
+    with open(corrupted_path, "r+b") as f:
+        f.seek(20)
+        f.write(bytes([0xFF]))
+
+    result = verify_signature(
+        corrupted_path,
+        pipeline_artifacts["sig_path"],
+        pipeline_artifacts["public_key_path"]
+    )
+    assert result is False
+
+    os.remove(corrupted_path)
