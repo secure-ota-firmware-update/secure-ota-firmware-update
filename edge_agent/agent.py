@@ -524,8 +524,18 @@ def _run_update_check(summary: AgentRunSummary):
         return
 
     summary.record_pass("SHA-256 hash verification")
-    summary.set_outcome("PENDING — signature verification in Week 3")
-    logger.info("Hash check passed — signature verification coming in Week 3")
+
+    # Verify ECDSA signature
+    if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
+        summary.record_fail("ECDSA signature verification")
+        summary.set_outcome("REJECTED — invalid signature")
+        logger.critical("SECURITY ALERT — Signature verification failed. Aborting.")
+        return
+
+    summary.record_pass("ECDSA signature verification")
+    summary.set_outcome("INSTALLED")
+    mock_install(manifest, version_store)
+
 
 if __name__ == "__main__":
     main()
