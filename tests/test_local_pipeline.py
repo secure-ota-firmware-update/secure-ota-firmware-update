@@ -149,7 +149,11 @@ def test_public_key_exists(pipeline_artifacts):
     
     
 def test_verify_signature_accepts_valid(pipeline_artifacts):
-    """A correctly signed firmware passes ECDSA signature verification."""
+    """
+    A correctly signed firmware passes ECDSA signature verification.
+    This is the baseline — normal operation must work before
+    testing failure cases.
+    """
     import sys
     sys.path.insert(0, PROJECT_ROOT)
     from edge_agent.agent import verify_signature
@@ -159,27 +163,106 @@ def test_verify_signature_accepts_valid(pipeline_artifacts):
         pipeline_artifacts["sig_path"],
         pipeline_artifacts["public_key_path"]
     )
-    assert result is True
+    assert result is True, "Valid signature should be accepted"
 
 
 def test_verify_signature_rejects_corrupted_binary(pipeline_artifacts):
-    """A firmware binary modified after signing fails verification."""
-    import sys, shutil
+    """
+    A firmware binary modified after signing fails verification.
+    Simulates a MITM attack (Threat 2 in THREAT_MODEL.md) where
+    an attacker modifies the firmware in transit.
+    """
+    import sys
+    import shutil
     sys.path.insert(0, PROJECT_ROOT)
     from edge_agent.agent import verify_signature
 
     corrupted_path = pipeline_artifacts["firmware_path"] + ".corrupted"
     shutil.copy2(pipeline_artifacts["firmware_path"], corrupted_path)
 
+    # Flip 3 bytes at position 20
     with open(corrupted_path, "r+b") as f:
         f.seek(20)
-        f.write(bytes([0xFF]))
+        f.write(bytes([0xFF, 0xFF, 0xFF]))
 
-    result = verify_signature(
-        corrupted_path,
-        pipeline_artifacts["sig_path"],
-        pipeline_artifacts["public_key_path"]
+    try:
+        result = verify_signature(
+            corrupted_path,
+            pipeline_artifacts["sig_path"],
+            pipeline_artifacts["public_key_path"]
+        )
+        assert result is False, "Corrupted binary should be rejected"
+    finally:
+        if os.path.exists(corrupted_path):
+            os.remove(corrupted_path)
+
+
+def test_verify_signature_rejects_fake_signature(pipeline_artifacts):
+    """
+    A completely forged signature file fails verification.
+    Simulates an attacker who does not have the private key
+    and cannot produce a valid signature (Threat 1 in THREAT_MODEL.md).
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import verify_signature
+
+    fake_sig_path = pipeline_artifacts["firmware_path"] + ".fake.sig"
+    with open(fake_sig_path, "wb") as f:
+        f.write(bytes([0xAA] * 70))
+
+    try:
+        result = verify_signature(
+            pipeline_artifacts["firmware_path"],
+            fake_sig_path,
+            pipeline_artifacts["public_key_path"]
+        )
+        assert result is False, "Fake signature should be rejected"
+    finally:
+        if os.path.exists(fake_sig_path):
+            os.remove(fake_sig_path)
+
+
+def test_verify_signature_rejects_wrong_key(pipeline_artifacts):
+    """
+    A signature made with a different private key fails verification
+    against the original public key.
+    Simulates an attacker who signed firmware with their own key pair
+    (Threat 1 — Supply Chain Attack in THREAT_MODEL.md).
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import verify_signature
+    from cryptography.hazmat.primitives.asymmetric import ec
+    from cryptography.hazmat.primitives import serialization, hashes
+    from cryptography.hazmat.primitives.asymmetric import utils
+
+    # Generate a different key pair
+    wrong_key = ec.generate_private_key(ec.SECP256R1())
+
+    # Sign the firmware with the wrong key
+    sha256 = hashlib.sha256()
+    with open(pipeline_artifacts["firmware_path"], "rb") as f:
+        while chunk := f.read(8192):
+            sha256.update(chunk)
+    firmware_hash = sha256.digest()
+
+    wrong_sig = wrong_key.sign(
+        firmware_hash,
+        ec.ECDSA(utils.Prehashed(hashes.SHA256()))
     )
-    assert result is False
 
-    os.remove(corrupted_path)
+    wrong_sig_path = pipeline_artifacts["firmware_path"] + ".wrongkey.sig"
+    with open(wrong_sig_path, "wb") as f:
+        f.write(wrong_sig)
+
+    try:
+        result = verify_signature(
+            pipeline_artifacts["firmware_path"],
+            wrong_sig_path,
+            pipeline_artifacts["public_key_path"]
+        )
+        assert result is False, "Signature from wrong key should be rejected"
+    finally:
+        if os.path.exists(wrong_sig_path):
+            os.remove(wrong_sig_path)
