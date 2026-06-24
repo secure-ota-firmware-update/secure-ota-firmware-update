@@ -26,7 +26,7 @@ import os
 import sys
 from cryptography.hazmat.primitives.asymmetric.utils import Prehashed
 from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.asymmetric import ec , utils
 
 
 def load_private_key(key_path: str):
@@ -98,7 +98,7 @@ def sign_firmware(private_key, firmware_hash: bytes) -> bytes:
     """
     signature = private_key.sign(
         firmware_hash,
-        ec.ECDSA(Prehashed(hashes.SHA256()))
+        ec.ECDSA(utils.Prehashed(hashes.SHA256()))
     )
 
     print(f"[+] Firmware signed successfully")
