@@ -571,16 +571,35 @@ def _run_update_check(summary: AgentRunSummary):
 
     summary.record_pass("SHA-256 hash verification")
 
-    # Verify ECDSA signature
+    # Step 3 — Verify ECDSA signature
     if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
         summary.record_fail("ECDSA signature verification")
-        summary.set_outcome("REJECTED — invalid signature")
-        logger.critical("SECURITY ALERT — Signature verification failed. Aborting.")
+        summary.set_outcome("REJECTED — invalid or forged signature")
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical("Signature verification FAILED")
+        logger.critical("Firmware was NOT signed by the legitimate key")
+        logger.critical("Payload dropped — installation refused")
+        logger.critical("=" * 50)
+
+        # Clean up downloaded files
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+                logger.info(f"Cleaned up: {path}")
         return
 
     summary.record_pass("ECDSA signature verification")
+    logger.info("Both hash and signature verified — firmware is authentic")
+
+    # Step 4 — Anti-rollback check (Week 4)
+    # Placeholder until Week 4 implementation
+    logger.info("Anti-rollback check — coming in Week 4")
+
+    # Step 5 — Install
     summary.set_outcome("INSTALLED")
     mock_install(manifest, version_store)
+
 
 
 if __name__ == "__main__":
