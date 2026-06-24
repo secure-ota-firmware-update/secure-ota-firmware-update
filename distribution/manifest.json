@@ -1,9 +1,9 @@
 {
   "version": "9.9.9",
   "filename": "dummy_firmware_v9.9.9.bin",
-  "sha256": "3d7c81afba541787b8b5fe141404dab58afbfabda5e63217e1b765a79e63bd63",
+  "sha256": "5c0da694768f7d9598264e13665f81677cfa0857e2ece362604280b727942a0b",
   "signature_filename": "dummy_firmware_v9.9.9.sig",
-  "released_at": "2026-06-24T17:51:33Z",
+  "released_at": "2026-06-24T17:57:22Z",
   "minimum_version": "1.0.0",
   "description": "Firmware release v9.9.9"
 }
