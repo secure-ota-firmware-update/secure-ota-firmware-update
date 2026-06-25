@@ -639,16 +639,22 @@ def _run_update_check(summary: AgentRunSummary):
                 os.remove(path)
         return
 
+
+    summary.record_pass("SHA-256 hash verification")
+
+
     # Step 3 — Verify ECDSA signature
     if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
         summary.record_fail("ECDSA signature verification")
         summary.set_outcome("REJECTED — invalid or forged signature")
+
         write_rejection_report(
             reason="INVALID_SIGNATURE",
             manifest=manifest,
             firmware_path=firmware_path,
             details="ECDSA signature does not match public key stored on device"
         )
+
         logger.critical("=" * 50)
         logger.critical("SECURITY ALERT")
         logger.critical("Signature verification FAILED")
@@ -660,6 +666,9 @@ def _run_update_check(summary: AgentRunSummary):
         for path in [firmware_path, sig_path]:
             if os.path.exists(path):
                 os.remove(path)
+
+                logger.info(f"Cleaned up: {path}")
+
         return
 
     summary.record_pass("ECDSA signature verification")
@@ -738,6 +747,7 @@ def write_rejection_report(
         json.dump(report, f, indent=2)
  
     logger.critical(f"Rejection report written: {filepath}")
+
 
 if __name__ == "__main__":
     main()
