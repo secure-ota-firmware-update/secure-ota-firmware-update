@@ -190,13 +190,7 @@ variable injected at runtime, never from a hardcoded path in code.
 | Key Compromise | Private key in GitHub Secrets only | Week 2 |
 
 The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security.
- Status |
-|--------|-----------|----------------|--------|
-| Supply Chain Attack | ECDSA signature verification | edge_agent/agent.py verify_signature() | ✅ COMPLETE (Week 3) |
-| MITM Attack | SHA-256 hash integrity check | edge_agent/agent.py verify_hash() | ✅ COMPLETE (Week 1) |
-| Rollback Attack | Anti-rollback version check | edge_agent/agent.py anti_rollback_check() | 🔄 Week 4 |
-| Key Compromise | Private key in GitHub Secrets only | .github/workflows/sign-and-release.yml | ✅ COMPLETE (Week 2) |
-## 11. References
+ Status |The implemented controls provide layered security across the OTA update process. By combining cryptographic signing, integrity verification, version enforcement, and secure key management, the system reduces the likelihood of successful firmware-based attacks and improves overall device security. Status | |--------|-----------|----------------|--------| | Supply Chain Attack | ECDSA signature verification | edge_agent/agent.py verify_signature() | ✅ COMPLETE (Week 3) | | MITM Attack | SHA-256 hash integrity check | edge_agent/agent.py verify_hash() | ✅ COMPLETE (Week 1) | | Rollback Attack | Anti-rollback version check | edge_agent/agent.py anti_rollback_check() | 🔄 Week 4 | | Key Compromise | Private key in GitHub Secrets only | .github/workflows/sign-and-release.yml | ✅ COMPLETE (Week 2) |
 
 - OWASP IoT Top 10: https://owasp.org/www-project-internet-of-things/
 - NIST SP 800-193 Platform Firmware Resilience Guidelines
