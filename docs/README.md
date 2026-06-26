@@ -31,6 +31,12 @@ for the Secure OTA Firmware Update project.
 | [WEEK2_COMPLETION_REPORT.md](WEEK2_COMPLETION_REPORT.md) | Week 2 final status report |
 | [FINAL_WEEK2_TEST.md](FINAL_WEEK2_TEST.md) | Final end-to-end test results |
 
+
+| [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design, version store, three security layers |
+| [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
+| [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | verify_signature() test results |
+| [WEEK3_PROGRESS.md](WEEK3_PROGRESS.md) | Week 3 implementation summary |
+| [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification |
 ---
 
 ## Reading Order for New Reviewers
@@ -42,3 +48,4 @@ If you are evaluating this project for the first time, read in this order:
 3. [CRYPTOGRAPHY_DECISIONS.md](CRYPTOGRAPHY_DECISIONS.md) — why these algorithms
 4. [CICD_PIPELINE.md](CICD_PIPELINE.md) — how the pipeline works
 5. [FINAL_WEEK2_TEST.md](FINAL_WEEK2_TEST.md) — proof it all works together
+

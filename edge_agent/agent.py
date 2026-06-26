@@ -30,6 +30,10 @@ import logging.handlers
 import shutil
 import requests
 from datetime import datetime
+from packaging import version
+
+# cryptography imports stay inside verify_signature() for efficiency
+
 
 
 def setup_logging() -> logging.Logger:
@@ -399,6 +403,43 @@ def mock_install(manifest: dict, version_store: dict) -> None:
     logger.info("=" * 50)
 
 
+from packaging import version
+import json, os
+from datetime import datetime
+
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Returns True if the update is allowed, False if rollback detected.
+    """
+    try:
+        return version.parse(incoming_version) >= version.parse(minimum_version)
+    except Exception as e:
+        logger.error(f"Anti-rollback check failed: {e}")
+        return False
+
+def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
+    """
+    Write a rejection report to a JSON file for auditing and log it.
+    """
+    report = {
+        "reason": reason,
+        "manifest_version": manifest.get("version"),
+        "details": details,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+    logger.critical(f"Rejection report generated: {report}")
+
+    try:
+        os.makedirs("edge_agent", exist_ok=True)
+        with open("edge_agent/rejection_report.json", "w") as f:
+            json.dump(report, f, indent=2)
+        logger.info("Rejection report saved to edge_agent/rejection_report.json")
+    except Exception as e:
+        logger.error(f"Failed to save rejection report: {e}")
+
+
 def fetch_manifest_from_release() -> dict:
     """
     Fetch the latest firmware manifest from GitHub Releases.
@@ -604,9 +645,35 @@ def _run_update_check(summary: AgentRunSummary):
     summary.record_pass("ECDSA signature verification")
     logger.info("Both hash and signature verified — firmware is authentic")
 
-    # Step 4 — Anti-rollback check (Week 4)
-    # Placeholder until Week 4 implementation
-    logger.info("Anti-rollback check — coming in Week 4")
+    # Step 4 — Anti-rollback check
+    minimum_version = version_store.get("minimum_version", "0.0.0")
+    incoming_version = manifest["version"]
+
+    if not anti_rollback_check(incoming_version, minimum_version):
+        summary.record_fail("Anti-rollback version check")
+        summary.set_outcome("REJECTED — rollback attempt detected")
+        write_rejection_report(
+            reason="ROLLBACK_ATTEMPT",
+            manifest=manifest,
+            details=(
+                f"Incoming version v{incoming_version} is below "
+                f"minimum allowed version v{minimum_version}. "
+                f"Rollback attack suspected."
+            )
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical(f"Rollback attack detected")
+        logger.critical(f"Incoming: v{incoming_version}")
+        logger.critical(f"Minimum:  v{minimum_version}")
+        logger.critical("Installation refused")
+        logger.critical("=" * 50)
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    summary.record_pass("Anti-rollback version check")
 
     # Step 5 — Install
     summary.set_outcome("INSTALLED")
