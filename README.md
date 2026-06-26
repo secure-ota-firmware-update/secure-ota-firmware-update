@@ -153,3 +153,12 @@ Firmware installed securely (or rejected with full audit trail)
 Infotact Internship — Cybersecurity Project 1
 Secure OTA Firmware Update & Code Signing Infrastructure
 
+
+
+## Test Status
+python -m pytest tests/ -v
+
+29 passed, 0 failed
+
+- test_local_pipeline.py — 14 tests (pipeline + unit tests)
+- test_tamper_simulation.py — 15 tests (5 attack classes)
