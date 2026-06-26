@@ -266,3 +266,74 @@ def test_verify_signature_rejects_wrong_key(pipeline_artifacts):
     finally:
         if os.path.exists(wrong_sig_path):
             os.remove(wrong_sig_path)
+
+def test_anti_rollback_accepts_newer_version():
+    """
+    A firmware version newer than minimum is accepted.
+    Normal update scenario — device on v1.0.0, updating to v1.2.0.
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import anti_rollback_check
+
+    result = anti_rollback_check("1.2.0", "1.0.0")
+    assert result is True, "Newer version should be accepted"
+
+
+def test_anti_rollback_accepts_equal_version():
+    """
+    A firmware version equal to minimum is accepted.
+    Edge case — device already at minimum, reinstalling same version.
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import anti_rollback_check
+
+    result = anti_rollback_check("1.0.0", "1.0.0")
+    assert result is True, "Equal version should be accepted"
+
+
+def test_anti_rollback_rejects_older_major():
+    """
+    A firmware version with lower major version is rejected.
+    Simulates rollback attack (Threat 3 in THREAT_MODEL.md) where
+    attacker tries to install v0.9.0 on a device requiring v1.0.0+.
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import anti_rollback_check
+
+    result = anti_rollback_check("0.9.0", "1.0.0")
+    assert result is False, "Older major version should be rejected"
+
+
+def test_anti_rollback_rejects_older_patch():
+    """
+    A firmware version with lower patch version is rejected.
+    Even a single patch version difference is enforced —
+    security patches must not be rolled back.
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import anti_rollback_check
+
+    result = anti_rollback_check("1.0.0", "1.0.1")
+    assert result is False, "Older patch version should be rejected"
+
+
+def test_anti_rollback_integer_comparison_correctness():
+    """
+    Version comparison uses integers not strings.
+    String comparison gives wrong result: '1.10.0' < '1.9.0'
+    Integer comparison gives correct result: 1.10.0 > 1.9.0
+    This test catches any regression to string-based comparison.
+    """
+    import sys
+    sys.path.insert(0, PROJECT_ROOT)
+    from edge_agent.agent import anti_rollback_check
+
+    result = anti_rollback_check("1.10.0", "1.9.0")
+    assert result is True, (
+        "1.10.0 should be accepted as newer than 1.9.0. "
+        "If this fails, string comparison was used instead of integer."
+    )
