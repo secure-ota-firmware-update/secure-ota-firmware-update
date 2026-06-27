@@ -32,6 +32,14 @@ for the Secure OTA Firmware Update project.
 | [FINAL_WEEK2_TEST.md](FINAL_WEEK2_TEST.md) | Final end-to-end test results |
 
 
+| [FINAL_SECURITY_LAYERS.md](FINAL_SECURITY_LAYERS.md) | Complete three-layer defense architecture summary |
+| [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design and version store |
+| [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
+| [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | Signature verification test results |
+| [WEEK3_PROGRESS.md](WEEK3_PROGRESS.md) | Week 3 implementation summary |
+| [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification |
+| [TEST_RESULTS.md](TEST_RESULTS.md) | Full 29-test suite results |
+
 | [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design, version store, three security layers |
 | [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
 | [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | verify_signature() test results |
