@@ -9,33 +9,38 @@ IoT tracking device in the field.
 ## Files
 
 ### agent.py
+
 The main agent script. Orchestrates the full firmware update flow.
 
 ### version_store.json
+
 Tracks the device's current firmware version and the minimum
 allowed version (anti-rollback protection).
 
 ### downloads/
+
 Directory where downloaded firmware and signature files are saved
 during the update process.
 
 ### agent.log
+
 Log file generated when the agent runs. Contains timestamped
 INFO, WARNING, and CRITICAL messages.
 
 ---
 
 ## How the Agent Works
-1.Load version_store.json
-2.Load manifest.json (from S3 in Week 3, local file for now)
-3.Check if manifest version > current version
-4.If update available:
-a. Download firmware binary and signature
-b. Verify SHA-256 hash matches manifest
-c. Verify ECDSA signature matches public key (Week 3)
-d. Check anti-rollback version requirement (Week 4)
-e. If all checks pass — install and update version_store
-f. If any check fails — log CRITICAL alert and reject
+
+1. Load version_store.json
+2. Load manifest.json (from GitHub Releases if available, otherwise local file)
+3. Check if manifest version > current version
+4. If update available:  
+   a. Download firmware binary and signature  
+   b. Verify SHA-256 hash matches manifest  
+   c. Verify ECDSA signature matches public key (Week 3)  
+   d. Check anti-rollback version requirement (Week 4)  
+   e. If all checks pass — install and update version_store  
+   f. If any check fails — log CRITICAL alert and reject
 
 ---
 
@@ -45,41 +50,42 @@ f. If any check fails — log CRITICAL alert and reject
 python edge_agent/agent.py
 ```
 
----
+## Test 1 — Real GitHub Release (PASS)
 
-## Expected Output — Update Available (PASS scenario)
-2026-06-09 10:00:00 [INFO] Edge Device Agent started
-2026-06-09 10:00:00 [INFO] Version store loaded — current version: 0.0.0
-2026-06-09 10:00:00 [INFO] Manifest loaded — firmware version: 1.0.0
-2026-06-09 10:00:00 [INFO] Update available: 0.0.0 → 1.0.0
-2026-06-09 10:00:00 [INFO] Firmware downloaded: edge_agent/downloads/dummy_firmware_v1.0.0.bin
-2026-06-09 10:00:00 [INFO] Signature downloaded: edge_agent/downloads/dummy_firmware_v1.0.0.sig
-2026-06-09 10:00:00 [INFO] Verifying SHA-256 hash of: edge_agent/downloads/dummy_firmware_v1.0.0.bin
-2026-06-09 10:00:00 [INFO] Hash verification PASSED — firmware integrity confirmed
-2026-06-09 10:00:00 [INFO] All checks passed so far — signature verification coming in Week 3
+export GITHUB_RELEASE_BASE_URL=https://github.com/secure-ota-firmware-update/secure-ota-firmware-update
+python edge_agent/agent.py
 
----
+# Result
 
-## Expected Output — No Update Needed
-2026-06-09 10:00:00 [INFO] Edge Device Agent started
-2026-06-09 10:00:00 [INFO] Version store loaded — current version: 1.0.0
-2026-06-09 10:00:00 [INFO] Manifest loaded — firmware version: 1.0.0
-2026-06-09 10:00:00 [INFO] Already up to date: current=1.0.0, manifest=1.0.0
-2026-06-09 10:00:00 [INFO] No update needed. Agent exiting.
+2026-06-17 21:00:44,019 [INFO] ==================================================
+2026-06-17 21:00:44,020 [INFO] Edge Device Agent started
+2026-06-17 21:00:45,446 [INFO] Found release: v0.1.1
+2026-06-17 21:00:48,392 [INFO] Manifest fetched — firmware version: 0.1.1
+2026-06-17 21:00:53,935 [INFO] Hash verification PASSED — firmware integrity confirmed
+2026-06-17 21:00:53,936 [INFO] Signature verification coming in Week 3
+2026-06-17 21:00:53,936 [INFO] Agent run finished
 
----
+## Test 2 — Tampered Manifest Hash (FAIL)
 
-## Expected Output — Hash Mismatch (FAIL scenario)
+unset GITHUB_RELEASE_BASE_URL
+python edge_agent/agent.py
 
-If the downloaded firmware is tampered with:
-2026-06-09 10:00:00 [INFO] Verifying SHA-256 hash of: edge_agent/downloads/dummy_firmware_v1.0.0.bin
-2026-06-09 10:00:00 [INFO] Expected hash: a3f1c9e2b847d6f0...
-2026-06-09 10:00:00 [INFO] Computed hash: ff00ff00ff00ff00...
-2026-06-09 10:00:00 [CRITICAL] Hash verification FAILED — tampering detected
-2026-06-09 10:00:00 [CRITICAL] Expected: a3f1c9e2b847d6f0...
-2026-06-09 10:00:00 [CRITICAL] Computed: ff00ff00ff00ff00...
-2026-06-09 10:00:00 [CRITICAL] Dropping firmware payload — refusing installation
-2026-06-09 10:00:00 [CRITICAL] SECURITY ALERT — Hash verification failed. Aborting.
+# Result
+
+2026-06-17 21:03:36,198 [CRITICAL] Hash verification FAILED — tampering detected
+2026-06-17 21:03:36,199 [CRITICAL] SECURITY ALERT — Hash verification failed. Aborting.
+2026-06-17 21:03:36,200 [INFO] Agent run finished
+
+## Test 3 — No Update Available
+
+python edge_agent/agent.py
+
+# Result
+
+2026-06-17 21:40:21,497 [INFO] Version store loaded — current version: 1.0.0
+2026-06-17 21:40:21,498 [INFO] Using local manifest — firmware version: 1.0.0
+2026-06-17 21:40:21,498 [INFO] Already up to date: current=1.0.0 -> manifest=1.0.0
+2026-06-17 21:40:21,498 [INFO] No update needed. Agent exiting.
 
 ---
 
@@ -88,36 +94,3 @@ If the downloaded firmware is tampered with:
 - `verify_signature()` — ECDSA signature verification using public key
 - `anti_rollback_check()` — prevents downgrade to vulnerable firmware versions
 - Download from real S3 URL instead of local file copy
-Commit and push:
-bash
-git add edge_agent/README.md
-git commit -m "docs: write edge_agent/README.md with agent design and pass/fail output examples (fixes #26)"
-git push origin <your-branch>
-Open PR from your branch → main
-PR Title:
-docs: write edge_agent/README.md with agent design and output examples
-PR Description:
-## What does this PR implement?
-
-Adds edge_agent/README.md documenting:
-- Purpose of each file (agent.py, version_store.json, downloads/, agent.log)
-- Full agent workflow diagram
-- How to run the agent
-- Expected output for PASS scenario (update available)
-- Expected output for already up to date scenario
-- Expected output for FAIL scenario (hash mismatch)
-- Preview of Week 3 and Week 4 additions
-
-## Closes issue
-Closes #26
-
-## Week
-- [x] Week 1 — PKI & Hashing
-
-## Security checklist
-- [x] No real hash values from actual keys exposed
-- [x] No credentials in documentation
-
-## How was this tested?
-Ran agent.py and compared actual log output against documented examples.
-Manually corrupted firmware to verify FAIL scenario output matches.
