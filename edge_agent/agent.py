@@ -403,65 +403,41 @@ def mock_install(manifest: dict, version_store: dict) -> None:
     logger.info("=" * 50)
 
 
+from packaging import version
+import json, os
+from datetime import datetime
+
 def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
     """
-    Check that incoming firmware version meets minimum version requirement.
-
-    Prevents attackers from forcing installation of older vulnerable firmware
-    even if that older firmware has a perfectly valid ECDSA signature.
-
-    Uses semantic version comparison (major.minor.patch) with integer
-    parsing — NOT string comparison. String comparison gives wrong results
-    for versions like "1.10.0" vs "1.9.0" because "10" < "9" as strings.
-
-    Args:
-        incoming_version: version string from manifest e.g. "1.2.0"
-        minimum_version: minimum allowed version from version_store e.g. "1.0.0"
-
-    Returns:
-        bool: True if incoming version >= minimum version (safe to install)
-              False if incoming version < minimum version (rollback attempt)
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Returns True if the update is allowed, False if rollback detected.
     """
-    def parse_version(version_str: str) -> tuple:
-        """Parse semantic version string into tuple of integers."""
-        parts = version_str.strip().split(".")
-        if len(parts) != 3:
-            raise ValueError(
-                f"Invalid version format: '{version_str}'. "
-                f"Expected X.Y.Z (e.g. 1.2.3)"
-            )
-        try:
-            return tuple(int(p) for p in parts)
-        except ValueError:
-            raise ValueError(
-                f"Version parts must be integers, got: '{version_str}'"
-            )
+    try:
+        return version.parse(incoming_version) >= version.parse(minimum_version)
+    except Exception as e:
+        logger.error(f"Anti-rollback check failed: {e}")
+        return False
 
-    logger.info(f"Anti-rollback check: incoming={incoming_version}, minimum={minimum_version}")
+def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
+    """
+    Write a rejection report to a JSON file for auditing and log it.
+    """
+    report = {
+        "reason": reason,
+        "manifest_version": manifest.get("version"),
+        "details": details,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+    logger.critical(f"Rejection report generated: {report}")
 
     try:
-        incoming = parse_version(incoming_version)
-        minimum = parse_version(minimum_version)
-    except ValueError as e:
-        logger.critical(f"Anti-rollback check failed — invalid version format: {e}")
-        return False
-
-    if incoming >= minimum:
-        logger.info(
-            f"Anti-rollback check PASSED — "
-            f"v{incoming_version} >= minimum v{minimum_version}"
-        )
-        return True
-    else:
-        logger.critical(
-            f"Anti-rollback check FAILED — "
-            f"v{incoming_version} < minimum v{minimum_version}"
-        )
-        logger.critical(
-            f"Rollback attack detected — refusing to install "
-            f"older vulnerable firmware"
-        )
-        return False
+        os.makedirs("edge_agent", exist_ok=True)
+        with open("edge_agent/rejection_report.json", "w") as f:
+            json.dump(report, f, indent=2)
+        logger.info("Rejection report saved to edge_agent/rejection_report.json")
+    except Exception as e:
+        logger.error(f"Failed to save rejection report: {e}")
 
 
 def fetch_manifest_from_release() -> dict:
@@ -793,6 +769,7 @@ def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
     except (ValueError, AttributeError):
         # If versions are malformed or invalid, reject them safely
         return False
+
 
 if __name__ == "__main__":
     main()
