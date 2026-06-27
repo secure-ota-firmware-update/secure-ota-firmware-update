@@ -30,6 +30,10 @@ import logging.handlers
 import shutil
 import requests
 from datetime import datetime
+from packaging import version
+
+# cryptography imports stay inside verify_signature() for efficiency
+
 
 
 def setup_logging() -> logging.Logger:
@@ -399,6 +403,67 @@ def mock_install(manifest: dict, version_store: dict) -> None:
     logger.info("=" * 50)
 
 
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Check that incoming firmware version meets minimum version requirement.
+
+    Prevents attackers from forcing installation of older vulnerable firmware
+    even if that older firmware has a perfectly valid ECDSA signature.
+
+    Uses semantic version comparison (major.minor.patch) with integer
+    parsing — NOT string comparison. String comparison gives wrong results
+    for versions like "1.10.0" vs "1.9.0" because "10" < "9" as strings.
+
+    Args:
+        incoming_version: version string from manifest e.g. "1.2.0"
+        minimum_version: minimum allowed version from version_store e.g. "1.0.0"
+
+    Returns:
+        bool: True if incoming version >= minimum version (safe to install)
+              False if incoming version < minimum version (rollback attempt)
+    """
+    def parse_version(version_str: str) -> tuple:
+        """Parse semantic version string into tuple of integers."""
+        parts = version_str.strip().split(".")
+        if len(parts) != 3:
+            raise ValueError(
+                f"Invalid version format: '{version_str}'. "
+                f"Expected X.Y.Z (e.g. 1.2.3)"
+            )
+        try:
+            return tuple(int(p) for p in parts)
+        except ValueError:
+            raise ValueError(
+                f"Version parts must be integers, got: '{version_str}'"
+            )
+
+    logger.info(f"Anti-rollback check: incoming={incoming_version}, minimum={minimum_version}")
+
+    try:
+        incoming = parse_version(incoming_version)
+        minimum = parse_version(minimum_version)
+    except ValueError as e:
+        logger.critical(f"Anti-rollback check failed — invalid version format: {e}")
+        return False
+
+    if incoming >= minimum:
+        logger.info(
+            f"Anti-rollback check PASSED — "
+            f"v{incoming_version} >= minimum v{minimum_version}"
+        )
+        return True
+    else:
+        logger.critical(
+            f"Anti-rollback check FAILED — "
+            f"v{incoming_version} < minimum v{minimum_version}"
+        )
+        logger.critical(
+            f"Rollback attack detected — refusing to install "
+            f"older vulnerable firmware"
+        )
+        return False
+
+
 def fetch_manifest_from_release() -> dict:
     """
     Fetch the latest firmware manifest from GitHub Releases.
@@ -566,22 +631,168 @@ def _run_update_check(summary: AgentRunSummary):
     if not verify_hash(firmware_path, manifest["sha256"]):
         summary.record_fail("SHA-256 hash verification")
         summary.set_outcome("REJECTED — hash mismatch")
+        write_rejection_report(
+            reason="HASH_MISMATCH",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details=f"Downloaded binary hash does not match manifest value"
+        )
         logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
         return
 
-    summary.record_pass("SHA-256 hash verification")
-
-    # Verify ECDSA signature
+    # Step 3 — Verify ECDSA signature
     if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
         summary.record_fail("ECDSA signature verification")
-        summary.set_outcome("REJECTED — invalid signature")
-        logger.critical("SECURITY ALERT — Signature verification failed. Aborting.")
+        summary.set_outcome("REJECTED — invalid or forged signature")
+        write_rejection_report(
+            reason="INVALID_SIGNATURE",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details="ECDSA signature does not match public key stored on device"
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical("Signature verification FAILED")
+        logger.critical("Firmware was NOT signed by the legitimate key")
+        logger.critical("Payload dropped — installation refused")
+        logger.critical("=" * 50)
+
+        # Clean up downloaded files
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
         return
 
     summary.record_pass("ECDSA signature verification")
+    logger.info("Both hash and signature verified — firmware is authentic")
+
+    # Step 4 — Anti-rollback check
+    minimum_version = version_store.get("minimum_version", "0.0.0")
+    incoming_version = manifest["version"]
+
+    if not anti_rollback_check(incoming_version, minimum_version):
+        summary.record_fail("Anti-rollback version check")
+        summary.set_outcome("REJECTED — rollback attempt detected")
+        write_rejection_report(
+            reason="ROLLBACK_ATTEMPT",
+            manifest=manifest,
+            details=(
+                f"Incoming version v{incoming_version} is below "
+                f"minimum allowed version v{minimum_version}. "
+                f"Rollback attack suspected."
+            )
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical(f"Rollback attack detected")
+        logger.critical(f"Incoming: v{incoming_version}")
+        logger.critical(f"Minimum:  v{minimum_version}")
+        logger.critical("Installation refused")
+        logger.critical("=" * 50)
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    summary.record_pass("Anti-rollback version check")
+
+    # Step 5 — Install
     summary.set_outcome("INSTALLED")
     mock_install(manifest, version_store)
+    
 
+def write_rejection_report(
+    reason: str,
+    manifest: dict,
+    firmware_path: str = None,
+    details: str = None
+) -> None:
+    """
+    Write a structured JSON rejection report to disk when
+    firmware verification fails.
+ 
+    Creates a timestamped report file in edge_agent/rejections/
+    that a Security Architect can query for audit purposes.
+ 
+    In a real IoT system this would be sent to a central SIEM
+    (Security Information and Event Management) system.
+ 
+    Args:
+        reason: short reason code e.g. HASH_MISMATCH, INVALID_SIGNATURE
+        manifest: the manifest that was being processed
+        firmware_path: path to the rejected firmware file
+        details: additional context for the rejection
+    """
+    import uuid
+ 
+    rejections_dir = "edge_agent/rejections"
+    os.makedirs(rejections_dir, exist_ok=True)
+ 
+    report = {
+        "report_id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "severity": "CRITICAL",
+        "reason": reason,
+        "firmware_version": manifest.get("version", "unknown"),
+        "firmware_filename": manifest.get("filename", "unknown"),
+        "firmware_sha256_in_manifest": manifest.get("sha256", "unknown"),
+        "details": details or "No additional details",
+        "action_taken": "Firmware payload dropped. Installation refused.",
+        "device_info": {
+            "public_key_path": PUBLIC_KEY_PATH,
+            "version_store_path": VERSION_STORE_PATH,
+            "agent_version": "1.0.0"
+        }
+    }
+ 
+    # Include computed hash if firmware path is available
+    if firmware_path and os.path.exists(firmware_path):
+        sha256 = hashlib.sha256()
+        with open(firmware_path, "rb") as f:
+            while chunk := f.read(8192):
+                sha256.update(chunk)
+        report["firmware_sha256_computed"] = sha256.hexdigest()
+        report["hash_match"] = (
+            report["firmware_sha256_computed"] == report["firmware_sha256_in_manifest"]
+        )
+ 
+    # Save with timestamped filename
+    timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    filename = f"rejection_{timestamp}_{reason}.json"
+    filepath = os.path.join(rejections_dir, filename)
+ 
+    with open(filepath, "w") as f:
+        json.dump(report, f, indent=2)
+ 
+    logger.critical(f"Rejection report written: {filepath}")
+    
+def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
+    """
+    Compares the incoming firmware version against the allowed minimum version.
+    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    
+    Returns:
+        True if current_version >= minimum_version
+        False otherwise
+    """
+    try:
+        # Split version strings and convert components to integers
+        current_parts = [int(x) for x in current_version.split('.')]
+        minimum_parts = [int(x) for x in minimum_version.split('.')]
+        
+        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
+        max_len = max(len(current_parts), len(minimum_parts))
+        current_parts.extend([0] * (max_len - len(current_parts)))
+        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
+        
+        # Compare tuple of integers directly
+        return current_parts >= minimum_parts
+    except (ValueError, AttributeError):
+        # If versions are malformed or invalid, reject them safely
+        return False
 
 if __name__ == "__main__":
     main()

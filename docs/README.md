@@ -40,6 +40,7 @@ for the Secure OTA Firmware Update project.
 | [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification |
 | [TEST_RESULTS.md](TEST_RESULTS.md) | Full 29-test suite results |
 
+
 | [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design, version store, three security layers |
 | [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
 | [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | verify_signature() test results |
