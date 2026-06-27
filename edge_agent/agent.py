@@ -619,22 +619,16 @@ def _run_update_check(summary: AgentRunSummary):
                 os.remove(path)
         return
 
-
-    summary.record_pass("SHA-256 hash verification")
-
-
     # Step 3 — Verify ECDSA signature
     if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
         summary.record_fail("ECDSA signature verification")
         summary.set_outcome("REJECTED — invalid or forged signature")
-
         write_rejection_report(
             reason="INVALID_SIGNATURE",
             manifest=manifest,
             firmware_path=firmware_path,
             details="ECDSA signature does not match public key stored on device"
         )
-
         logger.critical("=" * 50)
         logger.critical("SECURITY ALERT")
         logger.critical("Signature verification FAILED")
@@ -646,9 +640,6 @@ def _run_update_check(summary: AgentRunSummary):
         for path in [firmware_path, sig_path]:
             if os.path.exists(path):
                 os.remove(path)
-
-                logger.info(f"Cleaned up: {path}")
-
         return
 
     summary.record_pass("ECDSA signature verification")
@@ -753,8 +744,31 @@ def write_rejection_report(
         json.dump(report, f, indent=2)
  
     logger.critical(f"Rejection report written: {filepath}")
-
-
+    
+def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
+    """
+    Compares the incoming firmware version against the allowed minimum version.
+    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    
+    Returns:
+        True if current_version >= minimum_version
+        False otherwise
+    """
+    try:
+        # Split version strings and convert components to integers
+        current_parts = [int(x) for x in current_version.split('.')]
+        minimum_parts = [int(x) for x in minimum_version.split('.')]
+        
+        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
+        max_len = max(len(current_parts), len(minimum_parts))
+        current_parts.extend([0] * (max_len - len(current_parts)))
+        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
+        
+        # Compare tuple of integers directly
+        return current_parts >= minimum_parts
+    except (ValueError, AttributeError):
+        # If versions are malformed or invalid, reject them safely
+        return False
 
 if __name__ == "__main__":
     main()
