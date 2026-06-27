@@ -26,21 +26,69 @@ import os
 import json
 import hashlib
 import logging
+import logging.handlers
 import shutil
 import requests
 from datetime import datetime
+from packaging import version
+
+# cryptography imports stay inside verify_signature() for efficiency
 
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("edge_agent/agent.log")
-    ]
-)
-logger = logging.getLogger(__name__)
+
+def setup_logging() -> logging.Logger:
+    """
+    Configure structured logging with console output and
+    rotating file handler.
+
+    Log rotation keeps the last 5 log files, each max 1MB.
+    This prevents the log file growing indefinitely on a
+    real IoT device with limited storage.
+
+    Returns:
+        logging.Logger: configured logger instance
+    """
+    log_dir = "edge_agent"
+    log_file = os.path.join(log_dir, "agent.log")
+
+    logger = logging.getLogger("edge_agent")
+    logger.setLevel(logging.DEBUG)
+
+    # Prevent duplicate handlers if setup_logging called multiple times
+    if logger.handlers:
+        return logger
+
+    # Console handler — INFO and above
+    console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
+    console_format = logging.Formatter(
+        "%(asctime)s [%(levelname)s] %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+    console_handler.setFormatter(console_format)
+
+    # Rotating file handler — DEBUG and above
+    # Keeps 5 backup files, each max 1MB
+    file_handler = logging.handlers.RotatingFileHandler(
+        log_file,
+        maxBytes=1024 * 1024,  # 1MB
+        backupCount=5,
+        encoding="utf-8"
+    )
+    file_handler.setLevel(logging.DEBUG)
+    file_format = logging.Formatter(
+        "%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] %(message)s",
+        datefmt="%Y-%m-%dT%H:%M:%SZ"
+    )
+    file_handler.setFormatter(file_format)
+
+    logger.addHandler(console_handler)
+    logger.addHandler(file_handler)
+
+    return logger
+
+
+logger = setup_logging()
 
 
 VERSION_STORE_PATH = "edge_agent/version_store.json"
@@ -118,7 +166,7 @@ def check_for_update(manifest: dict, version_store: dict) -> bool:
     current_parts = [int(x) for x in current.split(".")]
 
     if incoming_parts > current_parts:
-        logger.info(f"Update available: {current} → {incoming}")
+        logger.info(f"Update available: {current} -> {incoming}")
         return True
     else:
         logger.info(f"Already up to date: current={current}, manifest={incoming}")
@@ -466,83 +514,285 @@ def fetch_manifest_from_release() -> dict:
     return manifest
 
 
+class AgentRunSummary:
+    """
+    Tracks and reports the outcome of a single agent run.
+
+    Provides a clean summary log entry at the end of each run
+    for easy audit trail review by a Security Architect.
+    """
+
+    def __init__(self):
+        self.start_time = datetime.utcnow()
+        self.steps_passed = []
+        self.steps_failed = []
+        self.firmware_version = None
+        self.outcome = "UNKNOWN"
+
+    def record_pass(self, step: str):
+        self.steps_passed.append(step)
+
+    def record_fail(self, step: str):
+        self.steps_failed.append(step)
+
+    def set_version(self, version: str):
+        self.firmware_version = version
+
+    def set_outcome(self, outcome: str):
+        self.outcome = outcome
+
+    def log_summary(self):
+        duration = (datetime.utcnow() - self.start_time).total_seconds()
+
+        logger.info("=" * 55)
+        logger.info("AGENT RUN SUMMARY")
+        logger.info("=" * 55)
+        logger.info(f"Outcome:          {self.outcome}")
+        logger.info(f"Firmware version: {self.firmware_version or 'N/A'}")
+        logger.info(f"Duration:         {duration:.2f} seconds")
+        logger.info(f"Steps passed:     {len(self.steps_passed)}")
+
+        for step in self.steps_passed:
+            logger.info(f"  [PASS] {step}")
+
+        if self.steps_failed:
+            logger.warning(f"Steps failed:     {len(self.steps_failed)}")
+            for step in self.steps_failed:
+                logger.warning(f"  [FAIL] {step}")
+
+        logger.info("=" * 55)
+
+
 def main():
     """
     Main entry point for the edge device agent.
-
-    Orchestrates the full firmware update flow:
-    load version store -> fetch manifest -> check for update ->
-    download -> verify hash -> verify signature (Week 3) ->
-    anti-rollback check (Week 4) -> install or reject
-
-    All exceptions are caught here so the agent never crashes
-    with an unhandled traceback — every failure path logs a
-    clean CRITICAL message and exits gracefully, simulating
-    a real embedded device that must never hard-crash.
     """
-    logger.info("=" * 50)
+    summary = AgentRunSummary()
+
+    logger.info("=" * 55)
     logger.info("Edge Device Agent started")
-    logger.info("=" * 50)
+    logger.info("=" * 55)
 
     try:
-        _run_update_check()
+        _run_update_check(summary)
     except FileNotFoundError as e:
+        summary.record_fail("File system check")
+        summary.set_outcome("HALTED — missing file")
         logger.critical(f"Required file missing: {e}")
-        logger.critical("Agent halted — manual intervention required")
     except Exception as e:
+        summary.record_fail("Unexpected error")
+        summary.set_outcome("HALTED — unexpected error")
         logger.critical(f"Unexpected error: {type(e).__name__}: {e}")
-        logger.critical("Agent halted to prevent unsafe state")
     finally:
-        logger.info("Agent run finished")
-        logger.info("=" * 50)
+        summary.log_summary()
 
 
-def _run_update_check():
+
+def _run_update_check(summary: AgentRunSummary):
     """
-    Internal function containing the actual update check logic.
-
-    Tries to fetch manifest from GitHub Releases first.
-    Falls back to local manifest.json if GitHub API unavailable.
+    Internal update check logic with summary tracking.
     """
     # Load version store
     version_store = load_version_store()
+    summary.record_pass("Version store loaded")
 
-    # Try GitHub Releases first, fall back to local manifest
+    # Load manifest
     manifest = None
-
     github_release_base = os.environ.get("GITHUB_RELEASE_BASE_URL")
+
     if github_release_base:
-        logger.info("GITHUB_RELEASE_BASE_URL set — fetching manifest from GitHub Releases")
         manifest = fetch_manifest_from_release()
+        if manifest:
+            summary.record_pass("Manifest fetched from GitHub Releases")
 
     if manifest is None:
-        # Fallback to local manifest
         manifest_path = "distribution/manifest.json"
         if not os.path.exists(manifest_path):
             raise FileNotFoundError(f"Manifest not found: {manifest_path}")
-
         with open(manifest_path, "r") as f:
             manifest = json.load(f)
+        summary.record_pass("Manifest loaded from local file")
 
-        logger.info(f"Using local manifest — firmware version: {manifest['version']}")
+    summary.set_version(manifest["version"])
 
     # Check for update
     if not check_for_update(manifest, version_store):
+        summary.set_outcome("NO UPDATE NEEDED")
         logger.info("No update needed. Agent exiting.")
         return
 
+    summary.record_pass("Update check — update available")
+
     # Download firmware
     firmware_path, sig_path = download_firmware(manifest)
+    summary.record_pass("Firmware downloaded")
 
     # Verify hash
     if not verify_hash(firmware_path, manifest["sha256"]):
+        summary.record_fail("SHA-256 hash verification")
+        summary.set_outcome("REJECTED — hash mismatch")
+        write_rejection_report(
+            reason="HASH_MISMATCH",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details=f"Downloaded binary hash does not match manifest value"
+        )
         logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
         return
 
-    logger.info("Hash verification passed")
-    logger.info("Signature verification coming in Week 3")
+    # Step 3 — Verify ECDSA signature
+    if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
+        summary.record_fail("ECDSA signature verification")
+        summary.set_outcome("REJECTED — invalid or forged signature")
+        write_rejection_report(
+            reason="INVALID_SIGNATURE",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details="ECDSA signature does not match public key stored on device"
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical("Signature verification FAILED")
+        logger.critical("Firmware was NOT signed by the legitimate key")
+        logger.critical("Payload dropped — installation refused")
+        logger.critical("=" * 50)
 
+        # Clean up downloaded files
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
 
+    summary.record_pass("ECDSA signature verification")
+    logger.info("Both hash and signature verified — firmware is authentic")
+
+    # Step 4 — Anti-rollback check
+    minimum_version = version_store.get("minimum_version", "0.0.0")
+    incoming_version = manifest["version"]
+
+    if not anti_rollback_check(incoming_version, minimum_version):
+        summary.record_fail("Anti-rollback version check")
+        summary.set_outcome("REJECTED — rollback attempt detected")
+        write_rejection_report(
+            reason="ROLLBACK_ATTEMPT",
+            manifest=manifest,
+            details=(
+                f"Incoming version v{incoming_version} is below "
+                f"minimum allowed version v{minimum_version}. "
+                f"Rollback attack suspected."
+            )
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical(f"Rollback attack detected")
+        logger.critical(f"Incoming: v{incoming_version}")
+        logger.critical(f"Minimum:  v{minimum_version}")
+        logger.critical("Installation refused")
+        logger.critical("=" * 50)
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    summary.record_pass("Anti-rollback version check")
+
+    # Step 5 — Install
+    summary.set_outcome("INSTALLED")
+    mock_install(manifest, version_store)
+    
+
+def write_rejection_report(
+    reason: str,
+    manifest: dict,
+    firmware_path: str = None,
+    details: str = None
+) -> None:
+    """
+    Write a structured JSON rejection report to disk when
+    firmware verification fails.
+ 
+    Creates a timestamped report file in edge_agent/rejections/
+    that a Security Architect can query for audit purposes.
+ 
+    In a real IoT system this would be sent to a central SIEM
+    (Security Information and Event Management) system.
+ 
+    Args:
+        reason: short reason code e.g. HASH_MISMATCH, INVALID_SIGNATURE
+        manifest: the manifest that was being processed
+        firmware_path: path to the rejected firmware file
+        details: additional context for the rejection
+    """
+    import uuid
+ 
+    rejections_dir = "edge_agent/rejections"
+    os.makedirs(rejections_dir, exist_ok=True)
+ 
+    report = {
+        "report_id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "severity": "CRITICAL",
+        "reason": reason,
+        "firmware_version": manifest.get("version", "unknown"),
+        "firmware_filename": manifest.get("filename", "unknown"),
+        "firmware_sha256_in_manifest": manifest.get("sha256", "unknown"),
+        "details": details or "No additional details",
+        "action_taken": "Firmware payload dropped. Installation refused.",
+        "device_info": {
+            "public_key_path": PUBLIC_KEY_PATH,
+            "version_store_path": VERSION_STORE_PATH,
+            "agent_version": "1.0.0"
+        }
+    }
+ 
+    # Include computed hash if firmware path is available
+    if firmware_path and os.path.exists(firmware_path):
+        sha256 = hashlib.sha256()
+        with open(firmware_path, "rb") as f:
+            while chunk := f.read(8192):
+                sha256.update(chunk)
+        report["firmware_sha256_computed"] = sha256.hexdigest()
+        report["hash_match"] = (
+            report["firmware_sha256_computed"] == report["firmware_sha256_in_manifest"]
+        )
+ 
+    # Save with timestamped filename
+    timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    filename = f"rejection_{timestamp}_{reason}.json"
+    filepath = os.path.join(rejections_dir, filename)
+ 
+    with open(filepath, "w") as f:
+        json.dump(report, f, indent=2)
+ 
+    logger.critical(f"Rejection report written: {filepath}")
+    
+def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
+    """
+    Compares the incoming firmware version against the allowed minimum version.
+    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    
+    Returns:
+        True if current_version >= minimum_version
+        False otherwise
+    """
+    try:
+        # Split version strings and convert components to integers
+        current_parts = [int(x) for x in current_version.split('.')]
+        minimum_parts = [int(x) for x in minimum_version.split('.')]
+        
+        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
+        max_len = max(len(current_parts), len(minimum_parts))
+        current_parts.extend([0] * (max_len - len(current_parts)))
+        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
+        
+        # Compare tuple of integers directly
+        return current_parts >= minimum_parts
+    except (ValueError, AttributeError):
+        # If versions are malformed or invalid, reject them safely
+        return False
 
 if __name__ == "__main__":
     main()
