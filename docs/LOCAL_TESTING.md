@@ -105,8 +105,11 @@ Results:
 - SHA-256 hash verification PASSED
 - Version check: 0.0.0 → 1.0.0 (update available)
 - Agent completed without errors
+Full end-to-end flow confirmed working:
+Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
 
 
 Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
 
 Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
+
