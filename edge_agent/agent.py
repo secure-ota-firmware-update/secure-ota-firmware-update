@@ -770,5 +770,6 @@ def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
         # If versions are malformed or invalid, reject them safely
         return False
 
+
 if __name__ == "__main__":
     main()
