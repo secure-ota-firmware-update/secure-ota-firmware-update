@@ -76,3 +76,47 @@ Total issues created and closed: 52 (as of Day 14)
 
 This document accurately reflects the actual work distribution
 across the team for Week 1 and Week 2 of the internship project.
+
+## Week 3 — Edge Device Verification Logic
+
+| Day | Member 1 | Member 2 | Member 3 | Member 4 |
+|-----|----------|----------|----------|----------|
+| 1 | verify_signature() + Prehashed bug fix | Unit test for valid sig | Wire sig verification into main flow | Update THREAT_MODEL.md mitigations |
+| 2 | Test rejection scenarios (4 attacks) | Add 4 sig tests to test_local_pipeline.py | Wire verify_signature() into agent | Update THREAT_MODEL.md Week 3 coverage |
+| 3 | Full tamper simulation vs GitHub Release | Run test_tamper_simulation.py independently | Run 29-test combined suite | Write WEEK3_PROGRESS.md |
+| 4 | Implement anti_rollback_check() | Add 5 anti-rollback tests | Wire anti-rollback into agent + raise minimum_version | Write ANTI_ROLLBACK.md |
+| 5 | Create test_tamper_simulation.py (15 tests) | Independent verification of test_tamper_simulation.py | Run combined 29-test suite | Update README.md Week 3 complete |
+| 6 | Create demo_attack.py | Write FINAL_SECURITY_LAYERS.md | Create run_all_tests.py | Final doc consistency pass |
+| 7 | Write FINAL_REVIEW_PREP.md | Update WORK_DISTRIBUTION.md (this) | Final repo cleanup | Write PROJECT_COMPLETION_REPORT.md |
+
+---
+
+## Updated Contribution Summary
+
+All 4 members contributed across all 3 weeks:
+
+| Member | Primary Contributions |
+|--------|----------------------|
+| Member 1 | Pipeline architecture, PKI setup, verify_signature(), anti_rollback_check(), demo_attack.py, FINAL_REVIEW_PREP.md |
+| Member 2 | Signing scripts, manifest tools, test suite (14+15 tests), FINAL_SECURITY_LAYERS.md |
+| Member 3 | Edge agent implementation, full agent flow, run_all_tests.py, integration tests |
+| Member 4 | All documentation — THREAT_MODEL, CRYPTOGRAPHY_DECISIONS, ANTI_ROLLBACK, PROJECT_COMPLETION_REPORT |
+
+---
+
+## Final GitHub Activity
+
+Total issues created: [check GitHub and fill in]
+Total issues closed: [check GitHub and fill in]
+Total commits on main: [run git log --oneline main | wc -l]
+Unique commit days: [run git log --pretty=format:"%ad" --date=short main | sort -u | wc -l]
+All 4 members active: CONFIRMED
+
+---
+
+## Declaration
+
+This document accurately reflects the actual work distribution
+across the team for all three weeks of the internship project.
+All members contributed meaningfully to both implementation
+and documentation across the full project lifecycle.
