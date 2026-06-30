@@ -165,3 +165,29 @@ docs/LOCAL_TESTING.md                   ← how to run locally
 
 docs/MID_REVIEW_PREP.md                 ← this file
 
+---
+
+## Final Review Updates (Week 3)
+
+Since Mid Review the following was added:
+
+- verify_signature() — ECDSA P-256 verification in agent
+- anti_rollback_check() — version enforcement with minimum_version
+- 29 automated tests (14 + 15) — all passing
+- 3-layer security architecture fully implemented and tested
+- docs/FINAL_SECURITY_LAYERS.md — security architecture summary
+- demo_attack.py — live attack demo script
+
+### Final Review Demo Commands
+
+```bash
+# Run attack demo
+python demo_attack.py
+
+# Run full test suite
+python run_all_tests.py
+
+# Run agent end-to-end
+export GITHUB_RELEASE_BASE_URL=https://github.com/secure-ota-firmware-update/secure-ota-firmware-update
+python edge_agent/agent.py
+```
