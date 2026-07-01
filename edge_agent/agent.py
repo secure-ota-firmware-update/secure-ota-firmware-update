@@ -449,6 +449,43 @@ def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
         logger.error(f"Anti-rollback check error: {e}")
         return False
 
+from packaging import version
+import json, os
+from datetime import datetime
+
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Returns True if the update is allowed, False if rollback detected.
+    """
+    try:
+        return version.parse(incoming_version) >= version.parse(minimum_version)
+    except Exception as e:
+        logger.error(f"Anti-rollback check failed: {e}")
+        return False
+
+def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
+    """
+    Write a rejection report to a JSON file for auditing and log it.
+    """
+    report = {
+        "reason": reason,
+        "manifest_version": manifest.get("version"),
+        "details": details,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+    logger.critical(f"Rejection report generated: {report}")
+
+    try:
+        os.makedirs("edge_agent", exist_ok=True)
+        with open("edge_agent/rejection_report.json", "w") as f:
+            json.dump(report, f, indent=2)
+        logger.info("Rejection report saved to edge_agent/rejection_report.json")
+    except Exception as e:
+        logger.error(f"Failed to save rejection report: {e}")
+
+
 
 def fetch_manifest_from_release() -> dict:
     """
@@ -629,22 +666,16 @@ def _run_update_check(summary: AgentRunSummary):
                 os.remove(path)
         return
 
-
-    summary.record_pass("SHA-256 hash verification")
-
-
     # Step 3 — Verify ECDSA signature
     if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
         summary.record_fail("ECDSA signature verification")
         summary.set_outcome("REJECTED — invalid or forged signature")
-
         write_rejection_report(
             reason="INVALID_SIGNATURE",
             manifest=manifest,
             firmware_path=firmware_path,
             details="ECDSA signature does not match public key stored on device"
         )
-
         logger.critical("=" * 50)
         logger.critical("SECURITY ALERT")
         logger.critical("Signature verification FAILED")
@@ -656,9 +687,6 @@ def _run_update_check(summary: AgentRunSummary):
         for path in [firmware_path, sig_path]:
             if os.path.exists(path):
                 os.remove(path)
-
-                logger.info(f"Cleaned up: {path}")
-
         return
 
     summary.record_pass("ECDSA signature verification")
@@ -763,6 +791,31 @@ def write_rejection_report(
         json.dump(report, f, indent=2)
  
     logger.critical(f"Rejection report written: {filepath}")
+    
+def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
+    """
+    Compares the incoming firmware version against the allowed minimum version.
+    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    
+    Returns:
+        True if current_version >= minimum_version
+        False otherwise
+    """
+    try:
+        # Split version strings and convert components to integers
+        current_parts = [int(x) for x in current_version.split('.')]
+        minimum_parts = [int(x) for x in minimum_version.split('.')]
+        
+        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
+        max_len = max(len(current_parts), len(minimum_parts))
+        current_parts.extend([0] * (max_len - len(current_parts)))
+        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
+        
+        # Compare tuple of integers directly
+        return current_parts >= minimum_parts
+    except (ValueError, AttributeError):
+        # If versions are malformed or invalid, reject them safely
+        return False
 
 
 
