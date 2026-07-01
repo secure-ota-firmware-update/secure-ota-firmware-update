@@ -439,6 +439,43 @@ def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
     except Exception as e:
         logger.error(f"Failed to save rejection report: {e}")
 
+from packaging import version
+import json, os
+from datetime import datetime
+
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Returns True if the update is allowed, False if rollback detected.
+    """
+    try:
+        return version.parse(incoming_version) >= version.parse(minimum_version)
+    except Exception as e:
+        logger.error(f"Anti-rollback check failed: {e}")
+        return False
+
+def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
+    """
+    Write a rejection report to a JSON file for auditing and log it.
+    """
+    report = {
+        "reason": reason,
+        "manifest_version": manifest.get("version"),
+        "details": details,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+    logger.critical(f"Rejection report generated: {report}")
+
+    try:
+        os.makedirs("edge_agent", exist_ok=True)
+        with open("edge_agent/rejection_report.json", "w") as f:
+            json.dump(report, f, indent=2)
+        logger.info("Rejection report saved to edge_agent/rejection_report.json")
+    except Exception as e:
+        logger.error(f"Failed to save rejection report: {e}")
+
+
 
 def fetch_manifest_from_release() -> dict:
     """
@@ -769,6 +806,7 @@ def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
     except (ValueError, AttributeError):
         # If versions are malformed or invalid, reject them safely
         return False
+
 
 
 if __name__ == "__main__":
