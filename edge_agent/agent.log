@@ -92,3 +92,932 @@
 2026-06-24T23:38:38Z [CRITICAL] [agent.py:354] Signature verification FAILED — forged or corrupted signature
 2026-06-24T23:38:38Z [CRITICAL] [agent.py:355] This firmware was NOT signed by the legitimate private key
 2026-06-24T23:38:38Z [CRITICAL] [agent.py:356] Dropping firmware payload — refusing installation
+2026-06-26T23:19:12Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:19:12Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:19:12Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:19:12Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:19:12Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:19:12Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:00Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:00Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:20:00Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:00Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:00Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:00Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:56Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:20:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:20:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:20:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:39Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:39Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:22:39Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:39Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:39Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:39Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:50Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:50Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:22:50Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:50Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:22:50Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:22:50Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:36Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:23:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:48Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:48Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:23:48Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:49Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:23:49Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:23:49Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:24:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:24:06Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:24:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:24:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:24:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:24:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:279] Expected hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:288] Computed hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:279] Expected hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:288] Computed hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpnhv_h51c.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:279] Expected hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:288] Computed hash: deebdf78c3b96863b82a67e1885bc48cca26a673744f4a1f8f468245b73e4e35
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:295] Expected: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:296] Computed: deebdf78c3b96863b82a67e1885bc48cca26a673744f4a1f8f468245b73e4e35
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpqujxgzq4.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:279] Expected hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:288] Computed hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:279] Expected hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:288] Computed hash: 9ed90bc5d380184bac592df114ee2d2d52ce50137441ac1cd82b8fc5f6c2ba36
+2026-06-26T23:44:08Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:08Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:08Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:28Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:28Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:279] Expected hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:288] Computed hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:279] Expected hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:288] Computed hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpfeo9ypwm.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:279] Expected hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:288] Computed hash: c0ae508f946c61dc1cdd2e2cc2a603016dd463e30931eae12b2033b005b2f69b
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:295] Expected: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:296] Computed: c0ae508f946c61dc1cdd2e2cc2a603016dd463e30931eae12b2033b005b2f69b
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpxrc_1buf.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:279] Expected hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:288] Computed hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:279] Expected hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:288] Computed hash: b6ac278b59a83098f476fc12280246ff61c4a124f15f8ce2901cc41c0464d04b
+2026-06-26T23:44:29Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:29Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:29Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:55Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:55Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:55Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:55Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:55Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:55Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:279] Expected hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:288] Computed hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:279] Expected hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:288] Computed hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpk06uz_qu.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:279] Expected hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:288] Computed hash: 9b992a4ded3ad4d1c58dbdb4a32f9450cf6b34909ef9bcbf43145440d18d3c57
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:295] Expected: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:296] Computed: 9b992a4ded3ad4d1c58dbdb4a32f9450cf6b34909ef9bcbf43145440d18d3c57
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpi7gyi7z0.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:279] Expected hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:288] Computed hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:279] Expected hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:288] Computed hash: d7645e819520e3a7cc640c7f3c7a58007ae9d585877e8694f73d46a031b0dfca
+2026-06-26T23:44:56Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:44:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:44:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:41Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:41Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:41Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:41Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:41Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:41Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:279] Expected hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:288] Computed hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:279] Expected hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:288] Computed hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpvlsu9ql4.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:279] Expected hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:288] Computed hash: 63ec90af9ab493e9a292a763f6c02afd5244df32c1d0e7807f6a66c379dab547
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:295] Expected: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:296] Computed: 63ec90af9ab493e9a292a763f6c02afd5244df32c1d0e7807f6a66c379dab547
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmplrcfw8_o.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:279] Expected hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:288] Computed hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:279] Expected hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:288] Computed hash: 1a7f501ebe37a5b57df7a9ba4df239837890889c786f21b490f442dad16bd3f9
+2026-06-26T23:46:42Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:42Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:42Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:53Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:53Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:53Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:53Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:53Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:53Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:279] Expected hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:288] Computed hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:279] Expected hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:288] Computed hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpnz3t9qho.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:279] Expected hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:288] Computed hash: fa34486fa6fc10000a513bc276a94ff5157057ba98abbc36da93f64644451c8e
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:295] Expected: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:296] Computed: fa34486fa6fc10000a513bc276a94ff5157057ba98abbc36da93f64644451c8e
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpwah3e6wc.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:279] Expected hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:288] Computed hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:279] Expected hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:288] Computed hash: ebd4f280be08fef2b76718754d3b04c736922d14544e41cda6df6c326b4a1098
+2026-06-26T23:46:54Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-26T23:46:54Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-26T23:46:54Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T20:59:56Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T20:59:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:56Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:56Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:279] Expected hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:288] Computed hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:279] Expected hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:288] Computed hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpfjkigzr8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:279] Expected hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:288] Computed hash: 2bef8a7ce6a734648c629f7a5b96edf81dee19ce727e919df9069f3f5bb49f80
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:295] Expected: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:296] Computed: 2bef8a7ce6a734648c629f7a5b96edf81dee19ce727e919df9069f3f5bb49f80
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpedh0gd_w.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:279] Expected hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:288] Computed hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:279] Expected hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:288] Computed hash: 53e0cc87d7ba1195e5ec2f5ad1d2ba7c2d41f7cac8f748d2bcaf4cda6ed92261
+2026-06-29T20:59:57Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T20:59:57Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T20:59:57Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:18Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T21:11:18Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T21:11:18Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:18Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:18Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:18Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:279] Expected hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:288] Computed hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:279] Expected hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:288] Computed hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp7o8z2asj.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:279] Expected hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:288] Computed hash: 7169c9048df61a6ab7233c01221c581862889ee8f4d11322f7b60fe07fe2a075
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:295] Expected: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:296] Computed: 7169c9048df61a6ab7233c01221c581862889ee8f4d11322f7b60fe07fe2a075
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpgw_as0y3.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:279] Expected hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:288] Computed hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:279] Expected hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:288] Computed hash: 48a70574aee2355aa21d7e5df7d89812c0128c9c62797d88fb843fd9144efe11
+2026-06-29T21:11:19Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T21:11:19Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T21:11:19Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T22:37:06Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T22:37:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:06Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:06Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:279] Expected hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:288] Computed hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:279] Expected hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:288] Computed hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpu1ifwf_8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:279] Expected hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:288] Computed hash: 64173626ec75ca6121261d8cb717f1436eaf06659ba484b625a40d6167b85133
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:295] Expected: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:296] Computed: 64173626ec75ca6121261d8cb717f1436eaf06659ba484b625a40d6167b85133
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpambhwmqw.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:279] Expected hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:288] Computed hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:279] Expected hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:288] Computed hash: 9c34290ea8eeb215ff94a2220f4d27c509d81441fdca5462436d4eeabbfac3ae
+2026-06-29T22:37:07Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-06-29T22:37:07Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-06-29T22:37:07Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:31Z [INFO] [agent.py:278] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-01T22:10:31Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:32Z [INFO] [agent.py:322] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:334] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-01T22:10:32Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp9oo6xhrp.bin
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:326] Public key not found: /nonexistent/public_key.pem
+2026-07-01T22:10:32Z [ERROR] [agent.py:418] Anti-rollback check failed: Invalid version: ''
+2026-07-01T22:10:32Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpudqpssfx.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:32Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:296] Computed: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:32Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpudqpssfx.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:279] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:32Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:32Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:32Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpraeqstum.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:279] Expected hash: tooshort
+2026-07-01T22:10:32Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:295] Expected: tooshort
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:32Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpraeqstum.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:32Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:32Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:32Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp__ze39m2.bin
+2026-07-01T22:10:32Z [INFO] [agent.py:279] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:10:32Z [INFO] [agent.py:288] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:10:32Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:34Z [INFO] [agent.py:278] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-01T22:10:34Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:34Z [INFO] [agent.py:322] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:334] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp8msp003z.bin
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:326] Public key not found: /nonexistent/public_key.pem
+2026-07-01T22:10:35Z [ERROR] [agent.py:418] Anti-rollback check failed: Invalid version: ''
+2026-07-01T22:10:35Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpgyx712hs.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:35Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:296] Computed: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:35Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpgyx712hs.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:279] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:35Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:10:35Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:35Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpzzh89tcf.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:279] Expected hash: tooshort
+2026-07-01T22:10:35Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:295] Expected: tooshort
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:35Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpzzh89tcf.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:35Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:35Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpvmxj1p3l.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:279] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:10:35Z [INFO] [agent.py:288] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:10:35Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T22:10:35Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:35Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:35Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:279] Expected hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:288] Computed hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:279] Expected hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:288] Computed hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpmzzze8w8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:279] Expected hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:288] Computed hash: 9f05b535506aab7b82dc48a2dbaef5fa5f53e40474dc41fc3cd0a0bb9c2551d2
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:295] Expected: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:296] Computed: 9f05b535506aab7b82dc48a2dbaef5fa5f53e40474dc41fc3cd0a0bb9c2551d2
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp3lrq8l4n.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:279] Expected hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:288] Computed hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:279] Expected hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:288] Computed hash: 8e44b5920d22ac6343b2e4068db288e354125b09d028667acadbadce908d70f1
+2026-07-01T22:10:36Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [INFO] [agent.py:354] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:10:36Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:358] Signature verification FAILED — forged or corrupted signature
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:359] This firmware was NOT signed by the legitimate private key
+2026-07-01T22:10:36Z [CRITICAL] [agent.py:360] Dropping firmware payload — refusing installation
+2026-07-01T22:11:39Z [INFO] [agent.py:278] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-01T22:11:39Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:11:40Z [INFO] [agent.py:322] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:334] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-01T22:11:40Z [INFO] [agent.py:322] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpw8keuzg_.bin
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:326] Public key not found: /nonexistent/public_key.pem
+2026-07-01T22:11:40Z [ERROR] [agent.py:418] Anti-rollback check failed: Invalid version: ''
+2026-07-01T22:11:40Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpeiu4hm5c.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:11:40Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:296] Computed: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:11:40Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpeiu4hm5c.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:279] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:11:40Z [INFO] [agent.py:288] Computed hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T22:11:40Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T22:11:40Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpgtf1cjwl.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:279] Expected hash: tooshort
+2026-07-01T22:11:40Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:295] Expected: tooshort
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:11:40Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpgtf1cjwl.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:279] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:11:40Z [INFO] [agent.py:288] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:294] Hash verification FAILED — tampering detected
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:295] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:296] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T22:11:40Z [CRITICAL] [agent.py:297] Dropping firmware payload — refusing installation
+2026-07-01T22:11:40Z [INFO] [agent.py:278] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpeeca2n09.bin
+2026-07-01T22:11:40Z [INFO] [agent.py:279] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:11:40Z [INFO] [agent.py:288] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T22:11:40Z [INFO] [agent.py:291] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:285] Firmware file not found: /nonexistent/path/firmware.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:324] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:359] Firmware file not found: /nonexistent/firmware.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:333] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-01T23:01:00Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpvwr0i5wi.bin
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:328] Public key not found: /nonexistent/public_key.pem
+2026-07-01T23:01:00Z [ERROR] [agent.py:446] Anti-rollback check failed: non-numeric version string
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmph4oi8lck.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:290] Firmware file is empty — refusing installation
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmph4oi8lck.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:290] Firmware file is empty — refusing installation
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpvww2dm41.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: tooshort
+2026-07-01T23:01:00Z [INFO] [agent.py:294] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:300] Hash verification FAILED — tampering detected
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:301] Expected: tooshort
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:302] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:303] Dropping firmware payload — refusing installation
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpvww2dm41.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:00Z [INFO] [agent.py:294] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:300] Hash verification FAILED — tampering detected
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:301] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:302] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:00Z [CRITICAL] [agent.py:303] Dropping firmware payload — refusing installation
+2026-07-01T23:01:00Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp5rzb6nyg.bin
+2026-07-01T23:01:00Z [INFO] [agent.py:276] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T23:01:00Z [INFO] [agent.py:294] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T23:01:00Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:285] Firmware file not found: /nonexistent/path/firmware.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:324] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:359] Firmware file not found: /nonexistent/firmware.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:333] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-01T23:01:02Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp0b2uy7u5.bin
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:328] Public key not found: /nonexistent/public_key.pem
+2026-07-01T23:01:02Z [ERROR] [agent.py:446] Anti-rollback check failed: non-numeric version string
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp_3earvf2.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:290] Firmware file is empty — refusing installation
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp_3earvf2.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:290] Firmware file is empty — refusing installation
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpta0m4erb.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: tooshort
+2026-07-01T23:01:02Z [INFO] [agent.py:294] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:300] Hash verification FAILED — tampering detected
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:301] Expected: tooshort
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:302] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:303] Dropping firmware payload — refusing installation
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpta0m4erb.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:02Z [INFO] [agent.py:294] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:300] Hash verification FAILED — tampering detected
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:301] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:302] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-01T23:01:02Z [CRITICAL] [agent.py:303] Dropping firmware payload — refusing installation
+2026-07-01T23:01:02Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpm8f1gymn.bin
+2026-07-01T23:01:02Z [INFO] [agent.py:276] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T23:01:02Z [INFO] [agent.py:294] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-01T23:01:02Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:372] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:276] Expected hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:294] Computed hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:372] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:276] Expected hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:294] Computed hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:372] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpmd_vxxh2.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:276] Expected hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:294] Computed hash: c7a662979defbb389914d88e36c341534c8dfe495be649e9089189cedb5e76c4
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:300] Hash verification FAILED — tampering detected
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:301] Expected: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:302] Computed: c7a662979defbb389914d88e36c341534c8dfe495be649e9089189cedb5e76c4
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:303] Dropping firmware payload — refusing installation
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp80zqufr4.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:276] Expected hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:294] Computed hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:275] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:276] Expected hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:294] Computed hash: 4d19ae604905c7aa600f47d7b88283cc14d0e5b25b7cc21f42c2160b44095539
+2026-07-01T23:01:03Z [INFO] [agent.py:297] Hash verification PASSED — firmware integrity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [INFO] [agent.py:372] Signature verification PASSED — firmware authenticity confirmed
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
+2026-07-01T23:01:03Z [INFO] [agent.py:324] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-01T23:01:03Z [CRITICAL] [agent.py:375] Signature verification FAILED — forged or corrupted signature
