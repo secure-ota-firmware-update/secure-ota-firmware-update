@@ -43,4 +43,7 @@ private_key.pem
 *.sig
 !*.sig.md
 edge_agent/downloads/*
+
 !edge_agent/downloads/.gitkeep
+!edge_agent/downloads/.gitkeeppki/private_key.pem
+pki/private_key.pem
