@@ -383,28 +383,40 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
 
 
 
-def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+def mock_install(manifest: dict, version_store: dict) -> None:
     """
-    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
-    Returns True if the update is allowed, False otherwise.
+    Simulate firmware installation after all verification checks pass.
     """
-    # Convert version strings to integer tuples before comparing.
-    # String comparison gives WRONG results for versions like
-    # "1.10.0" vs "1.9.0" because "10" < "9" lexicographically.
-    # Integer comparison: (1,10,0) > (1,9,0) — CORRECT.
-    # This is a subtle but critical bug if not handled properly.
-    try:
-        incoming_tuple = tuple(map(int, incoming_version.split(".")))
-        minimum_tuple = tuple(map(int, minimum_version.split(".")))
-        return incoming_tuple >= minimum_tuple
-    except ValueError as e:
-        logger.critical(f"Anti-rollback check failed — invalid version format: {e}")
-        # When in doubt, fail closed — reject the update rather than
-        # allowing installation with an uncertain version check.
-        return False
-    except Exception as e:
-        logger.critical(f"Anti-rollback check error: {e}")
-        return False
+    version = manifest["version"]
+
+    logger.info("=" * 50)
+    logger.info(f"INSTALLING firmware v{version}")
+    logger.info("Step 1/4 — Verifying install conditions")
+    logger.info("Step 2/4 — Writing firmware to flash memory (simulated)")
+    logger.info("Step 3/4 — Updating bootloader version pointer (simulated)")
+    logger.info("Step 4/4 — Updating version store")
+
+    # Update current version and append to install history
+    version_store["current_version"] = version
+    version_store["install_history"].append({
+        "version": version,
+        "installed_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "status": "success"
+    })
+
+    # Raise minimum_version to match the newly installed version.
+    # This is the core anti-rollback ratchet mechanism:
+    # once a device installs v1.2.0, its minimum becomes v1.2.0.
+    # No version below v1.2.0 can ever be installed again,
+    # even if it has a valid ECDSA signature.
+    # The minimum only moves forward, never backward.
+    version_store["minimum_version"] = version
+
+    save_version_store(version_store)
+
+    logger.info(f"Install complete — now running v{version}")
+    logger.info("Initiating mock reboot...")
+    logger.info("=" * 50)
 
 
 
