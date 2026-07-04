@@ -374,8 +374,11 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
-=======
+
+    main()
+
 #!/usr/bin/env python3
 """
 Demo Attack Script for Secure OTA Firmware Update

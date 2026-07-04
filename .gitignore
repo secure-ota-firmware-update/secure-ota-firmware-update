@@ -41,9 +41,19 @@ Thumbs.db
 .idea/
 *.swp
 
+*.sig
+private_key.pem
+*_private*.pem
+*.key
+*.sig
+!*.sig.md
+edge_agent/downloads/*
+!edge_agent/downloads/.gitkeep
+
 # Downloads folder
 edge_agent/downloads/*
 
 !edge_agent/downloads/.gitkeep
 !edge_agent/downloads/.gitkeeppki/private_key.pem
 pki/private_key.pem
+
