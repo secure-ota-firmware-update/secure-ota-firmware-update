@@ -1,0 +1,35 @@
+{
+  "_comment": "Edge Agent Configuration — edit these values to configure the agent",
+
+  "agent": {
+    "version": "1.0.0",
+    "log_level": "INFO",
+    "log_file": "edge_agent/agent.log",
+    "max_log_size_mb": 1,
+    "log_backup_count": 5
+  },
+
+  "firmware": {
+    "public_key_path": "pki/public_key.pem",
+    "version_store_path": "edge_agent/version_store.json",
+    "downloads_dir": "edge_agent/downloads",
+    "rejections_dir": "edge_agent/rejections",
+    "max_firmware_size_mb": 100
+  },
+
+  "distribution": {
+    "github_repo": "secure-ota-firmware-update/secure-ota-firmware-update",
+    "manifest_filename": "manifest.json",
+    "local_manifest_path": "distribution/manifest.json",
+    "download_timeout_seconds": 30,
+    "max_download_retries": 3
+  },
+
+  "security": {
+    "minimum_signature_length_bytes": 32,
+    "fail_on_missing_signature": true,
+    "fail_on_missing_public_key": true,
+    "delete_on_verification_failure": true,
+    "write_rejection_reports": true
+  }
+}
