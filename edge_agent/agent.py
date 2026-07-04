@@ -261,11 +261,8 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
     """
     Recompute SHA-256 hash of downloaded firmware and compare with manifest.
 
-    This detects any byte-level tampering that occurred during transit.
-    Even a single changed byte produces a completely different hash.
-
-    Reads file in 8KB chunks to handle large firmware files without
-    loading the entire binary into memory at once.
+    Detects any byte-level tampering during transit.
+    Reads file in 8KB chunks to handle large firmware files.
 
     Args:
         firmware_path: path to downloaded firmware binary
@@ -273,24 +270,43 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
 
     Returns:
         bool: True if hash matches (integrity confirmed)
-              False if hash mismatch (tampering detected)
+              False if mismatch, missing file, or empty firmware
     """
     logger.info(f"Verifying SHA-256 hash of: {firmware_path}")
     logger.info(f"Expected hash: {expected_hash}")
 
+    # Read the firmware binary in 8KB chunks rather than all at once.
+    # A real IoT device may have limited RAM — chunked reading
+    # prevents out-of-memory errors on large firmware files.
     sha256 = hashlib.sha256()
 
-    with open(firmware_path, "rb") as f:
-        while chunk := f.read(8192):
-            sha256.update(chunk)
+    try:
+        with open(firmware_path, "rb") as f:
+            while chunk := f.read(8192):
+            for chunk in iter(lambda: f.read(8192), b""):
+                sha256.update(chunk)
+    except FileNotFoundError:
+        logger.critical(f"Firmware file not found: {firmware_path}")
+        return False
+
+    # Reject empty firmware explicitly
+    if os.path.getsize(firmware_path) == 0:
+        logger.critical("Firmware file is empty — refusing installation")
+        return False
 
     computed_hash = sha256.hexdigest()
     logger.info(f"Computed hash: {computed_hash}")
 
+    # String comparison of hex digests.
+    # Python's == comparison on strings is constant-time for
+    # strings of equal length — no timing attack risk here
+    # because SHA-256 hex digests are always 64 chars.
     if computed_hash == expected_hash:
         logger.info("Hash verification PASSED — firmware integrity confirmed")
         return True
     else:
+        # Log both expected and computed hashes so a security engineer
+        # can investigate discrepancies in the audit trail.
         logger.critical("Hash verification FAILED — tampering detected")
         logger.critical(f"Expected: {expected_hash}")
         logger.critical(f"Computed: {computed_hash}")
@@ -298,14 +314,18 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
         return False
 
 
+
 def verify_signature(firmware_path: str, signature_path: str, public_key_path: str) -> bool:
     """
     Verify the ECDSA signature of the firmware using the stored public key.
+
 
     This proves the firmware was signed by the legitimate developer
     who holds the private key. An attacker cannot forge this signature
     without the private key, even if they replace the firmware and
     recompute a matching SHA-256 hash.
+
+
 
     Args:
         firmware_path: path to downloaded firmware binary
@@ -313,6 +333,7 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
         public_key_path: path to public key PEM file stored on device
 
     Returns:
+
         bool: True if signature is valid, False if invalid or forged
     """
     from cryptography.hazmat.primitives import hashes, serialization
@@ -365,20 +386,146 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
         return False
 
 
+        bool: True if signature is valid, False if invalid or forged
+
+        bool: True if signature is valid, False if invalid, forged, or files missing
+
+    """
+    from cryptography.hazmat.primitives import hashes, serialization
+    from cryptography.hazmat.primitives.asymmetric import ec, utils
+    from cryptography.exceptions import InvalidSignature
+
+    logger.info(f"Verifying ECDSA signature of: {firmware_path}")
+
+    # Load the public key that was baked into the device at manufacture.
+    # In a real device, this would be in ROM or a secure enclave —
+    # here we read it from pki/public_key.pem which simulates that.
+    try:
+        with open(public_key_path, "rb") as f:
+            public_key = serialization.load_pem_public_key(f.read())
+    except Exception as e:
+        logger.critical(f"Error loading public key: {e}")
+    if not os.path.exists(public_key_path):
+        logger.critical(f"Public key not found: {public_key_path}")
+        return False
+
+    # Load the .sig file downloaded alongside the firmware.
+    # This contains the DER-encoded ECDSA signature produced by sign_firmware.py.
+    try:
+        with open(signature_path, "rb") as f:
+            signature = f.read()
+    except Exception as e:
+        logger.critical(f"Error loading signature: {e}")
+        return False
+
+    # Recompute the SHA-256 hash of the firmware.
+    # We use Prehashed because sign_firmware.py also signed a pre-computed hash.
+    sha256 = hashlib.sha256()
+    try:
+        with open(firmware_path, "rb") as f:
+            while chunk := f.read(8192):
+                sha256.update(chunk)
+    except FileNotFoundError:
+        logger.critical(f"Firmware file not found: {firmware_path}")
+        return False
+
+    # Explicitly reject empty firmware — fail closed.
+    if os.path.getsize(firmware_path) == 0:
+        logger.critical("Firmware file is empty — refusing installation")
+        return False
+    # Load signature
+
+    # Check signature file
+
+    if not os.path.exists(signature_path):
+        logger.critical(f"Signature file not found: {signature_path}")
+        return False
+
+
+    with open(signature_path, "rb") as f:
+        signature = f.read()
+
+    firmware_hash = sha256.digest()  # raw bytes, not hex string
+
+    try:
+        # This is the core cryptographic operation.
+        # The ECDSA math proves that only the private key holder
+        # could have produced this signature for this exact hash.
+        public_key.verify(
+            signature,
+            firmware_hash,
+            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
+        )
+        logger.info("Signature verification PASSED — firmware authenticity confirmed")
+        return True
+    except InvalidSignature:
+        # This catches both:
+        # 1. Corrupted binary (hash doesn't match what was signed)
+        # 2. Wrong private key (signature mathematically invalid)
+        logger.critical("Signature verification FAILED — forged or corrupted signature")
+        logger.critical("This firmware was NOT signed by the legitimate private key")
+        logger.critical("Dropping firmware payload — refusing installation")
+        return False
+    except Exception as e:
+        # Catch malformed .sig files that fail before ECDSA math
+        # e.g. truncated files, random bytes, wrong DER encoding.
+        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
+        return False
+
+    # Load public key
+    try:
+        with open(public_key_path, "rb") as f:
+            public_key = serialization.load_pem_public_key(f.read())
+    except Exception as e:
+        logger.critical(f"Error loading public key: {e}")
+        return False
+
+    # Load signature
+    try:
+        with open(signature_path, "rb") as f:
+            signature = f.read()
+    except Exception as e:
+        logger.critical(f"Error loading signature: {e}")
+        return False
+
+    # Compute firmware hash
+    sha256 = hashlib.sha256()
+    try:
+        with open(firmware_path, "rb") as f:
+            for chunk in iter(lambda: f.read(8192), b""):
+                sha256.update(chunk)
+    except FileNotFoundError:
+        logger.critical(f"Firmware file not found: {firmware_path}")
+        return False
+
+    # Reject empty firmware explicitly
+    if os.path.getsize(firmware_path) == 0:
+        logger.critical("Firmware file is empty — refusing installation")
+        return False
+
+    digest = sha256.digest()
+
+    # Verify signature
+    try:
+        public_key.verify(signature, digest, ec.ECDSA(utils.Prehashed(hashes.SHA256())))
+        logger.info("Signature verification PASSED — firmware authenticity confirmed")
+        return True
+    except InvalidSignature:
+        logger.critical("Signature verification FAILED — forged or corrupted signature")
+        return False
+    except Exception as e:
+        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
+        return False
+
+
+
+
+
+
+
 def mock_install(manifest: dict, version_store: dict) -> None:
     """
     Simulate firmware installation after all verification checks pass.
-
-    In a real system this would:
-    1. Write firmware binary to flash memory
-    2. Update bootloader version pointer
-    3. Trigger hardware watchdog reboot
-
-    Here we simulate it with log messages and update version_store.json.
-
-    Args:
-        manifest: manifest dict containing version to install
-        version_store: current version store to update
     """
     version = manifest["version"]
 
@@ -389,13 +536,22 @@ def mock_install(manifest: dict, version_store: dict) -> None:
     logger.info("Step 3/4 — Updating bootloader version pointer (simulated)")
     logger.info("Step 4/4 — Updating version store")
 
-    # Update version store
+    # Update current version and append to install history
     version_store["current_version"] = version
     version_store["install_history"].append({
         "version": version,
         "installed_at": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "status": "success"
     })
+
+    # Raise minimum_version to match the newly installed version.
+    # This is the core anti-rollback ratchet mechanism:
+    # once a device installs v1.2.0, its minimum becomes v1.2.0.
+    # No version below v1.2.0 can ever be installed again,
+    # even if it has a valid ECDSA signature.
+    # The minimum only moves forward, never backward.
+    version_store["minimum_version"] = version
+
     save_version_store(version_store)
 
     logger.info(f"Install complete — now running v{version}")
@@ -462,6 +618,93 @@ def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
             f"older vulnerable firmware"
         )
         return False
+
+
+from packaging import version
+import json, os
+from datetime import datetime
+
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Only accepts strict semantic versions in the format major.minor.patch.
+    Returns True if the update is allowed, False otherwise.
+    """
+    # Convert version strings to integer tuples before comparing.
+    # String comparison gives WRONG results for versions like
+    # "1.10.0" vs "1.9.0" because "10" < "9" lexicographically.
+    # Integer comparison: (1,10,0) > (1,9,0) — CORRECT.
+    # This is a subtle but critical bug if not handled properly.
+    try:
+        incoming_tuple = tuple(map(int, incoming_version.split(".")))
+        minimum_tuple = tuple(map(int, minimum_version.split(".")))
+        return incoming_tuple >= minimum_tuple
+    except ValueError as e:
+        logger.critical(f"Anti-rollback check failed — invalid version format: {e}")
+        # When in doubt, fail closed — reject the update rather than
+        # allowing installation with an uncertain version check.
+        return False
+    except Exception as e:
+        logger.critical(f"Anti-rollback check error: {e}")
+        incoming_parts = incoming_version.split(".")
+        minimum_parts = minimum_version.split(".")
+
+        # Enforce exactly 3 parts (major.minor.patch)
+        if len(incoming_parts) != 3 or len(minimum_parts) != 3:
+            return False
+
+        # Convert to integers, reject non-numeric
+        incoming_tuple = tuple(map(int, incoming_parts))
+        minimum_tuple = tuple(map(int, minimum_parts))
+
+        return incoming_tuple >= minimum_tuple
+    except ValueError:
+        # Non-numeric version parts
+        logger.error(f"Anti-rollback check failed: non-numeric version string")
+        return False
+    except Exception as e:
+        logger.error(f"Anti-rollback check error: {e}")
+        return False
+
+from packaging import version
+import json, os
+from datetime import datetime
+
+def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
+    """
+    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
+    Returns True if the update is allowed, False if rollback detected.
+    """
+    try:
+        return version.parse(incoming_version) >= version.parse(minimum_version)
+    except Exception as e:
+        logger.error(f"Anti-rollback check failed: {e}")
+        return False
+
+
+def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
+    """
+    Write a rejection report to a JSON file for auditing and log it.
+    """
+    report = {
+        "reason": reason,
+        "manifest_version": manifest.get("version"),
+        "details": details,
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+    }
+
+    logger.critical(f"Rejection report generated: {report}")
+
+    try:
+        os.makedirs("edge_agent", exist_ok=True)
+        with open("edge_agent/rejection_report.json", "w") as f:
+            json.dump(report, f, indent=2)
+        logger.info("Rejection report saved to edge_agent/rejection_report.json")
+    except Exception as e:
+        logger.error(f"Failed to save rejection report: {e}")
+
+
+
 
 
 def fetch_manifest_from_release() -> dict:
@@ -793,6 +1036,8 @@ def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
     except (ValueError, AttributeError):
         # If versions are malformed or invalid, reject them safely
         return False
+
+
 
 if __name__ == "__main__":
     main()
