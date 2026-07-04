@@ -559,3 +559,206 @@
 2026-06-24T23:38:38Z [CRITICAL] [agent.py:355] This firmware was NOT signed by the legitimate private key
 2026-06-24T23:38:38Z [CRITICAL] [agent.py:356] Dropping firmware payload â€” refusing installation
 
+2026-07-04T22:02:14Z [INFO] [agent.py:865] =======================================================
+2026-07-04T22:02:14Z [INFO] [agent.py:866] Edge Device Agent started
+2026-07-04T22:02:14Z [INFO] [agent.py:857] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:02:14Z [INFO] [agent.py:870] Agent version: 1.0.0
+2026-07-04T22:02:14Z [INFO] [agent.py:873] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:02:14Z [INFO] [agent.py:876] =======================================================
+2026-07-04T22:02:14Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:02:14Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:02:14Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:02:14Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:02:14Z [CRITICAL] [agent.py:883] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:02:14Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:02:14Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:02:14Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:02:14Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:02:14Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:02:14Z [INFO] [agent.py:565] Duration:         0.01 seconds
+2026-07-04T22:02:14Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:02:14Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:02:14Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:02:14Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:02:15Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:02:15Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:02:15Z [INFO] [agent.py:576] =======================================================
+2026-07-04T22:06:47Z [INFO] [agent.py:865] =======================================================
+2026-07-04T22:06:47Z [INFO] [agent.py:866] Edge Device Agent started
+2026-07-04T22:06:47Z [INFO] [agent.py:857] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:06:47Z [INFO] [agent.py:870] Agent version: 1.0.0
+2026-07-04T22:06:47Z [INFO] [agent.py:873] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:06:47Z [INFO] [agent.py:876] =======================================================
+2026-07-04T22:06:47Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:06:47Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:06:47Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:06:47Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:06:47Z [CRITICAL] [agent.py:883] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:06:47Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:06:47Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:06:47Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:06:47Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:06:47Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:06:47Z [INFO] [agent.py:565] Duration:         0.01 seconds
+2026-07-04T22:06:47Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:06:47Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:06:47Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:06:47Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:06:47Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:06:47Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:06:47Z [INFO] [agent.py:576] =======================================================
+2026-07-04T22:11:27Z [INFO] [agent.py:865] =======================================================
+2026-07-04T22:11:27Z [INFO] [agent.py:866] Edge Device Agent started
+2026-07-04T22:11:27Z [INFO] [agent.py:857] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:11:27Z [INFO] [agent.py:870] Agent version: 1.0.0
+2026-07-04T22:11:27Z [INFO] [agent.py:873] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:11:27Z [INFO] [agent.py:876] =======================================================
+2026-07-04T22:11:27Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:11:27Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:11:27Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:11:27Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:11:27Z [CRITICAL] [agent.py:883] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:11:27Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:11:27Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:11:27Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:11:27Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:11:27Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:11:27Z [INFO] [agent.py:565] Duration:         0.00 seconds
+2026-07-04T22:11:27Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:11:27Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:11:27Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:11:27Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:11:27Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:11:27Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:11:27Z [INFO] [agent.py:576] =======================================================
+2026-07-04T22:13:48Z [INFO] [agent.py:865] =======================================================
+2026-07-04T22:13:48Z [INFO] [agent.py:866] Edge Device Agent started
+2026-07-04T22:13:48Z [INFO] [agent.py:857] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:13:48Z [INFO] [agent.py:870] Agent version: 1.0.0
+2026-07-04T22:13:48Z [INFO] [agent.py:873] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:13:48Z [INFO] [agent.py:876] =======================================================
+2026-07-04T22:13:48Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:13:48Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:13:48Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:13:48Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:13:48Z [CRITICAL] [agent.py:883] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:13:48Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:13:48Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:13:48Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:13:48Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:13:48Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:13:48Z [INFO] [agent.py:565] Duration:         0.00 seconds
+2026-07-04T22:13:48Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:13:48Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:13:48Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:13:48Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:13:48Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:13:48Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:13:48Z [INFO] [agent.py:576] =======================================================
+2026-07-04T22:20:02Z [INFO] [agent.py:439] =======================================================
+2026-07-04T22:20:02Z [INFO] [agent.py:440] Edge Device Agent started
+2026-07-04T22:20:02Z [INFO] [agent.py:433] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:20:02Z [INFO] [agent.py:443] Agent version: 1.0.0
+2026-07-04T22:20:02Z [INFO] [agent.py:444] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:20:02Z [INFO] [agent.py:445] =======================================================
+2026-07-04T22:20:02Z [INFO] [agent.py:91] Version store loaded — current version: 0.0.0
+2026-07-04T22:20:02Z [INFO] [agent.py:114] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:20:02Z [INFO] [agent.py:143] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:20:02Z [ERROR] [agent.py:153] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:20:02Z [CRITICAL] [agent.py:452] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:20:02Z [INFO] [agent.py:383] =======================================================
+2026-07-04T22:20:02Z [INFO] [agent.py:384] AGENT RUN SUMMARY
+2026-07-04T22:20:02Z [INFO] [agent.py:385] =======================================================
+2026-07-04T22:20:02Z [INFO] [agent.py:386] Outcome:          HALTED — missing file
+2026-07-04T22:20:02Z [INFO] [agent.py:387] Firmware version: 9.9.9
+2026-07-04T22:20:02Z [INFO] [agent.py:388] Duration:         0.00 seconds
+2026-07-04T22:20:02Z [INFO] [agent.py:389] Steps passed:     3
+2026-07-04T22:20:02Z [INFO] [agent.py:392]   [PASS] Version store loaded
+2026-07-04T22:20:02Z [INFO] [agent.py:392]   [PASS] Manifest loaded from local file
+2026-07-04T22:20:02Z [INFO] [agent.py:392]   [PASS] Update check — update available
+2026-07-04T22:20:02Z [WARNING] [agent.py:395] Steps failed:     1
+2026-07-04T22:20:02Z [WARNING] [agent.py:397]   [FAIL] File system check
+2026-07-04T22:20:02Z [INFO] [agent.py:399] =======================================================
+2026-07-04T22:20:49Z [INFO] [agent.py:439] =======================================================
+2026-07-04T22:20:49Z [INFO] [agent.py:440] Edge Device Agent started
+2026-07-04T22:20:49Z [INFO] [agent.py:433] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:20:49Z [INFO] [agent.py:443] Agent version: 1.0.0
+2026-07-04T22:20:49Z [INFO] [agent.py:444] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:20:49Z [INFO] [agent.py:445] =======================================================
+2026-07-04T22:20:49Z [INFO] [agent.py:91] Version store loaded — current version: 0.0.0
+2026-07-04T22:20:49Z [INFO] [agent.py:114] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:20:49Z [INFO] [agent.py:143] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:20:49Z [ERROR] [agent.py:153] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:20:49Z [CRITICAL] [agent.py:452] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:20:49Z [INFO] [agent.py:383] =======================================================
+2026-07-04T22:20:49Z [INFO] [agent.py:384] AGENT RUN SUMMARY
+2026-07-04T22:20:49Z [INFO] [agent.py:385] =======================================================
+2026-07-04T22:20:49Z [INFO] [agent.py:386] Outcome:          HALTED — missing file
+2026-07-04T22:20:49Z [INFO] [agent.py:387] Firmware version: 9.9.9
+2026-07-04T22:20:49Z [INFO] [agent.py:388] Duration:         0.00 seconds
+2026-07-04T22:20:49Z [INFO] [agent.py:389] Steps passed:     3
+2026-07-04T22:20:49Z [INFO] [agent.py:392]   [PASS] Version store loaded
+2026-07-04T22:20:49Z [INFO] [agent.py:392]   [PASS] Manifest loaded from local file
+2026-07-04T22:20:49Z [INFO] [agent.py:392]   [PASS] Update check — update available
+2026-07-04T22:20:49Z [WARNING] [agent.py:395] Steps failed:     1
+2026-07-04T22:20:49Z [WARNING] [agent.py:397]   [FAIL] File system check
+2026-07-04T22:20:49Z [INFO] [agent.py:399] =======================================================
+2026-07-04T22:28:05Z [INFO] [agent.py:585] =======================================================
+2026-07-04T22:28:05Z [INFO] [agent.py:586] Edge Device Agent started
+2026-07-04T22:28:05Z [INFO] [agent.py:866] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:28:05Z [INFO] [agent.py:590] Agent version: 1.0.0
+2026-07-04T22:28:05Z [INFO] [agent.py:593] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:28:05Z [INFO] [agent.py:596] =======================================================
+2026-07-04T22:28:05Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:28:05Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:28:05Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:28:05Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:28:05Z [CRITICAL] [agent.py:603] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:31:49Z [INFO] [agent.py:585] =======================================================
+2026-07-04T22:31:49Z [INFO] [agent.py:586] Edge Device Agent started
+2026-07-04T22:31:49Z [INFO] [agent.py:866] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:31:49Z [INFO] [agent.py:590] Agent version: 1.0.0
+2026-07-04T22:31:49Z [INFO] [agent.py:593] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:31:49Z [INFO] [agent.py:596] =======================================================
+2026-07-04T22:31:49Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:31:49Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:31:49Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:31:49Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:31:49Z [CRITICAL] [agent.py:603] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:31:49Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:31:49Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:31:49Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:31:49Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:31:49Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:31:49Z [INFO] [agent.py:565] Duration:         0.00 seconds
+2026-07-04T22:31:49Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:31:49Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:31:49Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:31:49Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:31:49Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:31:49Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:31:49Z [INFO] [agent.py:576] =======================================================
+2026-07-04T22:33:53Z [INFO] [agent.py:585] =======================================================
+2026-07-04T22:33:53Z [INFO] [agent.py:586] Edge Device Agent started
+2026-07-04T22:33:53Z [INFO] [agent.py:866] Configuration loaded from: edge_agent/config.json
+2026-07-04T22:33:53Z [INFO] [agent.py:590] Agent version: 1.0.0
+2026-07-04T22:33:53Z [INFO] [agent.py:593] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-04T22:33:53Z [INFO] [agent.py:596] =======================================================
+2026-07-04T22:33:53Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-04T22:33:53Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-04T22:33:53Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-04T22:33:53Z [ERROR] [agent.py:225] Signature source not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:33:53Z [CRITICAL] [agent.py:603] Required file missing: Signature not found: firmware\dummy_firmware_v9.9.9.sig
+2026-07-04T22:33:53Z [INFO] [agent.py:560] =======================================================
+2026-07-04T22:33:53Z [INFO] [agent.py:561] AGENT RUN SUMMARY
+2026-07-04T22:33:53Z [INFO] [agent.py:562] =======================================================
+2026-07-04T22:33:53Z [INFO] [agent.py:563] Outcome:          HALTED — missing file
+2026-07-04T22:33:53Z [INFO] [agent.py:564] Firmware version: 9.9.9
+2026-07-04T22:33:53Z [INFO] [agent.py:565] Duration:         0.00 seconds
+2026-07-04T22:33:53Z [INFO] [agent.py:566] Steps passed:     3
+2026-07-04T22:33:53Z [INFO] [agent.py:569]   [PASS] Version store loaded
+2026-07-04T22:33:53Z [INFO] [agent.py:569]   [PASS] Manifest loaded from local file
+2026-07-04T22:33:53Z [INFO] [agent.py:569]   [PASS] Update check — update available
+2026-07-04T22:33:53Z [WARNING] [agent.py:572] Steps failed:     1
+2026-07-04T22:33:53Z [WARNING] [agent.py:574]   [FAIL] File system check
+2026-07-04T22:33:53Z [INFO] [agent.py:576] =======================================================
