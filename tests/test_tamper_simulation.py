@@ -482,6 +482,8 @@ class TestFakeSignature:
 
                 os.remove(fake_sig_path)
 
-                
 
+                os.remove(fake_sig_path)
+
+                
 
