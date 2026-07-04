@@ -1,4 +1,4 @@
-""
+"""
 run_all_tests.py
 
 Convenience script to run the complete test suite and

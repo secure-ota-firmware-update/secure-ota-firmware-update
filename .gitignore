@@ -6,6 +6,10 @@ private_key.pem
 # Public key is safe to commit
 !public_key.pem
 
+# Signature files
+*.sig
+!*.sig.md
+
 # Environment variable files
 .env
 .env.*
@@ -36,6 +40,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
 *.sig
 private_key.pem
 *_private*.pem
@@ -43,5 +48,12 @@ private_key.pem
 *.sig
 !*.sig.md
 edge_agent/downloads/*
+!edge_agent/downloads/.gitkeep
+
+# Downloads folder
+edge_agent/downloads/*
+
+!edge_agent/downloads/.gitkeep
 !edge_agent/downloads/.gitkeeppki/private_key.pem
 pki/private_key.pem
+
