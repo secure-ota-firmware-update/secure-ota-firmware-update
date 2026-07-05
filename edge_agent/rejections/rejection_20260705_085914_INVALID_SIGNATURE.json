@@ -1,0 +1,18 @@
+{
+  "report_id": "b3e0d7c0-78d6-4e02-afa1-39b6b9a3ef6c",
+  "timestamp": "2026-07-05T08:59:14Z",
+  "severity": "CRITICAL",
+  "reason": "INVALID_SIGNATURE",
+  "firmware_version": "0.4.0",
+  "firmware_filename": "dummy_firmware_v1.0.0.bin",
+  "firmware_sha256_in_manifest": "6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41",
+  "details": "ECDSA signature does not match public key stored on device",
+  "action_taken": "Firmware payload dropped. Installation refused.",
+  "device_info": {
+    "public_key_path": "pki/public_key.pem",
+    "version_store_path": "edge_agent/version_store.json",
+    "agent_version": "1.0.0"
+  },
+  "firmware_sha256_computed": "6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41",
+  "hash_match": true
+}

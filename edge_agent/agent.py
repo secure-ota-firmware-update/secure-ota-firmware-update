@@ -30,7 +30,7 @@ import logging.handlers
 import shutil
 import requests
 from datetime import datetime
-from packaging import version
+
 
 # cryptography imports stay inside verify_signature() for efficiency
 
@@ -263,33 +263,20 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
 
     Detects any byte-level tampering during transit.
     Reads file in 8KB chunks to handle large firmware files.
-
-    Args:
-        firmware_path: path to downloaded firmware binary
-        expected_hash: SHA-256 hex string from manifest.json
-
-    Returns:
-        bool: True if hash matches (integrity confirmed)
-              False if mismatch, missing file, or empty firmware
     """
     logger.info(f"Verifying SHA-256 hash of: {firmware_path}")
     logger.info(f"Expected hash: {expected_hash}")
 
-    # Read the firmware binary in 8KB chunks rather than all at once.
-    # A real IoT device may have limited RAM — chunked reading
-    # prevents out-of-memory errors on large firmware files.
     sha256 = hashlib.sha256()
 
     try:
         with open(firmware_path, "rb") as f:
-            while chunk := f.read(8192):
             for chunk in iter(lambda: f.read(8192), b""):
                 sha256.update(chunk)
     except FileNotFoundError:
         logger.critical(f"Firmware file not found: {firmware_path}")
         return False
 
-    # Reject empty firmware explicitly
     if os.path.getsize(firmware_path) == 0:
         logger.critical("Firmware file is empty — refusing installation")
         return False
@@ -297,16 +284,10 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
     computed_hash = sha256.hexdigest()
     logger.info(f"Computed hash: {computed_hash}")
 
-    # String comparison of hex digests.
-    # Python's == comparison on strings is constant-time for
-    # strings of equal length — no timing attack risk here
-    # because SHA-256 hex digests are always 64 chars.
     if computed_hash == expected_hash:
         logger.info("Hash verification PASSED — firmware integrity confirmed")
         return True
     else:
-        # Log both expected and computed hashes so a security engineer
-        # can investigate discrepancies in the audit trail.
         logger.critical("Hash verification FAILED — tampering detected")
         logger.critical(f"Expected: {expected_hash}")
         logger.critical(f"Computed: {computed_hash}")
@@ -315,10 +296,10 @@ def verify_hash(firmware_path: str, expected_hash: str) -> bool:
 
 
 
+
 def verify_signature(firmware_path: str, signature_path: str, public_key_path: str) -> bool:
     """
     Verify the ECDSA signature of the firmware using the stored public key.
-
 
     This proves the firmware was signed by the legitimate developer
     who holds the private key. An attacker cannot forge this signature
@@ -343,178 +324,6 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
     if not os.path.exists(public_key_path):
         logger.critical(f"Public key not found: {public_key_path}")
         return False
-
-    with open(public_key_path, "rb") as f:
-        public_key = serialization.load_pem_public_key(f.read())
-
-    # Load signature
-    if not os.path.exists(signature_path):
-        logger.critical(f"Signature file not found: {signature_path}")
-        return False
-
-    with open(signature_path, "rb") as f:
-        signature = f.read()
-
-    # Recompute SHA-256 hash of firmware (same as verify_hash does)
-    sha256 = hashlib.sha256()
-    with open(firmware_path, "rb") as f:
-        while chunk := f.read(8192):
-            sha256.update(chunk)
-    firmware_hash = sha256.digest()
-
-    # Verify signature against the hash using the public key
-    try:
-        public_key.verify(
-            signature,
-            firmware_hash,
-            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
-        )
-        logger.info("Signature verification PASSED — firmware authenticity confirmed")
-        return True
-
-    except InvalidSignature:
-        logger.critical("Signature verification FAILED — forged or corrupted signature")
-        logger.critical("This firmware was NOT signed by the legitimate private key")
-        logger.critical("Dropping firmware payload — refusing installation")
-        return False
-
-    except Exception as e:
-        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
-        return False
-
-    logger.info(f"Verifying ECDSA signature of: {firmware_path}")
-
-    # Load public key
-    if not os.path.exists(public_key_path):
-        logger.critical(f"Public key not found: {public_key_path}")
-        return False
-
-    with open(public_key_path, "rb") as f:
-        public_key = serialization.load_pem_public_key(f.read())
-
-    # Load signature
-    if not os.path.exists(signature_path):
-        logger.critical(f"Signature file not found: {signature_path}")
-        return False
-
-    with open(signature_path, "rb") as f:
-        signature = f.read()
-
-    # Recompute SHA-256 hash of firmware (same as verify_hash does)
-    sha256 = hashlib.sha256()
-    with open(firmware_path, "rb") as f:
-        while chunk := f.read(8192):
-            sha256.update(chunk)
-    firmware_hash = sha256.digest()
-
-    # Verify signature against the hash using the public key
-    try:
-        public_key.verify(
-            signature,
-            firmware_hash,
-            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
-        )
-        logger.info("Signature verification PASSED — firmware authenticity confirmed")
-        return True
-
-    except InvalidSignature:
-        logger.critical("Signature verification FAILED — forged or corrupted signature")
-        logger.critical("This firmware was NOT signed by the legitimate private key")
-        logger.critical("Dropping firmware payload — refusing installation")
-        return False
-
-    except Exception as e:
-        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
-        return False
-
-
-        bool: True if signature is valid, False if invalid or forged
-
-        bool: True if signature is valid, False if invalid, forged, or files missing
-
-    """
-    from cryptography.hazmat.primitives import hashes, serialization
-    from cryptography.hazmat.primitives.asymmetric import ec, utils
-    from cryptography.exceptions import InvalidSignature
-
-    logger.info(f"Verifying ECDSA signature of: {firmware_path}")
-
-    # Load the public key that was baked into the device at manufacture.
-    # In a real device, this would be in ROM or a secure enclave —
-    # here we read it from pki/public_key.pem which simulates that.
-    try:
-        with open(public_key_path, "rb") as f:
-            public_key = serialization.load_pem_public_key(f.read())
-    except Exception as e:
-        logger.critical(f"Error loading public key: {e}")
-    if not os.path.exists(public_key_path):
-        logger.critical(f"Public key not found: {public_key_path}")
-        return False
-
-    # Load the .sig file downloaded alongside the firmware.
-    # This contains the DER-encoded ECDSA signature produced by sign_firmware.py.
-    try:
-        with open(signature_path, "rb") as f:
-            signature = f.read()
-    except Exception as e:
-        logger.critical(f"Error loading signature: {e}")
-        return False
-
-    # Recompute the SHA-256 hash of the firmware.
-    # We use Prehashed because sign_firmware.py also signed a pre-computed hash.
-    sha256 = hashlib.sha256()
-    try:
-        with open(firmware_path, "rb") as f:
-            while chunk := f.read(8192):
-                sha256.update(chunk)
-    except FileNotFoundError:
-        logger.critical(f"Firmware file not found: {firmware_path}")
-        return False
-
-    # Explicitly reject empty firmware — fail closed.
-    if os.path.getsize(firmware_path) == 0:
-        logger.critical("Firmware file is empty — refusing installation")
-        return False
-    # Load signature
-
-    # Check signature file
-
-    if not os.path.exists(signature_path):
-        logger.critical(f"Signature file not found: {signature_path}")
-        return False
-
-
-    with open(signature_path, "rb") as f:
-        signature = f.read()
-
-    firmware_hash = sha256.digest()  # raw bytes, not hex string
-
-    try:
-        # This is the core cryptographic operation.
-        # The ECDSA math proves that only the private key holder
-        # could have produced this signature for this exact hash.
-        public_key.verify(
-            signature,
-            firmware_hash,
-            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
-        )
-        logger.info("Signature verification PASSED — firmware authenticity confirmed")
-        return True
-    except InvalidSignature:
-        # This catches both:
-        # 1. Corrupted binary (hash doesn't match what was signed)
-        # 2. Wrong private key (signature mathematically invalid)
-        logger.critical("Signature verification FAILED — forged or corrupted signature")
-        logger.critical("This firmware was NOT signed by the legitimate private key")
-        logger.critical("Dropping firmware payload — refusing installation")
-        return False
-    except Exception as e:
-        # Catch malformed .sig files that fail before ECDSA math
-        # e.g. truncated files, random bytes, wrong DER encoding.
-        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
-        return False
-
-    # Load public key
     try:
         with open(public_key_path, "rb") as f:
             public_key = serialization.load_pem_public_key(f.read())
@@ -523,6 +332,9 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
         return False
 
     # Load signature
+    if not os.path.exists(signature_path):
+        logger.critical(f"Signature file not found: {signature_path}")
+        return False
     try:
         with open(signature_path, "rb") as f:
             signature = f.read()
@@ -530,7 +342,7 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
         logger.critical(f"Error loading signature: {e}")
         return False
 
-    # Compute firmware hash
+    # Recompute SHA-256 hash of firmware
     sha256 = hashlib.sha256()
     try:
         with open(firmware_path, "rb") as f:
@@ -545,23 +357,25 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
         logger.critical("Firmware file is empty — refusing installation")
         return False
 
-    digest = sha256.digest()
+    firmware_hash = sha256.digest()
 
-    # Verify signature
+    # Verify signature against the hash using the public key
     try:
-        public_key.verify(signature, digest, ec.ECDSA(utils.Prehashed(hashes.SHA256())))
+        public_key.verify(
+            signature,
+            firmware_hash,
+            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
+        )
         logger.info("Signature verification PASSED — firmware authenticity confirmed")
         return True
     except InvalidSignature:
         logger.critical("Signature verification FAILED — forged or corrupted signature")
+        logger.critical("This firmware was NOT signed by the legitimate private key")
+        logger.critical("Dropping firmware payload — refusing installation")
         return False
     except Exception as e:
         logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
         return False
-
-
-
-
 
 
 
@@ -609,7 +423,7 @@ def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
     even if that older firmware has a perfectly valid ECDSA signature.
 
     Uses semantic version comparison (major.minor.patch) with integer
-    parsing — NOT string comparison. String comparison gives wrong results
+    parsing - NOT string comparison. String comparison gives wrong results
     for versions like "1.10.0" vs "1.9.0" because "10" < "9" as strings.
 
     Args:
@@ -976,44 +790,14 @@ def write_rejection_report(
  
     logger.critical(f"Rejection report written: {filepath}")
     
-def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
-    """
-    Compares the incoming firmware version against the allowed minimum version.
-    Uses integer-based semantic version comparison to prevent string sorting bugs.
-    
-    Returns:
-        True if current_version >= minimum_version
-        False otherwise
-    """
-    try:
-        # Split version strings and convert components to integers
-        current_parts = [int(x) for x in current_version.split('.')]
-        minimum_parts = [int(x) for x in minimum_version.split('.')]
-        
-        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
-        max_len = max(len(current_parts), len(minimum_parts))
-        current_parts.extend([0] * (max_len - len(current_parts)))
-        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
-        
-        # Compare tuple of integers directly
-        return current_parts >= minimum_parts
-    except (ValueError, AttributeError):
-        # If versions are malformed or invalid, reject them safely
-        return False
+
 
 def load_config(config_path: str = "edge_agent/config.json") -> dict:
     """
     Load agent configuration from config.json.
 
-    Falls back to hardcoded defaults if config file is missing.
-    This allows the agent to run without a config file in
-    development environments.
-
-    Args:
-        config_path: path to config.json
-
-    Returns:
-        dict: configuration values
+    Falls back to hardcoded defaults if config file is missing or invalid.
+    Merges user config with defaults to ensure all keys exist.
     """
     defaults = {
         "agent": {
@@ -1040,16 +824,27 @@ def load_config(config_path: str = "edge_agent/config.json") -> dict:
     }
 
     if not os.path.exists(config_path):
-        logger.warning(
-            f"Config file not found: {config_path} — using defaults"
-        )
+        logger.warning(f"Config file not found: {config_path} — using defaults")
         return defaults
 
-    with open(config_path, "r") as f:
-        config = json.load(f)
+    try:
+        with open(config_path, "r") as f:
+            user_config = json.load(f)
+        logger.info(f"Configuration loaded from: {config_path}")
+    except Exception as e:
+        logger.error(f"Failed to load config: {e} — using defaults")
+        return defaults
 
-    logger.info(f"Configuration loaded from: {config_path}")
-    return config
+    # Merge user config into defaults (defaults fill missing keys)
+    def deep_update(base: dict, updates: dict) -> dict:
+        for key, value in updates.items():
+            if isinstance(value, dict) and key in base and isinstance(base[key], dict):
+                base[key] = deep_update(base[key], value)
+            else:
+                base[key] = value
+        return base
+
+    return deep_update(defaults, user_config)
 
 
 if __name__ == "__main__":
