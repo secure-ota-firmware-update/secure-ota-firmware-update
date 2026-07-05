@@ -6,6 +6,10 @@ private_key.pem
 # Public key is safe to commit
 !public_key.pem
 
+# Signature files
+*.sig
+!*.sig.md
+
 # Environment variable files
 .env
 .env.*
@@ -43,5 +47,4 @@ private_key.pem
 *.sig
 !*.sig.md
 edge_agent/downloads/*
-!edge_agent/downloads/.gitkeeppki/private_key.pem
-pki/private_key.pem
+!edge_agent/downloads/.gitkeep
