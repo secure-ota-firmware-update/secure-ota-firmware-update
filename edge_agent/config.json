@@ -1,5 +1,5 @@
 {
-  "_comment": "Edge Agent Configuration — edit these values to configure the agent",
+  "_comment": "Edge Agent Configuration — local validation setup",
 
   "agent": {
     "version": "1.0.0",
@@ -22,7 +22,8 @@
     "manifest_filename": "manifest.json",
     "local_manifest_path": "distribution/manifest.json",
     "download_timeout_seconds": 30,
-    "max_download_retries": 3
+    "max_download_retries": 3,
+    "use_local_manifest": true
   },
 
   "security": {
