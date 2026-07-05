@@ -108,17 +108,3 @@ Results:
 
 Full end-to-end flow confirmed working:
 Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
-
-
-Full end-to-end flow confirmed working:
-Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
-
-Full end-to-end flow confirmed working:
-Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
-
-
-Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
-
-Developer push tag → Pipeline sign → GitHub Release → Agent download → Hash verify
-
-

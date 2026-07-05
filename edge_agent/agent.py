@@ -325,20 +325,62 @@ def verify_signature(firmware_path: str, signature_path: str, public_key_path: s
     without the private key, even if they replace the firmware and
     recompute a matching SHA-256 hash.
 
-
-
     Args:
         firmware_path: path to downloaded firmware binary
         signature_path: path to downloaded .sig file
         public_key_path: path to public key PEM file stored on device
 
     Returns:
-
         bool: True if signature is valid, False if invalid or forged
     """
     from cryptography.hazmat.primitives import hashes, serialization
     from cryptography.hazmat.primitives.asymmetric import ec, utils
     from cryptography.exceptions import InvalidSignature
+
+    logger.info(f"Verifying ECDSA signature of: {firmware_path}")
+
+    # Load public key
+    if not os.path.exists(public_key_path):
+        logger.critical(f"Public key not found: {public_key_path}")
+        return False
+
+    with open(public_key_path, "rb") as f:
+        public_key = serialization.load_pem_public_key(f.read())
+
+    # Load signature
+    if not os.path.exists(signature_path):
+        logger.critical(f"Signature file not found: {signature_path}")
+        return False
+
+    with open(signature_path, "rb") as f:
+        signature = f.read()
+
+    # Recompute SHA-256 hash of firmware (same as verify_hash does)
+    sha256 = hashlib.sha256()
+    with open(firmware_path, "rb") as f:
+        while chunk := f.read(8192):
+            sha256.update(chunk)
+    firmware_hash = sha256.digest()
+
+    # Verify signature against the hash using the public key
+    try:
+        public_key.verify(
+            signature,
+            firmware_hash,
+            ec.ECDSA(utils.Prehashed(hashes.SHA256()))
+        )
+        logger.info("Signature verification PASSED — firmware authenticity confirmed")
+        return True
+
+    except InvalidSignature:
+        logger.critical("Signature verification FAILED — forged or corrupted signature")
+        logger.critical("This firmware was NOT signed by the legitimate private key")
+        logger.critical("Dropping firmware payload — refusing installation")
+        return False
+
+    except Exception as e:
+        logger.critical(f"Signature verification error: {type(e).__name__}: {e}")
+        return False
 
     logger.info(f"Verifying ECDSA signature of: {firmware_path}")
 
@@ -618,93 +660,6 @@ def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
             f"older vulnerable firmware"
         )
         return False
-
-
-from packaging import version
-import json, os
-from datetime import datetime
-
-def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
-    """
-    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
-    Only accepts strict semantic versions in the format major.minor.patch.
-    Returns True if the update is allowed, False otherwise.
-    """
-    # Convert version strings to integer tuples before comparing.
-    # String comparison gives WRONG results for versions like
-    # "1.10.0" vs "1.9.0" because "10" < "9" lexicographically.
-    # Integer comparison: (1,10,0) > (1,9,0) — CORRECT.
-    # This is a subtle but critical bug if not handled properly.
-    try:
-        incoming_tuple = tuple(map(int, incoming_version.split(".")))
-        minimum_tuple = tuple(map(int, minimum_version.split(".")))
-        return incoming_tuple >= minimum_tuple
-    except ValueError as e:
-        logger.critical(f"Anti-rollback check failed — invalid version format: {e}")
-        # When in doubt, fail closed — reject the update rather than
-        # allowing installation with an uncertain version check.
-        return False
-    except Exception as e:
-        logger.critical(f"Anti-rollback check error: {e}")
-        incoming_parts = incoming_version.split(".")
-        minimum_parts = minimum_version.split(".")
-
-        # Enforce exactly 3 parts (major.minor.patch)
-        if len(incoming_parts) != 3 or len(minimum_parts) != 3:
-            return False
-
-        # Convert to integers, reject non-numeric
-        incoming_tuple = tuple(map(int, incoming_parts))
-        minimum_tuple = tuple(map(int, minimum_parts))
-
-        return incoming_tuple >= minimum_tuple
-    except ValueError:
-        # Non-numeric version parts
-        logger.error(f"Anti-rollback check failed: non-numeric version string")
-        return False
-    except Exception as e:
-        logger.error(f"Anti-rollback check error: {e}")
-        return False
-
-from packaging import version
-import json, os
-from datetime import datetime
-
-def anti_rollback_check(incoming_version: str, minimum_version: str) -> bool:
-    """
-    Prevent rollback attacks by ensuring incoming_version >= minimum_version.
-    Returns True if the update is allowed, False if rollback detected.
-    """
-    try:
-        return version.parse(incoming_version) >= version.parse(minimum_version)
-    except Exception as e:
-        logger.error(f"Anti-rollback check failed: {e}")
-        return False
-
-
-def write_rejection_report(reason: str, manifest: dict, details: str) -> None:
-    """
-    Write a rejection report to a JSON file for auditing and log it.
-    """
-    report = {
-        "reason": reason,
-        "manifest_version": manifest.get("version"),
-        "details": details,
-        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
-    }
-
-    logger.critical(f"Rejection report generated: {report}")
-
-    try:
-        os.makedirs("edge_agent", exist_ok=True)
-        with open("edge_agent/rejection_report.json", "w") as f:
-            json.dump(report, f, indent=2)
-        logger.info("Rejection report saved to edge_agent/rejection_report.json")
-    except Exception as e:
-        logger.error(f"Failed to save rejection report: {e}")
-
-
-
 
 
 def fetch_manifest_from_release() -> dict:

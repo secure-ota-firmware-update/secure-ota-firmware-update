@@ -1,4 +1,3 @@
-
 """
 test_tamper_simulation.py
 
@@ -476,14 +475,4 @@ class TestFakeSignature:
             assert result is False, "Truncated signature should be rejected"
         finally:
             if os.path.exists(fake_sig_path):
-
                 os.remove(fake_sig_path)
-
-
-                os.remove(fake_sig_path)
-
-
-                os.remove(fake_sig_path)
-
-                
-
