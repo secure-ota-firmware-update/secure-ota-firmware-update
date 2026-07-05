@@ -769,6 +769,15 @@ def main():
 
     logger.info("=" * 55)
     logger.info("Edge Device Agent started")
+
+    # Load configuration
+    config = load_config()
+    logger.info(
+        f"Agent version: {config['agent']['version']}"
+    )
+    logger.info(
+        f"GitHub repo: {config['distribution']['github_repo']}"
+    )
     logger.info("=" * 55)
 
     try:
@@ -992,6 +1001,55 @@ def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
         # If versions are malformed or invalid, reject them safely
         return False
 
+def load_config(config_path: str = "edge_agent/config.json") -> dict:
+    """
+    Load agent configuration from config.json.
+
+    Falls back to hardcoded defaults if config file is missing.
+    This allows the agent to run without a config file in
+    development environments.
+
+    Args:
+        config_path: path to config.json
+
+    Returns:
+        dict: configuration values
+    """
+    defaults = {
+        "agent": {
+            "version": "1.0.0",
+            "log_level": "INFO"
+        },
+        "firmware": {
+            "public_key_path": "pki/public_key.pem",
+            "version_store_path": "edge_agent/version_store.json",
+            "downloads_dir": "edge_agent/downloads",
+            "rejections_dir": "edge_agent/rejections"
+        },
+        "distribution": {
+            "github_repo": "secure-ota-firmware-update/secure-ota-firmware-update",
+            "manifest_filename": "manifest.json",
+            "local_manifest_path": "distribution/manifest.json",
+            "download_timeout_seconds": 30,
+            "max_download_retries": 3
+        },
+        "security": {
+            "delete_on_verification_failure": True,
+            "write_rejection_reports": True
+        }
+    }
+
+    if not os.path.exists(config_path):
+        logger.warning(
+            f"Config file not found: {config_path} — using defaults"
+        )
+        return defaults
+
+    with open(config_path, "r") as f:
+        config = json.load(f)
+
+    logger.info(f"Configuration loaded from: {config_path}")
+    return config
 
 
 if __name__ == "__main__":
