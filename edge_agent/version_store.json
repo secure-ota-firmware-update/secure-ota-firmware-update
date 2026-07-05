@@ -1,12 +1,6 @@
 {
   "current_version": "1.0.0",
   "minimum_version": "1.0.0",
-  "last_updated": "2026-07-05T00:00:00Z",
-  "install_history": [
-    {
-      "version": "1.0.0",
-      "installed_at": "2026-07-05T10:32:18Z",
-      "status": "success"
-    }
-  ]
+  "last_updated": "2026-06-21T00:00:00Z",
+  "install_history": []
 }
