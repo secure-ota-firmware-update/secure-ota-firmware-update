@@ -6,7 +6,19 @@ OTA firmware update pipeline.
 ---
 
 ## Coming in Week 4
+### Week 4 — Final Polish and Documentation ✅ COMPLETE
 
+- [x] Comprehensive README.md as project showcase
+- [x] CONTRIBUTING.md with developer onboarding
+- [x] verify_setup.py environment verification script
+- [x] bump_version.py one-command release creator
+- [x] demo_attack.py live attack demonstration
+- [x] run_all_tests.py one-command test runner
+- [x] GLOSSARY.md with 40+ security terms defined
+- [x] LESSONS_LEARNED.md with 7 technical insights
+- [x] SUBMISSION_CHECKLIST.md mapping spec to implementation
+- [x] Full repo audit — fixed agent.py, stray files, .gitignore
+- [x] Final release v1.1.0 published and verified
 ### test_tamper_simulation.py
 
 This test file will contain 5 critical security tests:
@@ -54,3 +66,12 @@ docs/THREAT_MODEL.md:
 ```bash
 python -m pytest tests/test_tamper_simulation.py -v
 ```
+## Latest Release
+
+```bash
+python firmware/pipeline_status.py    # check pipeline status
+python firmware/verify_release_integrity.py  # verify release artifacts
+```
+
+Latest release: v1.1.0
+Assets: dummy_firmware_v1.0.0.bin + dummy_firmware_v1.0.0.sig + manifest.json
