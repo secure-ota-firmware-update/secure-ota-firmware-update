@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "_comment": "Edge Agent Configuration — edit these values to configure the agent",
+=======
+  "_comment": "Edge Agent Configuration — local validation setup",
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
 
   "agent": {
     "version": "1.0.0",
@@ -22,7 +26,12 @@
     "manifest_filename": "manifest.json",
     "local_manifest_path": "distribution/manifest.json",
     "download_timeout_seconds": 30,
+<<<<<<< HEAD
     "max_download_retries": 3
+=======
+    "max_download_retries": 3,
+    "use_local_manifest": true
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
   },
 
   "security": {
@@ -32,4 +41,8 @@
     "delete_on_verification_failure": true,
     "write_rejection_reports": true
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53

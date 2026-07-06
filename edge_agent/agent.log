@@ -762,3 +762,683 @@
 2026-07-04T22:33:53Z [WARNING] [agent.py:572] Steps failed:     1
 2026-07-04T22:33:53Z [WARNING] [agent.py:574]   [FAIL] File system check
 2026-07-04T22:33:53Z [INFO] [agent.py:576] =======================================================
+<<<<<<< HEAD
+=======
+2026-07-05T13:28:36Z [INFO] [agent.py:267] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:277] Firmware file not found: /nonexistent/path/firmware.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:321] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:352] Firmware file not found: /nonexistent/firmware.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:336] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-05T13:28:36Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpsftba5mn.bin
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:325] Public key not found: /nonexistent/public_key.pem
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0, minimum=1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=, minimum=1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: ''. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.a.0, minimum=1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Version parts must be integers, got: '1.a.0'
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0.0, minimum=1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0.0.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.0.0, minimum=1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.0.0 < minimum v1.0.0
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:36Z [INFO] [agent.py:452] Anti-rollback check: incoming=999.999.999, minimum=1.0.0
+2026-07-05T13:28:36Z [INFO] [agent.py:462] Anti-rollback check PASSED — v999.999.999 >= minimum v1.0.0
+2026-07-05T13:28:36Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpv3l8wd_9.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T13:28:36Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpv3l8wd_9.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:268] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-05T13:28:36Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T13:28:36Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmph4co4249.bin
+2026-07-05T13:28:36Z [INFO] [agent.py:268] Expected hash: tooshort
+2026-07-05T13:28:37Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:292] Expected: tooshort
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:28:37Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmph4co4249.bin
+2026-07-05T13:28:37Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:28:37Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:292] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:28:37Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpr5whjngu.bin
+2026-07-05T13:28:37Z [INFO] [agent.py:268] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T13:28:37Z [INFO] [agent.py:285] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T13:28:37Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:28:37Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:28:37Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:28:37Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:37Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:37Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:37Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.2.0, minimum=1.0.0
+2026-07-05T13:28:37Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.2.0 >= minimum v1.0.0
+2026-07-05T13:28:37Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.0
+2026-07-05T13:28:37Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.0.0 >= minimum v1.0.0
+2026-07-05T13:28:37Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:37Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.1
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.0.1
+2026-07-05T13:28:37Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:37Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.10.0, minimum=1.9.0
+2026-07-05T13:28:37Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.10.0 >= minimum v1.9.0
+2026-07-05T13:28:38Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:268] Expected hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:285] Computed hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T13:28:38Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T13:28:38Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:268] Expected hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:285] Computed hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T13:28:38Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T13:28:38Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp0vu2gb_e.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:268] Expected hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:285] Computed hash: a382f940c998c39d345b880bb94043f9b03fac5d614a67554b33c11cd6bb0fcb
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:292] Expected: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:293] Computed: a382f940c998c39d345b880bb94043f9b03fac5d614a67554b33c11cd6bb0fcb
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmptj3xthnl.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:268] Expected hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:285] Computed hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.1.0, minimum=1.0.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.1.0 < minimum v1.0.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.1.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.1.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.1.0, minimum=1.1.1
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.1.0 < minimum v1.1.1
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:38Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:268] Expected hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:285] Computed hash: 9c22ee9ffcbd6d13fad2ad963f4cff61280265690877ad77c76d8ba3e819d22c
+2026-07-05T13:28:38Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:28:38Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=99.0.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v8.8.8 < minimum v99.0.0
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:28:38Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:28:38Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:277] Firmware file not found: /nonexistent/path/firmware.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:321] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:352] Firmware file not found: /nonexistent/firmware.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:336] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-05T13:29:58Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpf9dkiwzx.bin
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:325] Public key not found: /nonexistent/public_key.pem
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0, minimum=1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=, minimum=1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: ''. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.a.0, minimum=1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Version parts must be integers, got: '1.a.0'
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0.0, minimum=1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0.0.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.0.0, minimum=1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.0.0 < minimum v1.0.0
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:58Z [INFO] [agent.py:452] Anti-rollback check: incoming=999.999.999, minimum=1.0.0
+2026-07-05T13:29:58Z [INFO] [agent.py:462] Anti-rollback check PASSED — v999.999.999 >= minimum v1.0.0
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpaogqt5rj.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpaogqt5rj.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpxiwbs6hc.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: tooshort
+2026-07-05T13:29:58Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:292] Expected: tooshort
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpxiwbs6hc.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:29:58Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:292] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T13:29:58Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:29:58Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpw5ujr00r.bin
+2026-07-05T13:29:58Z [INFO] [agent.py:268] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T13:29:58Z [INFO] [agent.py:285] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T13:29:58Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.2.0, minimum=1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.2.0 >= minimum v1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.0.0 >= minimum v1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.1
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.0.1
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.10.0, minimum=1.9.0
+2026-07-05T13:29:59Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.10.0 >= minimum v1.9.0
+2026-07-05T13:29:59Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:268] Expected hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:285] Computed hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:268] Expected hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:285] Computed hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T13:29:59Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpy1mquc_z.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:268] Expected hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:285] Computed hash: 87720ff0af26d770e7e82da4238b3906a137c62fce59a4d76f095b38fbb6ee9b
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:292] Expected: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:293] Computed: 87720ff0af26d770e7e82da4238b3906a137c62fce59a4d76f095b38fbb6ee9b
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmp052v76go.bin
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:268] Expected hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:285] Computed hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.1.0, minimum=1.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.1.0 < minimum v1.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.1.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.1.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.1.0, minimum=1.1.1
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.1.0 < minimum v1.1.1
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:268] Expected hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:285] Computed hash: 3f30b879cbfa979f6a18940058830c8e53e94f09a4b5b29fe58a8dcd4603724c
+2026-07-05T13:29:59Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:29:59Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=99.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v8.8.8 < minimum v99.0.0
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T13:29:59Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:29:59Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:30:00Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:30:00Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:30:00Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:30:00Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:30:13Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:13Z [INFO] [agent.py:268] Expected hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:13Z [INFO] [agent.py:285] Computed hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:13Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:30:13Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:13Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:30:13Z [INFO] [agent.py:452] Anti-rollback check: incoming=7.7.7, minimum=1.0.0
+2026-07-05T13:30:13Z [INFO] [agent.py:462] Anti-rollback check PASSED — v7.7.7 >= minimum v1.0.0
+2026-07-05T13:30:14Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin.corrupted
+2026-07-05T13:30:14Z [INFO] [agent.py:268] Expected hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:14Z [INFO] [agent.py:285] Computed hash: e95e4b2e5b4fcc2a19d035e78d673b0957d9a48ea85833f7a8e7e60e6724669b
+2026-07-05T13:30:14Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T13:30:14Z [CRITICAL] [agent.py:292] Expected: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:14Z [CRITICAL] [agent.py:293] Computed: e95e4b2e5b4fcc2a19d035e78d673b0957d9a48ea85833f7a8e7e60e6724669b
+2026-07-05T13:30:14Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T13:30:15Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:15Z [INFO] [agent.py:268] Expected hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:15Z [INFO] [agent.py:285] Computed hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:15Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:30:15Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:16Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T13:30:16Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T13:30:16Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T13:30:17Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:17Z [INFO] [agent.py:268] Expected hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:17Z [INFO] [agent.py:285] Computed hash: 68584e92c9516fb54035513718ed9468ae81d353464366534afb26a57e1c48d6
+2026-07-05T13:30:17Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T13:30:17Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T13:30:17Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T13:30:17Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T13:30:17Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T13:30:17Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T14:08:50Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:50Z [INFO] [agent.py:268] Expected hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:50Z [INFO] [agent.py:285] Computed hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:50Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T14:08:50Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:50Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T14:08:50Z [INFO] [agent.py:452] Anti-rollback check: incoming=7.7.7, minimum=1.0.0
+2026-07-05T14:08:50Z [INFO] [agent.py:462] Anti-rollback check PASSED — v7.7.7 >= minimum v1.0.0
+2026-07-05T14:08:51Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin.corrupted
+2026-07-05T14:08:51Z [INFO] [agent.py:268] Expected hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:51Z [INFO] [agent.py:285] Computed hash: 42a81fdd1dbe066b6f5c16c4046e3c502f80400cdc407a9961f87266e01e6c73
+2026-07-05T14:08:51Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T14:08:51Z [CRITICAL] [agent.py:292] Expected: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:51Z [CRITICAL] [agent.py:293] Computed: 42a81fdd1dbe066b6f5c16c4046e3c502f80400cdc407a9961f87266e01e6c73
+2026-07-05T14:08:51Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T14:08:52Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:52Z [INFO] [agent.py:268] Expected hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:52Z [INFO] [agent.py:285] Computed hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:52Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T14:08:52Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:52Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T14:08:52Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T14:08:52Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T14:08:53Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:53Z [INFO] [agent.py:268] Expected hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:53Z [INFO] [agent.py:285] Computed hash: b7513c38896df066fd0e06216067e6070adc221feefbb003fc357c4d62a681ed
+2026-07-05T14:08:53Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T14:08:53Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T14:08:53Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T14:08:53Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T14:08:53Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T14:08:53Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T14:29:12Z [INFO] [agent.py:584] =======================================================
+2026-07-05T14:29:12Z [INFO] [agent.py:585] Edge Device Agent started
+2026-07-05T14:29:12Z [INFO] [agent.py:833] Configuration loaded from: edge_agent/config.json
+2026-07-05T14:29:12Z [INFO] [agent.py:589] Agent version: 1.0.0
+2026-07-05T14:29:12Z [INFO] [agent.py:592] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-05T14:29:12Z [INFO] [agent.py:595] =======================================================
+2026-07-05T14:29:12Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-05T14:29:12Z [INFO] [agent.py:491] Fetching latest release from GitHub API: https://api.github.com/repos/secure-ota-firmware-update/secure-ota-firmware-update/releases/latest
+2026-07-05T14:29:13Z [INFO] [agent.py:506] Found release: v0.4.0
+2026-07-05T14:29:13Z [INFO] [agent.py:519] Downloading manifest from: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/manifest.json
+2026-07-05T14:29:13Z [INFO] [agent.py:524] Manifest fetched — firmware version: 0.4.0
+2026-07-05T14:29:13Z [INFO] [agent.py:169] Update available: 0.0.0 -> 0.4.0
+2026-07-05T14:29:13Z [INFO] [agent.py:207] Downloading firmware from GitHub Release: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/dummy_firmware_v1.0.0.bin
+2026-07-05T14:29:14Z [INFO] [agent.py:210] Downloading signature from GitHub Release: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/dummy_firmware_v1.0.0.sig
+2026-07-05T14:29:14Z [INFO] [agent.py:231] Firmware downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T14:29:14Z [INFO] [agent.py:232] Signature downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.sig
+2026-07-05T14:29:14Z [INFO] [agent.py:267] Verifying SHA-256 hash of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T14:29:14Z [INFO] [agent.py:268] Expected hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-07-05T14:29:14Z [INFO] [agent.py:285] Computed hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-07-05T14:29:14Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T14:29:14Z [INFO] [agent.py:321] Verifying ECDSA signature of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:791] Rejection report written: edge_agent/rejections\rejection_20260705_085914_INVALID_SIGNATURE.json
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:677] ==================================================
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:678] SECURITY ALERT
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:679] Signature verification FAILED
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:680] Firmware was NOT signed by the legitimate key
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:681] Payload dropped — installation refused
+2026-07-05T14:29:14Z [CRITICAL] [agent.py:682] ==================================================
+2026-07-05T14:29:14Z [INFO] [agent.py:559] =======================================================
+2026-07-05T14:29:14Z [INFO] [agent.py:560] AGENT RUN SUMMARY
+2026-07-05T14:29:14Z [INFO] [agent.py:561] =======================================================
+2026-07-05T14:29:14Z [INFO] [agent.py:562] Outcome:          REJECTED — invalid or forged signature
+2026-07-05T14:29:14Z [INFO] [agent.py:563] Firmware version: 0.4.0
+2026-07-05T14:29:14Z [INFO] [agent.py:564] Duration:         2.06 seconds
+2026-07-05T14:29:14Z [INFO] [agent.py:565] Steps passed:     4
+2026-07-05T14:29:14Z [INFO] [agent.py:568]   [PASS] Version store loaded
+2026-07-05T14:29:14Z [INFO] [agent.py:568]   [PASS] Manifest fetched from GitHub Releases
+2026-07-05T14:29:14Z [INFO] [agent.py:568]   [PASS] Update check — update available
+2026-07-05T14:29:14Z [INFO] [agent.py:568]   [PASS] Firmware downloaded
+2026-07-05T14:29:14Z [WARNING] [agent.py:571] Steps failed:     1
+2026-07-05T14:29:14Z [WARNING] [agent.py:573]   [FAIL] ECDSA signature verification
+2026-07-05T14:29:14Z [INFO] [agent.py:575] =======================================================
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:277] Firmware file not found: /nonexistent/path/firmware.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:321] Verifying ECDSA signature of: /nonexistent/firmware.bin
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:352] Firmware file not found: /nonexistent/firmware.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v1.0.0.bin
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:336] Signature file not found: /nonexistent/path/firmware.sig
+2026-07-05T15:33:08Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpvo3bouy3.bin
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:325] Public key not found: /nonexistent/public_key.pem
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0, minimum=1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=, minimum=1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: ''. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.a.0, minimum=1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Version parts must be integers, got: '1.a.0'
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0.0, minimum=1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:458] Anti-rollback check failed — invalid version format: Invalid version format: '1.0.0.0'. Expected X.Y.Z (e.g. 1.2.3)
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.0.0, minimum=1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.0.0 < minimum v1.0.0
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:08Z [INFO] [agent.py:452] Anti-rollback check: incoming=999.999.999, minimum=1.0.0
+2026-07-05T15:33:08Z [INFO] [agent.py:462] Anti-rollback check PASSED — v999.999.999 >= minimum v1.0.0
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpbvw8b_8q.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpbvw8b_8q.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:281] Firmware file is empty — refusing installation
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpig6an0c8.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: tooshort
+2026-07-05T15:33:08Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:292] Expected: tooshort
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpig6an0c8.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T15:33:08Z [INFO] [agent.py:285] Computed hash: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:292] Expected: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:293] Computed: 5a480434c0b55f930ae01a7d38579893889eec0be56c478385c941f736f66e89
+2026-07-05T15:33:08Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T15:33:08Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmp2krzzy8m.bin
+2026-07-05T15:33:08Z [INFO] [agent.py:268] Expected hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T15:33:08Z [INFO] [agent.py:285] Computed hash: 0a71878a16c9dc723a8585872ae4d608fe8d18240974631c2d74f801b84f35b4
+2026-07-05T15:33:08Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin.corrupted
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.2.0, minimum=1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.2.0 >= minimum v1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.0.0 >= minimum v1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.0.1
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.0.1
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.10.0, minimum=1.9.0
+2026-07-05T15:33:09Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.10.0 >= minimum v1.9.0
+2026-07-05T15:33:09Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:268] Expected hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:285] Computed hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:268] Expected hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:285] Computed hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:462] Anti-rollback check PASSED — v8.8.8 >= minimum v1.0.0
+2026-07-05T15:33:09Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\AppData\Local\Temp\tmpxv6pkyb0.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:268] Expected hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:285] Computed hash: 79741b9ba3aa6d32106dc656e767fb72a1351267deed199d45fd7ee39db6fd36
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:292] Expected: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:293] Computed: 79741b9ba3aa6d32106dc656e767fb72a1351267deed199d45fd7ee39db6fd36
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\AppData\Local\Temp\tmpj26rp8gg.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:268] Expected hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:285] Computed hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.1.0, minimum=1.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.1.0 < minimum v1.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=1.1.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.0.0 < minimum v1.1.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.1.0, minimum=1.1.1
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v1.1.0 < minimum v1.1.1
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:267] Verifying SHA-256 hash of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:268] Expected hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:285] Computed hash: 9aee2b256b09d4614d60bad55d655cebe3f6b1abdf0e12a11563619a2ea1a426
+2026-07-05T15:33:09Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:09Z [INFO] [agent.py:452] Anti-rollback check: incoming=8.8.8, minimum=99.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v8.8.8 < minimum v99.0.0
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:09Z [INFO] [agent.py:321] Verifying ECDSA signature of: C:\Users\mahen\secure-ota-firmware-update\firmware\dummy_firmware_v8.8.8.bin
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:09Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:19Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:19Z [INFO] [agent.py:268] Expected hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:19Z [INFO] [agent.py:285] Computed hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:19Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:19Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:19Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:19Z [INFO] [agent.py:452] Anti-rollback check: incoming=7.7.7, minimum=1.0.0
+2026-07-05T15:33:19Z [INFO] [agent.py:462] Anti-rollback check PASSED — v7.7.7 >= minimum v1.0.0
+2026-07-05T15:33:20Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin.corrupted
+2026-07-05T15:33:20Z [INFO] [agent.py:268] Expected hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:20Z [INFO] [agent.py:285] Computed hash: 5a219300094bf72e63db8cd1f95310cd22d5392287524fcf0e6ada926275e4cc
+2026-07-05T15:33:20Z [CRITICAL] [agent.py:291] Hash verification FAILED — tampering detected
+2026-07-05T15:33:20Z [CRITICAL] [agent.py:292] Expected: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:20Z [CRITICAL] [agent.py:293] Computed: 5a219300094bf72e63db8cd1f95310cd22d5392287524fcf0e6ada926275e4cc
+2026-07-05T15:33:20Z [CRITICAL] [agent.py:294] Dropping firmware payload — refusing installation
+2026-07-05T15:33:21Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:21Z [INFO] [agent.py:268] Expected hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:21Z [INFO] [agent.py:285] Computed hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:21Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:21Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:21Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:33:21Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:33:21Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:33:22Z [INFO] [agent.py:267] Verifying SHA-256 hash of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:22Z [INFO] [agent.py:268] Expected hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:22Z [INFO] [agent.py:285] Computed hash: 117c6b8db2e41472c6da9bb36773cf6d0841f0251f9ade4aba51bdab6d09b44a
+2026-07-05T15:33:22Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:33:22Z [INFO] [agent.py:321] Verifying ECDSA signature of: firmware\dummy_firmware_v7.7.7.bin
+2026-07-05T15:33:22Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T15:33:22Z [INFO] [agent.py:452] Anti-rollback check: incoming=0.9.0, minimum=1.0.0
+2026-07-05T15:33:22Z [CRITICAL] [agent.py:468] Anti-rollback check FAILED — v0.9.0 < minimum v1.0.0
+2026-07-05T15:33:22Z [CRITICAL] [agent.py:472] Rollback attack detected — refusing to install older vulnerable firmware
+2026-07-05T15:35:19Z [INFO] [agent.py:584] =======================================================
+2026-07-05T15:35:19Z [INFO] [agent.py:585] Edge Device Agent started
+2026-07-05T15:35:19Z [INFO] [agent.py:833] Configuration loaded from: edge_agent/config.json
+2026-07-05T15:35:19Z [INFO] [agent.py:589] Agent version: 1.0.0
+2026-07-05T15:35:19Z [INFO] [agent.py:592] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-05T15:35:19Z [INFO] [agent.py:595] =======================================================
+2026-07-05T15:35:19Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-05T15:35:19Z [INFO] [agent.py:491] Fetching latest release from GitHub API: https://api.github.com/repos/secure-ota-firmware-update/secure-ota-firmware-update/releases/latest
+2026-07-05T15:35:19Z [INFO] [agent.py:506] Found release: v0.4.0
+2026-07-05T15:35:19Z [INFO] [agent.py:519] Downloading manifest from: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/manifest.json
+2026-07-05T15:35:20Z [INFO] [agent.py:524] Manifest fetched — firmware version: 0.4.0
+2026-07-05T15:35:20Z [INFO] [agent.py:169] Update available: 0.0.0 -> 0.4.0
+2026-07-05T15:35:20Z [INFO] [agent.py:207] Downloading firmware from GitHub Release: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/dummy_firmware_v1.0.0.bin
+2026-07-05T15:35:20Z [INFO] [agent.py:210] Downloading signature from GitHub Release: https://github.com/secure-ota-firmware-update/secure-ota-firmware-update/releases/download/v0.4.0/dummy_firmware_v1.0.0.sig
+2026-07-05T15:35:21Z [INFO] [agent.py:231] Firmware downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T15:35:21Z [INFO] [agent.py:232] Signature downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.sig
+2026-07-05T15:35:21Z [INFO] [agent.py:267] Verifying SHA-256 hash of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T15:35:21Z [INFO] [agent.py:268] Expected hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-07-05T15:35:21Z [INFO] [agent.py:285] Computed hash: 6f80ccead9853fbfe0cd002ec15317987679f6bb4b53c760ecd832e6a1d4fb41
+2026-07-05T15:35:21Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T15:35:21Z [INFO] [agent.py:321] Verifying ECDSA signature of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:372] Signature verification FAILED — forged or corrupted signature
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:373] This firmware was NOT signed by the legitimate private key
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:374] Dropping firmware payload — refusing installation
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:791] Rejection report written: edge_agent/rejections\rejection_20260705_100521_INVALID_SIGNATURE.json
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:677] ==================================================
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:678] SECURITY ALERT
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:679] Signature verification FAILED
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:680] Firmware was NOT signed by the legitimate key
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:681] Payload dropped — installation refused
+2026-07-05T15:35:21Z [CRITICAL] [agent.py:682] ==================================================
+2026-07-05T15:35:21Z [INFO] [agent.py:559] =======================================================
+2026-07-05T15:35:21Z [INFO] [agent.py:560] AGENT RUN SUMMARY
+2026-07-05T15:35:21Z [INFO] [agent.py:561] =======================================================
+2026-07-05T15:35:21Z [INFO] [agent.py:562] Outcome:          REJECTED — invalid or forged signature
+2026-07-05T15:35:21Z [INFO] [agent.py:563] Firmware version: 0.4.0
+2026-07-05T15:35:21Z [INFO] [agent.py:564] Duration:         1.72 seconds
+2026-07-05T15:35:21Z [INFO] [agent.py:565] Steps passed:     4
+2026-07-05T15:35:21Z [INFO] [agent.py:568]   [PASS] Version store loaded
+2026-07-05T15:35:21Z [INFO] [agent.py:568]   [PASS] Manifest fetched from GitHub Releases
+2026-07-05T15:35:21Z [INFO] [agent.py:568]   [PASS] Update check — update available
+2026-07-05T15:35:21Z [INFO] [agent.py:568]   [PASS] Firmware downloaded
+2026-07-05T15:35:21Z [WARNING] [agent.py:571] Steps failed:     1
+2026-07-05T15:35:21Z [WARNING] [agent.py:573]   [FAIL] ECDSA signature verification
+2026-07-05T15:35:21Z [INFO] [agent.py:575] =======================================================
+2026-07-05T15:58:20Z [INFO] [agent.py:584] =======================================================
+2026-07-05T15:58:20Z [INFO] [agent.py:585] Edge Device Agent started
+2026-07-05T15:58:20Z [INFO] [agent.py:833] Configuration loaded from: edge_agent/config.json
+2026-07-05T15:58:20Z [INFO] [agent.py:589] Agent version: 1.0.0
+2026-07-05T15:58:20Z [INFO] [agent.py:592] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-05T15:58:20Z [INFO] [agent.py:595] =======================================================
+2026-07-05T15:58:20Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-05T15:58:20Z [INFO] [agent.py:169] Update available: 0.0.0 -> 9.9.9
+2026-07-05T15:58:20Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-05T15:58:20Z [ERROR] [agent.py:221] Firmware source not found: firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T15:58:20Z [CRITICAL] [agent.py:602] Required file missing: Firmware not found: firmware\dummy_firmware_v9.9.9.bin
+2026-07-05T15:58:20Z [INFO] [agent.py:559] =======================================================
+2026-07-05T15:58:20Z [INFO] [agent.py:560] AGENT RUN SUMMARY
+2026-07-05T15:58:20Z [INFO] [agent.py:561] =======================================================
+2026-07-05T15:58:20Z [INFO] [agent.py:562] Outcome:          HALTED — missing file
+2026-07-05T15:58:20Z [INFO] [agent.py:563] Firmware version: 9.9.9
+2026-07-05T15:58:20Z [INFO] [agent.py:564] Duration:         0.02 seconds
+2026-07-05T15:58:20Z [INFO] [agent.py:565] Steps passed:     3
+2026-07-05T15:58:20Z [INFO] [agent.py:568]   [PASS] Version store loaded
+2026-07-05T15:58:20Z [INFO] [agent.py:568]   [PASS] Manifest loaded from local file
+2026-07-05T15:58:20Z [INFO] [agent.py:568]   [PASS] Update check — update available
+2026-07-05T15:58:20Z [WARNING] [agent.py:571] Steps failed:     1
+2026-07-05T15:58:20Z [WARNING] [agent.py:573]   [FAIL] File system check
+2026-07-05T15:58:20Z [INFO] [agent.py:575] =======================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:584] =======================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:585] Edge Device Agent started
+2026-07-05T16:02:18Z [INFO] [agent.py:833] Configuration loaded from: edge_agent/config.json
+2026-07-05T16:02:18Z [INFO] [agent.py:589] Agent version: 1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:592] GitHub repo: secure-ota-firmware-update/secure-ota-firmware-update
+2026-07-05T16:02:18Z [INFO] [agent.py:595] =======================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:124] Version store loaded — current version: 0.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:169] Update available: 0.0.0 -> 1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:215] GITHUB_RELEASE_BASE_URL not set — using local file fallback
+2026-07-05T16:02:18Z [INFO] [agent.py:231] Firmware downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T16:02:18Z [INFO] [agent.py:232] Signature downloaded: edge_agent/downloads\dummy_firmware_v1.0.0.sig
+2026-07-05T16:02:18Z [INFO] [agent.py:267] Verifying SHA-256 hash of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T16:02:18Z [INFO] [agent.py:268] Expected hash: ba399151ff37453663da0b7ca6f5d64aeee540a298875daf2c7bd0dc74a00316
+2026-07-05T16:02:18Z [INFO] [agent.py:285] Computed hash: ba399151ff37453663da0b7ca6f5d64aeee540a298875daf2c7bd0dc74a00316
+2026-07-05T16:02:18Z [INFO] [agent.py:288] Hash verification PASSED — firmware integrity confirmed
+2026-07-05T16:02:18Z [INFO] [agent.py:321] Verifying ECDSA signature of: edge_agent/downloads\dummy_firmware_v1.0.0.bin
+2026-07-05T16:02:18Z [INFO] [agent.py:369] Signature verification PASSED — firmware authenticity confirmed
+2026-07-05T16:02:18Z [INFO] [agent.py:691] Both hash and signature verified — firmware is authentic
+2026-07-05T16:02:18Z [INFO] [agent.py:452] Anti-rollback check: incoming=1.0.0, minimum=0.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:462] Anti-rollback check PASSED — v1.0.0 >= minimum v0.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:388] ==================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:389] INSTALLING firmware v1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:390] Step 1/4 — Verifying install conditions
+2026-07-05T16:02:18Z [INFO] [agent.py:391] Step 2/4 — Writing firmware to flash memory (simulated)
+2026-07-05T16:02:18Z [INFO] [agent.py:392] Step 3/4 — Updating bootloader version pointer (simulated)
+2026-07-05T16:02:18Z [INFO] [agent.py:393] Step 4/4 — Updating version store
+2026-07-05T16:02:18Z [INFO] [agent.py:141] Version store saved — new version: 1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:413] Install complete — now running v1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:414] Initiating mock reboot...
+2026-07-05T16:02:18Z [INFO] [agent.py:415] ==================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:559] =======================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:560] AGENT RUN SUMMARY
+2026-07-05T16:02:18Z [INFO] [agent.py:561] =======================================================
+2026-07-05T16:02:18Z [INFO] [agent.py:562] Outcome:          INSTALLED
+2026-07-05T16:02:18Z [INFO] [agent.py:563] Firmware version: 1.0.0
+2026-07-05T16:02:18Z [INFO] [agent.py:564] Duration:         0.08 seconds
+2026-07-05T16:02:18Z [INFO] [agent.py:565] Steps passed:     6
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Version store loaded
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Manifest loaded from local file
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Update check — update available
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Firmware downloaded
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] ECDSA signature verification
+2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Anti-rollback version check
+2026-07-05T16:02:18Z [INFO] [agent.py:575] =======================================================
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
