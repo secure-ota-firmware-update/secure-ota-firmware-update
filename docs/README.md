@@ -39,6 +39,7 @@ New to the project? Read in this order:
 | [SECRETS_SETUP.md](SECRETS_SETUP.md) | GitHub Secrets configuration guide | CICD_PIPELINE.md |
 | [CICD_PIPELINE.md](CICD_PIPELINE.md) | Full pipeline architecture and troubleshooting | SECRETS_SETUP.md |
 
+<<<<<<< HEAD
 ---
 
 ## Test and Review Documentation
@@ -67,6 +68,53 @@ New to the project? Read in this order:
 
 ---
 
+=======
+---
+
+## Test and Review Documentation
+
+| Document | Description | Related |
+|----------|-------------|---------|
+| [TEST_RESULTS.md](TEST_RESULTS.md) | Full 29-test suite results with threat coverage table | TAMPER_SIMULATION_RESULTS.md |
+| [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results | THREAT_MODEL.md |
+| [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | verify_signature() test results | ANTI_ROLLBACK.md |
+| [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification | TEST_RESULTS.md |
+| [PRE_REVIEW_SIGNOFF.md](PRE_REVIEW_SIGNOFF.md) | Final pre-review validation results | FINAL_REVIEW_PREP.md |
+
+
+=======
+| [FINAL_SECURITY_LAYERS.md](FINAL_SECURITY_LAYERS.md) | Complete three-layer defense architecture summary |
+| [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design and version store |
+| [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
+| [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | Signature verification test results |
+| [WEEK3_PROGRESS.md](WEEK3_PROGRESS.md) | Week 3 implementation summary |
+| [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification |
+| [TEST_RESULTS.md](TEST_RESULTS.md) | Full 29-test suite results |
+
+
+| [ANTI_ROLLBACK.md](ANTI_ROLLBACK.md) | Anti-rollback design, version store, three security layers |
+| [TAMPER_SIMULATION_RESULTS.md](TAMPER_SIMULATION_RESULTS.md) | Manual attack simulation results |
+| [SIGNATURE_VERIFICATION_TEST_RESULTS.md](SIGNATURE_VERIFICATION_TEST_RESULTS.md) | verify_signature() test results |
+| [WEEK3_PROGRESS.md](WEEK3_PROGRESS.md) | Week 3 implementation summary |
+| [MEMBER2_TEST_VERIFICATION.md](MEMBER2_TEST_VERIFICATION.md) | Independent test verification |
+
+---
+
+## Project Management Documentation
+
+| Document | Description | Related |
+|----------|-------------|---------|
+| [WORK_DISTRIBUTION.md](WORK_DISTRIBUTION.md) | Official task distribution (submit to Infotact) | — |
+| [MID_REVIEW_PREP.md](MID_REVIEW_PREP.md) | Mid Review demo script and Q&A | FINAL_REVIEW_PREP.md |
+| [FINAL_REVIEW_PREP.md](FINAL_REVIEW_PREP.md) | Final Review demo script and Q&A | PRE_REVIEW_SIGNOFF.md |
+| [WEEK2_COMPLETION_REPORT.md](WEEK2_COMPLETION_REPORT.md) | Week 2 final status | FINAL_WEEK2_TEST.md |
+| [FINAL_WEEK2_TEST.md](FINAL_WEEK2_TEST.md) | Final Week 2 end-to-end test | WEEK2_COMPLETION_REPORT.md |
+| [WEEK3_PROGRESS.md](WEEK3_PROGRESS.md) | Week 3 implementation summary | FINAL_SECURITY_LAYERS.md |
+| [PROJECT_COMPLETION_REPORT.md](PROJECT_COMPLETION_REPORT.md) | Full 3-week project summary (submit to Infotact) | — |
+
+---
+
+>>>>>>> origin
 ## Learning Documentation
 
 | Document | Description | Related |
