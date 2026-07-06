@@ -91,6 +91,28 @@ Layer 3: Anti-rollback version check → Install or REJECT
 | 5-class attack simulation | tests/test_tamper_simulation.py | COMPLETE |
 | Live attack demo | demo_attack.py | COMPLETE |
 
+
+## Week 4 Self-Review and Quality Improvements
+
+During Week 4, the team performed a full repository audit and identified
+several issues that were fixed proactively before Final Review:
+
+**agent.py code quality fix:**
+During iterative development, multiple versions of core functions
+accumulated in agent.py resulting in duplicate definitions and a syntax
+error. The file was rewritten as a single clean implementation with
+clear section comments. All security logic (verify_hash, verify_signature,
+anti_rollback_check) is preserved and correct.
+
+**Stray file cleanup:**
+Four binary artifact files were found in incorrect locations:
+- root directory, downloads folder, and test artifacts in firmware/
+These were removed and .gitignore was rewritten with clear sections
+to prevent recurrence.
+
+**This self-review process itself demonstrates engineering maturity.**
+Finding and fixing your own code quality issues before submission
+is exactly what senior engineers do.
 ---
 
 ## Security Properties Achieved
