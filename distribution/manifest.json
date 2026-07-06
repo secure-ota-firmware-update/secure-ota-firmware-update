@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
   "filename": "dummy_firmware_v1.0.0.bin",
-  "sha256": "ba399151ff37453663da0b7ca6f5d64aeee540a298875daf2c7bd0dc74a00316",
+  "sha256": "69b34426d205acb22c48adfb5dcb05c94fe3e5d524c97d731a11a515934c712b",
   "signature_filename": "dummy_firmware_v1.0.0.sig",
-  "released_at": "2026-07-05T15:33:00Z",
-  "minimum_version": "0.0.0",
-  "description": "Firmware release v1.0.0 — locally signed for validation"
+  "released_at": "2026-07-06T16:15:02Z",
+  "minimum_version": "1.0.0",
+  "description": "Firmware release v1.0.0"
 }
