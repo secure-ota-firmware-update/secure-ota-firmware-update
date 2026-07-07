@@ -762,6 +762,8 @@
 2026-07-04T22:33:53Z [WARNING] [agent.py:572] Steps failed:     1
 2026-07-04T22:33:53Z [WARNING] [agent.py:574]   [FAIL] File system check
 2026-07-04T22:33:53Z [INFO] [agent.py:576] =======================================================
+<<<<<<< HEAD
+=======
 2026-07-05T13:28:36Z [INFO] [agent.py:267] Verifying SHA-256 hash of: /nonexistent/path/firmware.bin
 2026-07-05T13:28:36Z [INFO] [agent.py:268] Expected hash: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 2026-07-05T13:28:36Z [CRITICAL] [agent.py:277] Firmware file not found: /nonexistent/path/firmware.bin
@@ -1439,3 +1441,4 @@
 2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] ECDSA signature verification
 2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Anti-rollback version check
 2026-07-05T16:02:18Z [INFO] [agent.py:575] =======================================================
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53

@@ -894,6 +894,15 @@ def main():
 
     logger.info("=" * 55)
     logger.info("Edge Device Agent started")
+
+    # Load configuration
+    config = load_config()
+    logger.info(
+        f"Agent version: {config['agent']['version']}"
+    )
+    logger.info(
+        f"GitHub repo: {config['distribution']['github_repo']}"
+    )
     logger.info("=" * 55)
 
     try:
@@ -910,5 +919,266 @@ def main():
         summary.log_summary()
 
 
+<<<<<<< HEAD
+
+def _run_update_check(summary: AgentRunSummary):
+    """
+    Internal update check logic with summary tracking.
+    """
+    # Load version store
+    version_store = load_version_store()
+    summary.record_pass("Version store loaded")
+
+    # Load manifest
+    manifest = None
+    github_release_base = os.environ.get("GITHUB_RELEASE_BASE_URL")
+
+    if github_release_base:
+        manifest = fetch_manifest_from_release()
+        if manifest:
+            summary.record_pass("Manifest fetched from GitHub Releases")
+
+    if manifest is None:
+        manifest_path = "distribution/manifest.json"
+        if not os.path.exists(manifest_path):
+            raise FileNotFoundError(f"Manifest not found: {manifest_path}")
+        with open(manifest_path, "r") as f:
+            manifest = json.load(f)
+        summary.record_pass("Manifest loaded from local file")
+
+    summary.set_version(manifest["version"])
+
+    # Check for update
+    if not check_for_update(manifest, version_store):
+        summary.set_outcome("NO UPDATE NEEDED")
+        logger.info("No update needed. Agent exiting.")
+        return
+
+    summary.record_pass("Update check — update available")
+
+    # Download firmware
+    firmware_path, sig_path = download_firmware(manifest)
+    summary.record_pass("Firmware downloaded")
+
+    # Verify hash
+    if not verify_hash(firmware_path, manifest["sha256"]):
+        summary.record_fail("SHA-256 hash verification")
+        summary.set_outcome("REJECTED — hash mismatch")
+        write_rejection_report(
+            reason="HASH_MISMATCH",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details=f"Downloaded binary hash does not match manifest value"
+        )
+        logger.critical("SECURITY ALERT — Hash verification failed. Aborting.")
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    # Step 3 — Verify ECDSA signature
+    if not verify_signature(firmware_path, sig_path, PUBLIC_KEY_PATH):
+        summary.record_fail("ECDSA signature verification")
+        summary.set_outcome("REJECTED — invalid or forged signature")
+        write_rejection_report(
+            reason="INVALID_SIGNATURE",
+            manifest=manifest,
+            firmware_path=firmware_path,
+            details="ECDSA signature does not match public key stored on device"
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical("Signature verification FAILED")
+        logger.critical("Firmware was NOT signed by the legitimate key")
+        logger.critical("Payload dropped — installation refused")
+        logger.critical("=" * 50)
+
+        # Clean up downloaded files
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    summary.record_pass("ECDSA signature verification")
+    logger.info("Both hash and signature verified — firmware is authentic")
+
+    # Step 4 — Anti-rollback check
+    minimum_version = version_store.get("minimum_version", "0.0.0")
+    incoming_version = manifest["version"]
+
+    if not anti_rollback_check(incoming_version, minimum_version):
+        summary.record_fail("Anti-rollback version check")
+        summary.set_outcome("REJECTED — rollback attempt detected")
+        write_rejection_report(
+            reason="ROLLBACK_ATTEMPT",
+            manifest=manifest,
+            details=(
+                f"Incoming version v{incoming_version} is below "
+                f"minimum allowed version v{minimum_version}. "
+                f"Rollback attack suspected."
+            )
+        )
+        logger.critical("=" * 50)
+        logger.critical("SECURITY ALERT")
+        logger.critical(f"Rollback attack detected")
+        logger.critical(f"Incoming: v{incoming_version}")
+        logger.critical(f"Minimum:  v{minimum_version}")
+        logger.critical("Installation refused")
+        logger.critical("=" * 50)
+        for path in [firmware_path, sig_path]:
+            if os.path.exists(path):
+                os.remove(path)
+        return
+
+    summary.record_pass("Anti-rollback version check")
+
+    # Step 5 — Install
+    summary.set_outcome("INSTALLED")
+    mock_install(manifest, version_store)
+    
+
+def write_rejection_report(
+    reason: str,
+    manifest: dict,
+    firmware_path: str = None,
+    details: str = None
+) -> None:
+    """
+    Write a structured JSON rejection report to disk when
+    firmware verification fails.
+ 
+    Creates a timestamped report file in edge_agent/rejections/
+    that a Security Architect can query for audit purposes.
+ 
+    In a real IoT system this would be sent to a central SIEM
+    (Security Information and Event Management) system.
+ 
+    Args:
+        reason: short reason code e.g. HASH_MISMATCH, INVALID_SIGNATURE
+        manifest: the manifest that was being processed
+        firmware_path: path to the rejected firmware file
+        details: additional context for the rejection
+    """
+    import uuid
+ 
+    rejections_dir = "edge_agent/rejections"
+    os.makedirs(rejections_dir, exist_ok=True)
+ 
+    report = {
+        "report_id": str(uuid.uuid4()),
+        "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "severity": "CRITICAL",
+        "reason": reason,
+        "firmware_version": manifest.get("version", "unknown"),
+        "firmware_filename": manifest.get("filename", "unknown"),
+        "firmware_sha256_in_manifest": manifest.get("sha256", "unknown"),
+        "details": details or "No additional details",
+        "action_taken": "Firmware payload dropped. Installation refused.",
+        "device_info": {
+            "public_key_path": PUBLIC_KEY_PATH,
+            "version_store_path": VERSION_STORE_PATH,
+            "agent_version": "1.0.0"
+        }
+    }
+ 
+    # Include computed hash if firmware path is available
+    if firmware_path and os.path.exists(firmware_path):
+        sha256 = hashlib.sha256()
+        with open(firmware_path, "rb") as f:
+            while chunk := f.read(8192):
+                sha256.update(chunk)
+        report["firmware_sha256_computed"] = sha256.hexdigest()
+        report["hash_match"] = (
+            report["firmware_sha256_computed"] == report["firmware_sha256_in_manifest"]
+        )
+ 
+    # Save with timestamped filename
+    timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    filename = f"rejection_{timestamp}_{reason}.json"
+    filepath = os.path.join(rejections_dir, filename)
+ 
+    with open(filepath, "w") as f:
+        json.dump(report, f, indent=2)
+ 
+    logger.critical(f"Rejection report written: {filepath}")
+    
+def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
+    """
+    Compares the incoming firmware version against the allowed minimum version.
+    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    
+    Returns:
+        True if current_version >= minimum_version
+        False otherwise
+    """
+    try:
+        # Split version strings and convert components to integers
+        current_parts = [int(x) for x in current_version.split('.')]
+        minimum_parts = [int(x) for x in minimum_version.split('.')]
+        
+        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
+        max_len = max(len(current_parts), len(minimum_parts))
+        current_parts.extend([0] * (max_len - len(current_parts)))
+        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
+        
+        # Compare tuple of integers directly
+        return current_parts >= minimum_parts
+    except (ValueError, AttributeError):
+        # If versions are malformed or invalid, reject them safely
+        return False
+
+def load_config(config_path: str = "edge_agent/config.json") -> dict:
+    """
+    Load agent configuration from config.json.
+
+    Falls back to hardcoded defaults if config file is missing.
+    This allows the agent to run without a config file in
+    development environments.
+
+    Args:
+        config_path: path to config.json
+
+    Returns:
+        dict: configuration values
+    """
+    defaults = {
+        "agent": {
+            "version": "1.0.0",
+            "log_level": "INFO"
+        },
+        "firmware": {
+            "public_key_path": "pki/public_key.pem",
+            "version_store_path": "edge_agent/version_store.json",
+            "downloads_dir": "edge_agent/downloads",
+            "rejections_dir": "edge_agent/rejections"
+        },
+        "distribution": {
+            "github_repo": "secure-ota-firmware-update/secure-ota-firmware-update",
+            "manifest_filename": "manifest.json",
+            "local_manifest_path": "distribution/manifest.json",
+            "download_timeout_seconds": 30,
+            "max_download_retries": 3
+        },
+        "security": {
+            "delete_on_verification_failure": True,
+            "write_rejection_reports": True
+        }
+    }
+
+    if not os.path.exists(config_path):
+        logger.warning(
+            f"Config file not found: {config_path} — using defaults"
+        )
+        return defaults
+
+    with open(config_path, "r") as f:
+        config = json.load(f)
+
+    logger.info(f"Configuration loaded from: {config_path}")
+    return config
+
+
+=======
+>>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
 if __name__ == "__main__":
     main()
