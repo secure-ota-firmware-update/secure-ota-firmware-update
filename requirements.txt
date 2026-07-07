@@ -1,17 +1,20 @@
 # Cryptographic operations
-# ECDSA key generation, signing, and verification
 cryptography==42.0.8
 
 # HTTP requests
-# Edge agent firmware download from GitHub Releases
 requests==2.32.3
 
+# URL handling — must match requests dependency
+urllib3==2.5.0
+
+# Character encoding detection — requests dependency
+charset-normalizer==3.4.2
+
 # AWS S3 integration
-# Firmware upload (optional — used if S3 distribution chosen)
 boto3==1.34.144
 
 # Testing framework
 pytest==8.2.2
 
-# Test coverage reporting (optional)
+# Test coverage reporting
 pytest-cov==5.0.0
