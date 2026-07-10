@@ -919,7 +919,7 @@ def main():
         summary.log_summary()
 
 
-<<<<<<< HEAD
+
 
 def _run_update_check(summary: AgentRunSummary):
     """
@@ -1178,7 +1178,7 @@ def load_config(config_path: str = "edge_agent/config.json") -> dict:
     return config
 
 
-=======
->>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
+
+
 if __name__ == "__main__":
     main()
