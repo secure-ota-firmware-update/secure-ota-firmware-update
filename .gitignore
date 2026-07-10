@@ -76,4 +76,4 @@ htmlcov/
 Thumbs.db
 .vscode/
 .idea/
-*.swp
+*.swpedge_agent/agent.log

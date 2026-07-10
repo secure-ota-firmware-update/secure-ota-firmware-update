@@ -1105,27 +1105,32 @@ def write_rejection_report(
 def anti_rollback_check(current_version: str, minimum_version: str) -> bool:
     """
     Compares the incoming firmware version against the allowed minimum version.
-    Uses integer-based semantic version comparison to prevent string sorting bugs.
+    Enforces strict semantic versioning (major.minor.patch).
     
     Returns:
         True if current_version >= minimum_version
         False otherwise
     """
     try:
-        # Split version strings and convert components to integers
-        current_parts = [int(x) for x in current_version.split('.')]
-        minimum_parts = [int(x) for x in minimum_version.split('.')]
-        
-        # Pad with zeros if version strings have mismatching lengths (e.g., '1.0' vs '1.0.0')
-        max_len = max(len(current_parts), len(minimum_parts))
-        current_parts.extend([0] * (max_len - len(current_parts)))
-        minimum_parts.extend([0] * (max_len - len(minimum_parts)))
-        
-        # Compare tuple of integers directly
-        return current_parts >= minimum_parts
+        # Split version strings
+        current_parts = current_version.split('.')
+        minimum_parts = minimum_version.split('.')
+
+        # Require exactly 3 parts (major.minor.patch)
+        if len(current_parts) != 3 or len(minimum_parts) != 3:
+            return False
+
+        # Convert to integers
+        current_parts = [int(x) for x in current_parts]
+        minimum_parts = [int(x) for x in minimum_parts]
+
+        # Compare tuples directly
+        return tuple(current_parts) >= tuple(minimum_parts)
+
     except (ValueError, AttributeError):
-        # If versions are malformed or invalid, reject them safely
+        # Reject malformed or non-numeric versions
         return False
+
 
 def load_config(config_path: str = "edge_agent/config.json") -> dict:
     """
