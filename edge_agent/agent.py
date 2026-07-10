@@ -920,6 +920,7 @@ def main():
 
 
 
+
 def _run_update_check(summary: AgentRunSummary):
     """
     Internal update check logic with summary tracking.
@@ -1180,6 +1181,8 @@ def load_config(config_path: str = "edge_agent/config.json") -> dict:
 
     logger.info(f"Configuration loaded from: {config_path}")
     return config
+
+
 
 
 if __name__ == "__main__":

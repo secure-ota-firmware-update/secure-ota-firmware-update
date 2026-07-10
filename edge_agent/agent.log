@@ -1442,3 +1442,5 @@
 2026-07-05T16:02:18Z [INFO] [agent.py:568]   [PASS] Anti-rollback version check
 2026-07-05T16:02:18Z [INFO] [agent.py:575] =======================================================
 >>>>>>> ac2d78793d194f6a9c07959bcfdffad4b12e5e53
+2026-07-10T12:54:07Z [INFO] [agent.py:377] Verifying ECDSA signature of: firmware/dummy_firmware_v1.0.0.bin
+2026-07-10T12:54:07Z [INFO] [agent.py:435] Signature verification PASSED — firmware authenticity confirmed
